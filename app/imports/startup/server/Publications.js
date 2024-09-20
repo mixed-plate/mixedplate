@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
+import { Cash } from '../../api/stuff/Cash';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
@@ -20,7 +21,24 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
   }
   return this.ready();
 });
+// Publication for Cash (user-level)
+// Publishes only cash data owned by the logged-in user.
+Meteor.publish(Cash.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Cash.collection.find({ owner: username });
+  }
+  return this.ready();
+});
 
+// Publication for Cash (admin-level)
+// Publishes all cash data for admin users.
+Meteor.publish(Cash.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Cash.collection.find();
+  }
+  return this.ready();
+});
 // alanning:roles publication
 // Recommended code to publish roles for each user.
 Meteor.publish(null, function () {
