@@ -1,28 +1,42 @@
 /* Use Open Sans as the default sans serif font. */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
 
-/* Set up some CSS variables to theme the application. */
+/* Define custom variables and styles */
 :root {
   --matr-navbar-bg: #ECECEC;
   --matr-navbar-bg-rgb: 236, 236, 236;
 }
 
-/* Change bootstrap variable values.
- See https://getbootstrap.com/docs/5.2/customize/css-variables/
- */
 body {
   --bs-light-rgb: var(--matr-navbar-bg-rgb);
 }
 
-/* Set the alert background on the signin and signup pages. */
-#signin-page .alert-light, #signup-page .alert-light {
-  --bs-alert-bg: var(--matr-navbar-bg);
+/* Background Image */
+.fixed-bg {
+  background-image: url('./images/background.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
-/* Define custom styles */
+.content {
+  position: relative;
+  z-index: 2;
+  background-color: white;
+  padding: 50px;
+  min-height: 100vh;
+  text-align: center;
+}
+
 .gray-background {
   background-color: var(--matr-navbar-bg);
   color: var(--bs-dark);
   padding-top: 10px;
   padding-bottom: 20px;
+}
+.navbar {
+  background-color: white; /* This will override the Bootstrap bg="light" */
 }

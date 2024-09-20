@@ -13,7 +13,7 @@ const NavBar = () => {
   }), []);
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar>
       <Container>
         <Navbar.Brand>
           <NavLink to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
