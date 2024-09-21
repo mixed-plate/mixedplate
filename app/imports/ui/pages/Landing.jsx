@@ -6,7 +6,15 @@ const Landing = () => (
     <div
       className="fixed-bg"
     />
-    <Container id="landing-page" fluid className="content d-flex justify-content-center align-items-center">
+    <Container fluid className="content-wrapper">
+      <Row className="text-center">
+        <Col xs={12} className="d-flex flex-column justify-content-center align-items-center">
+          <h1>Finance Forecasts</h1>
+          <p>Press here for Financial Predictions</p>
+        </Col>
+      </Row>
+    </Container>
+    <Container id="landing-page" fluid className="content d-flex justify-content-center align-items-center" style={{ marginTop: '-170px' }}>
       <Row className="text-center">
         <Col xs={12} className="d-flex flex-column justify-content-center align-items-center">
           <h1>Spire</h1>
@@ -21,8 +29,6 @@ const Landing = () => (
         </Col>
       </Row>
     </Container>
-
-    {/* Additional content sections can be added here */}
   </>
 );
 
