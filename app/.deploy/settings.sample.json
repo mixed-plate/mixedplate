@@ -10,6 +10,9 @@
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
+  "defaultCashData": [
+    { "petty_cash": 0, "cash": 1, "cash_in_banks_draw_on_line_credit": 2 }
+    ],
 
   "monti": {
     "appId": "changeme",
