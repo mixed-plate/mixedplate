@@ -36,6 +36,7 @@ const CashList = () => {
                 <th>Petty Cash</th>
                 <th>Cash</th>
                 <th>Cash in Banks</th>
+                <td>Total </td>
               </tr>
               </thead>
               <tbody>
