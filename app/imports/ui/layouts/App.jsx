@@ -18,6 +18,8 @@ import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
 import AboutUs from '../pages/AboutUs';
+import AuditedBalanceSheetForm from '../pages/AuditedBalanceSheetForm';
+import BudgetPnL from '../pages/BudgetPnL';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -38,6 +40,8 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
+          <Route path="/Form" element={<ProtectedRoute><AuditedBalanceSheetForm /></ProtectedRoute>} />
+          <Route path="/Budget" element={<ProtectedRoute><BudgetPnL /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
