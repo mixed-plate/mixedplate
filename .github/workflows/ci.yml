@@ -1,4 +1,4 @@
-name: ci-meteor-application-template-react
+name: mixed-plate-production
 
 on:
   push:
@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: '16.x'
 
-      - run: npm ci --legacy-peer-deps
+      - run: npm ci
 
       - run: curl https://install.meteor.com/ | sh
 
@@ -38,4 +38,7 @@ jobs:
         run: |
           meteor npm install
           meteor npm run lint
+          meteor npm run test-unit
+          meteor npm run test-integration
+          meteor npm run test-acceptance-ci
 #          meteor npm run testcafe-ci
