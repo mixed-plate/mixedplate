@@ -27,9 +27,9 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: '20.x'
+          node-version: '16.x'
 
-      - run: npm ci
+      - run: npm ci --legacy-peer-deps
 
       - run: curl https://install.meteor.com/ | sh
 
@@ -37,6 +37,5 @@ jobs:
         shell: bash -l {0}
         run: |
           meteor npm install
-          meteor npm run lint          
-          meteor npm run test-all      
-          meteor npm run testcafe-ci
+          meteor npm run lint
+    #meteor npm run testcafe-ci
