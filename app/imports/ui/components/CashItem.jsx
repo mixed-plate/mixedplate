@@ -7,6 +7,7 @@ const CashItem = ({ cash }) => {
 
 return (
     <tr>
+      <td>{cash.year}</td>
       <td>{cash.petty_cash}</td>
       <td>{cash.cash}</td>
       <td>{cash.cash_in_banks_draw_on_line_credit}</td>
@@ -19,6 +20,7 @@ CashItem.propTypes = {
     petty_cash: PropTypes.number,
     cash: PropTypes.number,
     cash_in_banks_draw_on_line_credit: PropTypes.number,
+    year: PropTypes.number,
     _id: PropTypes.string,
   }).isRequired,
   }

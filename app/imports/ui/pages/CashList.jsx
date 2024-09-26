@@ -12,12 +12,11 @@ const CashList = () => {
   const { ready, cash } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
-    // Get access totu Sff documents.
     const subscription = Meteor.subscribe(Cash.userPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    const cashItems = Cash.collection.find({}).fetch();
+    const cashItems = Cash.collection.find({}, { sort: { year: 1 } } ).fetch();
     return {
       cash: cashItems,
       ready: rdy,
@@ -33,6 +32,7 @@ const CashList = () => {
             <Table striped bordered hover>
               <thead>
               <tr>
+                <th>Year</th>
                 <th>Petty Cash</th>
                 <th>Cash</th>
                 <th>Cash in Banks</th>

@@ -18,13 +18,26 @@
     }
     }
     const addCashData = (data) => {
-    console.log(`  Adding: ${data.petty_cash} (${data.owner})`);
-    Cash.collection.insert(data);
-    }
-    if (Cash.collection.find().count() === 0) {
-    if (Meteor.settings.defaultCashData) {
-    console.log('Creating default data.');
-    Meteor.settings.defaultCashData.forEach(data => addCashData(data));
-    }
+      const existingRecord = Cash.collection.findOne({ year: data });
+      if (existingRecord) {
+        console.log(`  Found existing data for update ${data.year}. Skipping.`);
+        Cash.collection.update(existingRecord._id, {
+          $set: {
+            petty_cash: data.petty_cash,
+            cash: data.cash,
+            cash_in_banks_draw_on_line_credit: data.cash_in_banks_draw_on_line_credit,
+          }
+        });
+      } else {
+        // If no entry exists for this year, insert new data
+        console.log(`  Adding: ${data.year}`);
+        Cash.collection.insert(data);
+      }
+      if (Cash.collection.find().count() === 0) {
+        if (Meteor.settings.defaultCashData) {
+          console.log('Creating default data.');
+          Meteor.settings.defaultCashData.forEach(data => addCashData(data));
+        }
+      }
     }
 

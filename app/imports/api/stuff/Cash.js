@@ -16,6 +16,10 @@ class CashCollection {
       petty_cash: Number,
       cash: Number,
       cash_in_banks_draw_on_line_credit: Number,
+      year: {
+        type: Number,
+        allowedValues: Array.from({length: 21}, (v, k) => k + 2010), // years from 2010 to 2030
+      },
       owner: String,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
