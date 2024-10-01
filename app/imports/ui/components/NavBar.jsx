@@ -18,7 +18,7 @@ const NavBar = () => {
         <Navbar.Brand>
           <NavLink to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <img src="/images/Logo.png" alt="Logo" style={{ height: '70px', marginRight: '30px', marginLeft: '-10px', marginBottom: '10px', marginTop: '10px' }} />
+              <img src="/images/spire-logo.png" alt="Logo" style={{ height: '70px', marginRight: '30px', marginLeft: '-10px', marginBottom: '10px', marginTop: '10px' }} />
             </div>
           </NavLink>
         </Navbar.Brand>
