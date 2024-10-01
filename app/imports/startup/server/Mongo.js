@@ -49,19 +49,3 @@ if (BudgetPnLs.collection.find().count() === 0) {
     console.log('No default Budget P&Ls found. Please add some in your settings file.');
   }
 }
-
-// Publish AuditedBalanceSheets collection to admin users
-Meteor.publish('AdminPublishAuditedBalanceSheets', function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return AuditedBalanceSheets.collection.find();
-  }
-  return this.ready();
-});
-
-// Publish BudgetPnLs collection to admin users
-Meteor.publish('AdminPublishBudgetPnLs', function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return BudgetPnLs.collection.find();
-  }
-  return this.ready();
-});

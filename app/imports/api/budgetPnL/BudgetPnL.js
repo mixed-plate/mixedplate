@@ -12,7 +12,7 @@ class BudgetPnLCollection {
         label: 'Year',
         min: 2000,
         max: 2030,
-        },
+      },
       five_percent_investment_portfolio: { type: Number, label: 'Five Percent Investment Portfolio', defaultValue: 0 },
       revenues: { type: Number, label: 'Revenues', defaultValue: 0 },
       general_fund: { type: Number, label: 'General Fund', defaultValue: 0 },
