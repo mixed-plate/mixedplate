@@ -20,7 +20,7 @@ if (Stuffs.collection.find().count() === 0) {
 
 // Add data to AuditedBalanceSheets collection
 const addAuditedBalanceSheetData = (data) => {
-  console.log(`  Adding Audited Balance Sheet for: ${data}`);
+  console.log(`  Adding Audited Balance Sheet for: ${data.year}`);
   AuditedBalanceSheets.collection.insert(data);
 };
 
@@ -36,7 +36,7 @@ if (AuditedBalanceSheets.collection.find().count() === 0) {
 
 // Add data to BudgetPnLs collection
 const addBudgetPnLData = (data) => {
-  console.log(`  Adding Budget P&L for: ${data}`);
+  console.log(`  Adding Budget P&L for: ${data.year}`);
   BudgetPnLs.collection.insert(data);
 };
 
