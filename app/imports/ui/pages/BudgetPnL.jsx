@@ -1,89 +1,86 @@
 import React from 'react';
-import { AutoForm, ErrorsField, NumField, SubmitField } from 'uniforms-bootstrap5';
-import SimpleSchema from 'simpl-schema';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import swal from 'sweetalert';
-import axios from 'axios';
+import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
 import { Card, Col, Container, Row } from 'react-bootstrap';
+import { AutoForm, ErrorsField, NumField, SelectField, SubmitField } from 'uniforms-bootstrap5';
+import swal from 'sweetalert';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import SimpleSchema from 'simpl-schema';
+import { BudgetPnLs } from '../../api/budgetPnL/BudgetPnL';
 
-// Define all the field names
-const fields = [
-  'five_percent_investment_portfolio',
-  'revenues',
-  'general_fund',
-  'core_operating_budget_not_authorized',
-  'personnel',
-  'salary',
-  'program',
-  'contract',
-  'grants',
-  'travel',
-  'equipment',
-  'overhead',
-  'debt_service',
-  'other',
-  'management',
-  'support_services',
-  'beneficiary_advocacy',
-];
+// Generate an array of years from 2000 to 2030
+const years = Array.from({ length: 31 }, (_, i) => 2000 + i);
 
-// Generate the schema definition with labels
-const schemaDefinition = fields.reduce((acc, field) => {
-  acc[field] = {
-    type: Number,
-    label: field.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
-    optional: true, // Make fields optional if needed
-  };
-  return acc;
-}, {});
+// Modify the schema to include the year field as a select
+const modifiedSchema = new SimpleSchema(BudgetPnLs.schema);
+modifiedSchema.extend({
+  year: {
+    type: SimpleSchema.Integer,
+    allowedValues: years,
+    defaultValue: new Date().getFullYear(),
+  },
+});
 
-const formSchema = new SimpleSchema(schemaDefinition);
-const bridge = new SimpleSchema2Bridge(formSchema);
+const bridge = new SimpleSchema2Bridge(modifiedSchema);
 
-const BudgetPnL = () => {
-  // Submit function to handle form submission
-  const submit = async (data, formRef) => {
-    try {
-      const response = await axios.post('/api/budget_pnl', data, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      console.log('Response data:', response.data);
-      swal('Success', 'Data submitted successfully', 'success');
-      formRef.reset();
-    } catch (error) {
-      console.error('Error:', error);
-      swal('Error', error.message, 'error');
-    }
+const BudgetPnLPage = () => {
+  const { ready } = useTracker(() => {
+    const subscription = Meteor.subscribe('AdminPublishBudgetPnLs');
+    return {
+      ready: subscription.ready(),
+    };
+  }, []);
+
+  const submit = (data, formRef) => {
+    const completeData = {
+      ...data,
+      createdAt: new Date(),
+    };
+
+    BudgetPnLs.collection.insert(completeData, (error) => {
+      if (error) {
+        swal('Error', error.reason, 'error');
+      } else {
+        swal('Success', 'Budget PnL added successfully', 'success');
+        console.log(completeData);
+        formRef.reset();
+      }
+    });
   };
 
   let fRef = null;
-
   return (
     <Container className="py-3">
-      <Row className="justify-content-center">
-        <Col xs={8}>
-          <Col className="text-center"><h2>Budget PnL</h2></Col>
-          <AutoForm
-            ref={(ref) => { fRef = ref; }}
-            schema={bridge}
-            onSubmit={(data) => submit(data, fRef)}
-          >
-            <Card>
-              <Card.Body>
-                {fields.map((field) => (
-                  <NumField key={field} name={field} decimal />
-                ))}
-                <SubmitField value="Submit" />
-                <ErrorsField />
-              </Card.Body>
-            </Card>
-          </AutoForm>
-        </Col>
-      </Row>
+      {ready ? (
+        <Row className="justify-content-center">
+          <Col xs={8}>
+            <Col className="text-center"><h2>Budget PnL</h2></Col>
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+              <Card>
+                <Card.Body>
+                  <SelectField name="year" />
+                  {Object.keys(BudgetPnLs.schema._schema).map((field) => {
+                    if (field !== 'createdAt' && field !== 'year') {
+                      return <NumField key={field} name={field} decimal={2} defaultValue={0} />;
+                    }
+                    return null;
+                  })}
+                  <SubmitField value="Submit" />
+                  <ErrorsField />
+                </Card.Body>
+              </Card>
+            </AutoForm>
+          </Col>
+        </Row>
+      ) : (
+        <Row className="justify-content-center">
+          <Col xs={8} className="text-center">
+            <p>Loading...</p>
+          </Col>
+        </Row>
+      )}
     </Container>
   );
 };
 
-export default BudgetPnL;
+export default BudgetPnLPage;
