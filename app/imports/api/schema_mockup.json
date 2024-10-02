@@ -1,0 +1,15 @@
+{
+  "database_mockup": [
+    {
+      "year": 2003,
+      "total_cash": [
+        {"petty_cash": 0},
+        {"cash": 0 },
+        {"cash_in_banks": 0}
+      ],
+      "other_assets": [
+
+      ]
+    }
+  ]
+}
