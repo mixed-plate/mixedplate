@@ -53,20 +53,48 @@ const BudgetPnLPage = () => {
     <Container className="py-3">
       {ready ? (
         <Row className="justify-content-center">
-          <Col xs={8}>
+          <Col xs={12}>
             <Col className="text-center"><h2>Budget PnL</h2></Col>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
               <Card>
                 <Card.Body>
-                  <SelectField name="year" />
-                  {Object.keys(BudgetPnLs.schema._schema).map((field) => {
-                    if (field !== 'createdAt' && field !== 'year') {
-                      return <NumField key={field} name={field} decimal={2} defaultValue={0} />;
-                    }
-                    return null;
-                  })}
-                  <SubmitField value="Submit" />
-                  <ErrorsField />
+                  <Row>
+                    <SelectField name="year" />
+                    <h2>Revenue</h2>
+                    <Row>
+                      <Col><NumField name="five_percent_investment_portfolio" /></Col>
+                      <Col><NumField name="revenues" /></Col>
+                      <Col><NumField name="general_fund" /></Col>
+                      <Col><NumField name="core_operating_budget_not_authorized" /></Col>
+                    </Row>
+                    <h2>Expenses</h2>
+                    <Row>
+                      <Col><NumField name="personnel" /></Col>
+                      <Col><NumField name="salary" /></Col>
+                      <Col><NumField name="program" /></Col>
+                      <Col><NumField name="contract" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="grants" /></Col>
+                      <Col><NumField name="travel" /></Col>
+                      <Col><NumField name="equipment" /></Col>
+                      <Col><NumField name="overhead" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="debt_service" /></Col>
+                      <Col><NumField name="other" /></Col>
+                      <Col />
+                      <Col />
+                    </Row>
+                    <h2>Surplus (Deficit)</h2>
+                    <Row>
+                      <Col><NumField name="management" /></Col>
+                      <Col><NumField name="support_services" /></Col>
+                      <Col><NumField name="beneficiary_advocacy" /></Col>
+                    </Row>
+                    <SubmitField value="Submit" />
+                    <ErrorsField />
+                  </Row>
                 </Card.Body>
               </Card>
             </AutoForm>
