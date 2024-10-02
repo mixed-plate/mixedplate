@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
+import { AuditedBalanceSheets } from '../../api/auditedBalanceSheet/AuditedBalanceSheet.js';
+import { BudgetPnLs } from '../../api/budgetPnL/BudgetPnL.js';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
@@ -26,6 +28,22 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
 Meteor.publish(null, function () {
   if (this.userId) {
     return Meteor.roleAssignment.find({ 'user._id': this.userId });
+  }
+  return this.ready();
+});
+
+// Publish AuditedBalanceSheets collection to admin users
+Meteor.publish('AdminPublishAuditedBalanceSheets', function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return AuditedBalanceSheets.collection.find();
+  }
+  return this.ready();
+});
+
+// Publish BudgetPnLs collection to admin users
+Meteor.publish('AdminPublishBudgetPnLs', function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return BudgetPnLs.collection.find();
   }
   return this.ready();
 });

@@ -20,6 +20,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import AboutUs from '../pages/AboutUs';
 import AuditedBalanceSheetForm from '../pages/AuditedBalanceSheetForm';
 import BudgetPnL from '../pages/BudgetPnL';
+import Dashboard from '../pages/Dashboard';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
         <Footer />
       </div>
