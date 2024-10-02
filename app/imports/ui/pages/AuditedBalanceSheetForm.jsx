@@ -66,8 +66,8 @@ const AuditedBalanceSheetPage = () => {
                     </Row>
                     <Row>
 											<h2>Cash and Cash Equivalents</h2>
-											<Col style={{ width: '20px'}}><TextField name="petty_cash" /></Col>
-											<Col><TextField name="cash" /></Col>
+											<Col style={{ width: '20px'}}><NumField name="petty_cash" /></Col>
+											<Col><NumField name="cash" /></Col>
                     </Row>
                     <Row>
 											<Col></Col>
@@ -75,39 +75,39 @@ const AuditedBalanceSheetPage = () => {
 										<Row>
 											<Col></Col>
 										</Row>
-                    <TextField name="accounts_receivable" />
-                    <TextField name="allowance_for_doubtful_accounts" />
-                    <TextField name="pledges_receivable" />
-                    <TextField name="grants_receivable" />
-                    <TextField name="prepaid_expenses" />
-                    <TextField name="inventories_for_sale_or_use" />
-                    <TextField name="land_buildings_and_equipment" />
-                    <TextField name="investments_publicly_traded_securities" />
-                    <TextField name="investments_other_securities" />
-                    <TextField name="investments_program_related" />
-                    <TextField name="intangible_assets" />
-                    <TextField name="other_assets" />
-                    <TextField name="accounts_payable_and_accrued_expenses" />
-                    <TextField name="grants_payable" />
-                    <TextField name="deferred_revenue" />
-                    <TextField name="tax_exempt_bond_liabilities" />
-                    <TextField name="escrow_or_custodial_account_liability" />
-                    <TextField name="loans_and_other_payables_to_current_and_former_officers" />
-                    <TextField name="secured_mortgages_and_notes_payable_to_unrelated_third_parties" />
-                    <TextField name="unsecured_notes_and_loans_payable_to_unrelated_third_parties" />
-                    <TextField name="other_liabilities" />
-                    <TextField name="unrestricted_net_assets" />
-                    <TextField name="temporarily_restricted_net_assets" />
-                    <TextField name="permanently_restricted_net_assets" />
-                    <TextField name="capital_stock_or_trust_principal" />
-                    <TextField name="paid_in_or_capital_surplus" />
-                    <TextField name="retained_earnings" />
-                    <TextField name="total_net_assets_or_fund_balances" />
-                    <TextField name="total_liabilities_and_net_assets_fund_balances" />
+                    <NumField name="accounts_receivable" />
+                    <NumField name="allowance_for_doubtful_accounts" />
+                    <NumField name="pledges_receivable" />
+                    <NumField name="grants_receivable" />
+                    <NumField name="prepaid_expenses" />
+                    <NumField name="inventories_for_sale_or_use" />
+                    <NumField name="land_buildings_and_equipment" />
+                    <NumField name="investments_publicly_traded_securities" />
+                    <NumField name="investments_other_securities" />
+                    <NumField name="investments_program_related" />
+                    <NumField name="intangible_assets" />
+                    <NumField name="other_assets" />
+                    <NumField name="accounts_payable_and_accrued_expenses" />
+                    <NumField name="grants_payable" />
+                    <NumField name="deferred_revenue" />
+                    <NumField name="tax_exempt_bond_liabilities" />
+                    <NumField name="escrow_or_custodial_account_liability" />
+                    <NumField name="loans_and_other_payables_to_current_and_former_officers" />
+                    <NumField name="secured_mortgages_and_notes_payable_to_unrelated_third_parties" />
+                    <NumField name="unsecured_notes_and_loans_payable_to_unrelated_third_parties" />
+                    <NumField name="other_liabilities" />
+                    <NumField name="unrestricted_net_assets" />
+                    <NumField name="temporarily_restricted_net_assets" />
+                    <NumField name="permanently_restricted_net_assets" />
+                    <NumField name="capital_stock_or_trust_principal" />
+                    <NumField name="paid_in_or_capital_surplus" />
+                    <NumField name="retained_earnings" />
+                    <NumField name="total_net_assets_or_fund_balances" />
+                    <NumField name="total_liabilities_and_net_assets_fund_balances" />
                     <Col>
-                      <TextField name="unrestricted" />
-                      <TextField name="temporarily_restricted" />
-                      <TextField name="permanently_restricted" />
+                      <NumField name="unrestricted" />
+                      <NumField name="temporarily_restricted" />
+                      <NumField name="permanently_restricted" />
                     </Col>
 
                     <SubmitField value="Submit" />
