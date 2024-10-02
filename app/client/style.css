@@ -30,7 +30,7 @@ body {
 .navbar {
   position: relative;
   z-index: 10; /* Higher than the background image */
-  background-color: lightslategray;
+  background-color: white;
 }
 
 .footer {
