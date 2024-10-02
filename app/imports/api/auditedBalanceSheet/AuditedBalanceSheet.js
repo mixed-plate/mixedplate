@@ -18,7 +18,7 @@ class AuditedBalanceSheetCollection {
         min: 2000,
         max: 2030,
       },
-      pretty_cash: { type: Number, label: 'Pretty Cash', defaultValue: 0 },
+      petty_cash: { type: Number, label: 'Petty Cash', defaultValue: 0 },
       cash: { type: Number, label: 'Cash', defaultValue: 0 },
       accounts_receivable: { type: Number, label: 'Accounts Receivable', defaultValue: 0 },
       allowance_for_doubtful_accounts: { type: Number, label: 'Allowance For Doubtful Accounts', defaultValue: 0 },

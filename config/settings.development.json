@@ -14,7 +14,7 @@
   "defaultAuditedBalanceSheets": [
     {
       "year": 2024,
-      "pretty_cash": 12000,
+      "petty_cash": 12000,
       "cash": 55000,
       "accounts_receivable": 80000,
       "allowance_for_doubtful_accounts": -5500,
@@ -51,7 +51,7 @@
     },
     {
       "year": 2023,
-      "pretty_cash": 10000,
+      "petty_cash": 10000,
       "cash": 50000,
       "accounts_receivable": 75000,
       "allowance_for_doubtful_accounts": -5000,
@@ -88,7 +88,7 @@
     },
     {
       "year": 2022,
-      "pretty_cash": 9000,
+      "petty_cash": 9000,
       "cash": 48000,
       "accounts_receivable": 72000,
       "allowance_for_doubtful_accounts": -4800,
@@ -125,7 +125,7 @@
     },
     {
       "year": 2021,
-      "pretty_cash": 8000,
+      "petty_cash": 8000,
       "cash": 45000,
       "accounts_receivable": 70000,
       "allowance_for_doubtful_accounts": -4500,
@@ -162,7 +162,7 @@
     },
     {
       "year": 2020,
-      "pretty_cash": 7000,
+      "petty_cash": 7000,
       "cash": 42000,
       "accounts_receivable": 68000,
       "allowance_for_doubtful_accounts": -4200,
