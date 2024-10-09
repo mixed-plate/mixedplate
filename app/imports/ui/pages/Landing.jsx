@@ -9,8 +9,10 @@ const Landing = () => (
     <Container fluid className="content-wrapper">
       <Row className="text-center">
         <Col xs={12} className="d-flex flex-column justify-content-center align-items-center">
-          <h1>Finance Forecasts</h1>
-          <p>Press here for Financial Predictions</p>
+          <h1 style={{ fontFamily: 'Helvetica, Arial, sans-serif', fontWeight: 'bold', fontSize: '40px' }}>
+            Finance Forecasts
+          </h1>
+          {/* <p style={{ fontFamily: 'Helvetica, Arial, sans-serif', fontSize: '30px' }}> Press here for Financial Predictions </p> */}
         </Col>
       </Row>
     </Container>
