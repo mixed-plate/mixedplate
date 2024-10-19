@@ -10,7 +10,7 @@ const Landing = () => (
         <Col>
           <h1
             className="display-4 mb-3"
-            style={{ fontWeight: 700 }} // Bold title
+            style={{ fontWeight: 700 }}
           >
             Finance Forecasts
           </h1>

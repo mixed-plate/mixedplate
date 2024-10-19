@@ -26,10 +26,10 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
 }
-/* Navbar styling to ensure it stays on top */
+
 .navbar {
   position: relative;
-  z-index: 10; /* Higher than the background image */
+  z-index: 10;
   background-color: white;
 }
 
@@ -79,8 +79,8 @@ body {
   border-color: #4a4a4a;
   color: white;
   border-radius: 0;
-  font-size: 16px; /* Adjust size */
-  padding: 14px 28px; /* Adjust padding for size */
+  font-size: 16px;
+  padding: 14px 28px;
   transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
 }
 
