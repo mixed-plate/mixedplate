@@ -43,7 +43,7 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  height: 100vh;
+  height: 95vh;
   width: 100%;
   position: absolute;
   top: 0;
@@ -72,6 +72,23 @@ body {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.1);
   z-index: 1;
+}
+
+.button.get {
+  background-color: #4a4a4a;
+  border-color: #4a4a4a;
+  color: white;
+  border-radius: 0;
+  font-size: 16px; /* Adjust size */
+  padding: 14px 28px; /* Adjust padding for size */
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+.button.get:hover {
+  background-color: #6a6a6a; /* Lighter shade on hover */
+  border-color: #6a6a6a;
+  transform: scale(1.1); /* Slightly bigger on hover */
+  cursor: pointer;
 }
 
 
