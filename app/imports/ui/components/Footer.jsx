@@ -2,7 +2,10 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 
 const Footer = () => (
-  <footer className="mt-auto py-3 bg-dark text-light">
+  <footer
+    className="footer bg-dark text-light"
+    style={{ marginTop: '200px', padding: '20px 0' }}
+  >
     <Container>
       <Row>
         <Col className="text-center">
@@ -12,7 +15,9 @@ const Footer = () => (
           <br />
           Zeb, Jaira, Ryne, Carolina
           <br />
-          <a href="https://mixed-plate.github.io/">Team Page</a>
+          <a href="https://mixed-plate.github.io/" style={{ color: '#fff' }}>
+            Team Page
+          </a>
         </Col>
         <Col className="text-center">
           Department of Information and Computer Sciences
@@ -21,7 +26,10 @@ const Footer = () => (
           <br />
           Honolulu, HI 96822
           <br />
-          <a href="http://ics-software-engineering.github.io/meteor-application-template-react">
+          <a
+            href="http://ics-software-engineering.github.io/meteor-application-template-react"
+            style={{ color: '#fff' }}
+          >
             Template Home Page
           </a>
         </Col>

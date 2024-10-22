@@ -7,7 +7,6 @@ import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { AuditedBalanceSheets } from '../../api/auditedBalanceSheet/AuditedBalanceSheet';
-import StuffItem from '../components/StuffItem';
 
 // Generate an array of years from 2000 to 2030
 const years = Array.from({ length: 31 }, (_, i) => 2000 + i);
@@ -225,4 +224,3 @@ const AuditedBalanceSheetPage = () => {
 };
 
 export default AuditedBalanceSheetPage;
-

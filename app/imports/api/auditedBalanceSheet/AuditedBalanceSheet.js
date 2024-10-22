@@ -18,20 +18,32 @@ class AuditedBalanceSheetCollection {
         min: 2000,
         max: 2030,
       },
-
       petty_cash: { type: Number, label: 'Petty Cash' },
       cash: { type: Number, label: 'Cash' },
-      cash_in_banks: { type: Number, label: 'Cash In Banks', optional: true },
+      cash_in_banks: { type: Number, label: 'Cash In Banks' },
       cash_total: {
         type: Number,
         optional: true,
         autoValue: function () {
-          if (this.field('petty_cash').isSet && this.field('cash').isSet && this.field('cash_in_banks').isSet) {
-            return this.field('petty_cash').value + this.field('cash').value + this.field('cash_in_banks').value;
+          if (
+            this.field('petty_cash').isSet &&
+            this.field('cash').isSet &&
+            this.field('cash_in_banks').isSet
+          ) {
+            return (
+              this.field('petty_cash').value +
+              this.field('cash').value +
+              this.field('cash_in_banks').value
+            );
           }
-        }
+          return this.value || undefined; // Ensure consistent return.
+        },
       },
-      accounts_receivable: { type: Number, label: 'Accounts Receivable'},
+      accounts_receivable: { type: Number, label: 'Accounts Receivable' },
+      allowance_for_doubtful_accounts: {
+        type: Number,
+        label: 'Allowance For Doubtful Accounts',
+      },
       due_from_other_funds: { type: Number, label: 'Due From Other Funds' },
       interest_and_dividends_receivable: { type: Number, label: 'Interest And Dividends Receivable' },
       inventory_prepaid_items_and_other_assets: { type: Number, label: 'Inventory Prepaid Items And Other Assets' },
@@ -73,8 +85,10 @@ class AuditedBalanceSheetCollection {
         optional: true,
         autoValue: function () {
           // Ensure both 'subtotal_investment' and 'subtotal_loan_fund' are set before calculating
-          if (this.field('subtotal_investment').isSet && this.field('subtotal_loan_fund').isSet) {
-            return this.field('subtotal_investment').value + this.field('subtotal_loan_fund').value;
+          if (this.field('subtotal_investment').isSet &&
+              this.field('subtotal_loan_fund').isSet) {
+            return this.field('subtotal_investment').value +
+                this.field('subtotal_loan_fund').value;
           }
         }
       },
@@ -88,8 +102,14 @@ class AuditedBalanceSheetCollection {
         label: 'Net Fixed Assets',
         optional: true,
         autoValue: function () {
-          if (this.field('buildings').isSet && this.field('leasehold_improvements').isSet && this.field('furniture_and_equipment').isSet && this.field('less_accumulated_depreciation').isSet) {
-            return this.field('buildings').value + this.field('leasehold_improvements').value + this.field('furniture_and_equipment').value - this.field('less_accumulated_depreciation').value;
+          if (this.field('buildings').isSet &&
+              this.field('leasehold_improvements').isSet &&
+              this.field('furniture_and_equipment').isSet &&
+              this.field('less_accumulated_depreciation').isSet) {
+            return this.field('buildings').value +
+                this.field('leasehold_improvements').value +
+                this.field('furniture_and_equipment').value -
+                this.field('less_accumulated_depreciation').value;
           }
         }
       },
@@ -138,15 +158,28 @@ class AuditedBalanceSheetCollection {
       total_other_assets: { type: Number, label: 'Total Other Assets',
         optional: true,
         autoValue: function () {
-          if(this.field('accounts_receivable').isSet && this.field('due_from_other_funds').isSet && this.field('interest_and_dividends_receivable').isSet &&
-              this.field('inventory_prepaid_items_and_other_assets').isSet && this.field('notes_receivable_due_within_1_year').isSet
-              && this.field('notes_receivable_due_after_1_year').isSet && this.field('security_deposits').isSet && this.field('cash_held_by_investment_managers').isSet
-              && this.field('investments').isSet && this.field('capital_assets_net').isSet && this.field('restricted_cash').isSet &&
-              this.field('investments').isSet && this.field('capital_assets_net').isSet && this.field('restricted_cash').isSet) {
-            return this.field('accounts_receivable').value + this.field('due_from_other_funds').value + this.field('interest_and_dividends_receivable').value +
-                this.field('inventory_prepaid_items_and_other_assets').value + this.field('notes_receivable_due_within_1_year').value +
-                this.field('notes_receivable_due_after_1_year').value + this.field('security_deposits').value + this.field('cash_held_by_investment_managers').value +
-                this.field('investments').value + this.field('capital_assets_net').value + this.field('restricted_cash').value;
+          if(this.field('accounts_receivable').isSet &&
+              this.field('due_from_other_funds').isSet &&
+              this.field('interest_and_dividends_receivable').isSet &&
+              this.field('inventory_prepaid_items_and_other_assets').isSet &&
+              this.field('notes_receivable_due_within_1_year').isSet
+              && this.field('notes_receivable_due_after_1_year').isSet &&
+              this.field('security_deposits').isSet && this.field('cash_held_by_investment_managers').isSet &&
+              this.field('investments').isSet && this.field('capital_assets_net').isSet &&
+              this.field('restricted_cash').isSet &&
+              this.field('investments').isSet && this.field('capital_assets_net').isSet &&
+              this.field('restricted_cash').isSet) {
+            return this.field('accounts_receivable').value +
+                this.field('due_from_other_funds').value +
+                this.field('interest_and_dividends_receivable').value +
+                this.field('inventory_prepaid_items_and_other_assets').value +
+                this.field('notes_receivable_due_within_1_year').value +
+                this.field('notes_receivable_due_after_1_year').value +
+                this.field('security_deposits').value +
+                this.field('cash_held_by_investment_managers').value +
+                this.field('investments').value +
+                this.field('capital_assets_net').value +
+                this.field('restricted_cash').value;
           }
         }
       },
@@ -155,8 +188,14 @@ class AuditedBalanceSheetCollection {
       total_assets_and_deferred_outflows_of_resources: { type: Number, label: 'Total Assets And Deferred Outflows Of Resources',
         optional: true,
         autoValue: function () {
-          if (this.field('total_other_assets').isSet && this.field('deferred_outflows_of_resources_related_to_pension').isSet && this.field('deferred_outflows_of_resources_related_to_ompeb').isSet && this.field('cash_total').isSet) {
-            return this.field('total_other_assets').value + this.field('deferred_outflows_of_resources_related_to_pension').value + this.field('deferred_outflows_of_resources_related_to_ompeb').value + this.field('cash_total').value;
+          if (this.field('total_other_assets').isSet &&
+              this.field('deferred_outflows_of_resources_related_to_pension').isSet &&
+              this.field('deferred_outflows_of_resources_related_to_ompeb').isSet &&
+              this.field('cash_total').isSet) {
+            return this.field('total_other_assets').value +
+                this.field('deferred_outflows_of_resources_related_to_pension').value +
+                this.field('deferred_outflows_of_resources_related_to_ompeb').value +
+                this.field('cash_total').value;
           }
         }
       },
@@ -177,10 +216,16 @@ class AuditedBalanceSheetCollection {
       long_term_liabilities_due_within_1_year: { type: Number, label: 'Long Term Liabilities Due Within 1 Year',
       optional: true,
         autoValue: function () {
-        if (this.field('accrued_vacation').isSet && this.field('workers_compensation').isSet && this.field('capital_lease_obligations').isSet &&
-            this.field('notes_payable_buildingA_acquisition').isSet && this.field('line_of_credit_buildingA').isSet) {
-          return this.field('accrued_vacation').value + this.field('workers_compensation').value + this.field('capital_lease_obligations').value +
-              this.field('notes_payable_buildingA_acquisition').value + this.field('line_of_credit_buildingA').value;
+        if (this.field('accrued_vacation').isSet &&
+            this.field('workers_compensation').isSet &&
+            this.field('capital_lease_obligations').isSet &&
+            this.field('notes_payable_buildingA_acquisition').isSet
+            && this.field('line_of_credit_buildingA').isSet) {
+          return this.field('accrued_vacation').value +
+              this.field('workers_compensation').value +
+              this.field('capital_lease_obligations').value +
+              this.field('notes_payable_buildingA_acquisition').value +
+              this.field('line_of_credit_buildingA').value;
         }
 
         }
@@ -194,19 +239,22 @@ class AuditedBalanceSheetCollection {
       long_term_liabilities_due_after_1_year: { type: Number, label: 'Long Term Liabilities Due After 1 Year',
         optional: true,
         autoValue: function () {
-          if (this.field('accrued_vacation_after_1_year').isSet && this.field('workers_compensation_after_1_year').isSet && this.field('capital_lease_obligations_after_1_year').isSet &&
-              this.field('notes_payable_buildingA_acquisition_after_1_year').isSet && this.field('net_pension_liability').isSet && this.field('line_of_credit_buildingA_after_1_year').isSet) {
-            return this.field('accrued_vacation_after_1_year').value + this.field('workers_compensation_after_1_year').value + this.field('capital_lease_obligations_after_1_year').value +
-                this.field('notes_payable_buildingA_acquisition_after_1_year').value + this.field('net_pension_liability').value + this.field('line_of_credit_buildingA_after_1_year').value;
+          if (this.field('accrued_vacation_after_1_year').isSet &&
+              this.field('workers_compensation_after_1_year').isSet &&
+              this.field('capital_lease_obligations_after_1_year').isSet &&
+              this.field('notes_payable_buildingA_acquisition_after_1_year').isSet &&
+              this.field('net_pension_liability').isSet && this.field('line_of_credit_buildingA_after_1_year').isSet) {
+            return this.field('accrued_vacation_after_1_year').value +
+                this.field('workers_compensation_after_1_year').value +
+                this.field('capital_lease_obligations_after_1_year').value +
+                this.field('notes_payable_buildingA_acquisition_after_1_year').value +
+                this.field('net_pension_liability').value + this.field('line_of_credit_buildingA_after_1_year').value;
           }
         }
       },
 
       accounts_payable_and_accrued_expenses: { type: Number, label: 'Accounts Payable And Accrued Expenses'},
-
-
       total_net_assets_or_fund_balances: { type: Number, label: 'Total Net Assets Or Fund Balances'},
-
       unrestricted: { type: Number, label: 'Unrestricted'},
       temporarily_restricted: { type: Number, label: 'Temporarily Restricted'},
       permanently_restricted: { type: Number, label: 'Permanently Restricted'},
@@ -214,8 +262,97 @@ class AuditedBalanceSheetCollection {
     });
 
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
+      pledges_receivable: { type: Number, label: 'Pledges Receivable' },
+      grants_receivable: { type: Number, label: 'Grants Receivable' },
+      prepaid_expenses: { type: Number, label: 'Prepaid Expenses' },
+      inventories_for_sale_or_use: {
+        type: Number,
+        label: 'Inventories For Sale Or Use',
+      },
+      land_buildings_and_equipment: {
+        type: Number,
+        label: 'Land Buildings And Equipment',
+      },
+      investments_publicly_traded_securities: {
+        type: Number,
+        label: 'Investments Publicly Traded Securities',
+      },
+      investments_other_securities: {
+        type: Number,
+        label: 'Investments Other Securities',
+      },
+      investments_program_related: {
+        type: Number,
+        label: 'Investments Program Related',
+      },
+      intangible_assets: { type: Number, label: 'Intangible Assets' },
+      other_assets: { type: Number, label: 'Other Assets' },
+      accounts_payable_and_accrued_expenses: {
+        type: Number,
+        label: 'Accounts Payable And Accrued Expenses',
+      },
+      grants_payable: { type: Number, label: 'Grants Payable' },
+      deferred_revenue: { type: Number, label: 'Deferred Revenue' },
+      tax_exempt_bond_liabilities: {
+        type: Number,
+        label: 'Tax Exempt Bond Liabilities',
+      },
+      escrow_or_custodial_account_liability: {
+        type: Number,
+        label: 'Escrow Or Custodial Account Liability',
+      },
+      loans_and_other_payables_to_current_and_former_officers: {
+        type: Number,
+        label: 'Loans And Other Payables To Current And Former Officers',
+      },
+      secured_mortgages_and_notes_payable_to_unrelated_third_parties: {
+        type: Number,
+        label:
+          'Secured Mortgages And Notes Payable To Unrelated Third Parties',
+      },
+      unsecured_notes_and_loans_payable_to_unrelated_third_parties: {
+        type: Number,
+        label: 'Unsecured Notes And Loans Payable To Unrelated Third Parties',
+      },
+      other_liabilities: { type: Number, label: 'Other Liabilities' },
+      unrestricted_net_assets: { type: Number, label: 'Unrestricted Net Assets' },
+      temporarily_restricted_net_assets: {
+        type: Number,
+        label: 'Temporarily Restricted Net Assets',
+      },
+      permanently_restricted_net_assets: {
+        type: Number,
+        label: 'Permanently Restricted Net Assets',
+      },
+      capital_stock_or_trust_principal: {
+        type: Number,
+        label: 'Capital Stock Or Trust Principal',
+      },
+      paid_in_or_capital_surplus: {
+        type: Number,
+        label: 'Paid In Or Capital Surplus',
+      },
+      retained_earnings: { type: Number, label: 'Retained Earnings' },
+      total_net_assets_or_fund_balances: {
+        type: Number,
+        label: 'Total Net Assets Or Fund Balances',
+      },
+      total_liabilities_and_net_assets_fund_balances: {
+        type: Number,
+        label: 'Total Liabilities And Net Assets Fund Balances',
+      },
+      unrestricted: { type: Number, label: 'Unrestricted' },
+      temporarily_restricted: { type: Number, label: 'Temporarily Restricted' },
+      permanently_restricted: { type: Number, label: 'Permanently Restricted' },
+      createdAt: {
+        type: Date,
+        label: 'Created At',
+        defaultValue: new Date(),
+      },
+    });
+    // Attach the schema to the collection.
     this.collection.attachSchema(this.schema);
-    // Define names for publications and subscriptions
+    // Define names for publications and subscriptions.
     this.userPublicationName = `${this.name}.publication.user`;
     this.adminPublicationName = `${this.name}.publication.admin`;
   }
