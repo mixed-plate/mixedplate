@@ -129,7 +129,7 @@ const AuditedBalanceSheetPage = () => {
                       <Col><NumField name="construction_in_progress" /></Col>
                       <Col><NumField name="subtotal_capital_assets" /></Col>
                     </Row>
-                    <h2>Limited liability Company B's assets</h2>
+                    <h2>Limited liability Company Bs assets</h2>
                     <Row>
                       <Col><NumField name="companyB_buildings" /></Col>
                       <Col><NumField name="companyB_leasehold_improvements" /></Col>
@@ -159,11 +159,11 @@ const AuditedBalanceSheetPage = () => {
                       <Col><NumField name="total_assets_and_deferred_outflows_of_resources" /></Col>
                     </Row>
                     <h2>Liabilities</h2>
-                   <Row><Col><NumField name="accounts_payable_and_accrued_expenses" /></Col>
+                    <Row><Col><NumField name="accounts_payable_and_accrued_expenses" /></Col>
                       <Col><NumField name="due_to_funds" /></Col>
                       <Col><NumField name="due_to_other_funds" /></Col>
-                   </Row>
-                     <h2>Long term liabilities - due within one year</h2>
+                    </Row>
+                    <h2>Long term liabilities - due within one year</h2>
                     <Row>
                       <Col><NumField name="accrued_vacation" /></Col>
                       <Col><NumField name="workers_compensation" /></Col>
@@ -175,7 +175,7 @@ const AuditedBalanceSheetPage = () => {
                       <Col><NumField name="line_of_credit_buildingA" /></Col>
 
                     </Row>
-                     <h2>Long term liabilities - due after one year</h2>
+                    <h2>Long term liabilities - due after one year</h2>
                     <Row>
                       <Col><NumField name="accrued_vacation_after_1_year" /></Col>
                       <Col><NumField name="workers_compensation_after_1_year" /></Col>
