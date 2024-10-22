@@ -79,7 +79,7 @@ const Dashboard = () => {
       {
         label: `Audited Balance Sheet ${currentYear}`,
         data: [
-          currentAuditedBalanceSheet.cash,
+          currentAuditedBalanceSheet.cash_total,
           currentAuditedBalanceSheet.investments_publicly_traded_securities,
           currentAuditedBalanceSheet.accounts_payable_and_accrued_expenses,
           currentAuditedBalanceSheet.total_net_assets_or_fund_balances,

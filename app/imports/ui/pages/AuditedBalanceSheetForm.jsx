@@ -71,9 +71,94 @@ const AuditedBalanceSheetPage = () => {
                       <Col><NumField name="cash_in_banks" /></Col>
                       <Col><NumField name="cash_total" /></Col>
                     </Row>
-                    <h2>Other Assets</h2>
+                    <h2> other assets test</h2>
                     <Row>
                       <Col><NumField name="accounts_receivable" /></Col>
+                      <Col><NumField name="due_from_other_funds" /></Col>
+                      <Col><NumField name="interest_and_dividends_receivable" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="inventory_prepaid_items_and_other_assets" /></Col>
+                      <Col><NumField name="notes_receivable_due_within_1_year" /></Col>
+                      <Col><NumField name="notes_receivable_due_after_1_year" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="security_deposits" /></Col>
+                      <Col><NumField name="cash_held_by_investment_managers" /></Col>
+                      <Col><NumField name="mutual_funds" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="commingled_funds" /></Col>
+                      <Col><NumField name="hedge_funds" /></Col>
+                      <Col><NumField name="private_equity" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="common_trust_funds" /></Col>
+                      <Col><NumField name="common_and_preferred_stocks" /></Col>
+                      <Col><NumField name="private_debt" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="others" /></Col>
+                      <Col><NumField name="subtotal_investment" /></Col>
+                    </Row>
+                    <h2>Loan Fund</h2>
+                    <Row>
+                      <Col><NumField name="us_treasuries" /></Col>
+                      <Col><NumField name="us_agencies" /></Col>
+                      <Col><NumField name="subtotal_loan_fund" /></Col>
+                    </Row>
+                    <h2>Investment totals</h2>
+                    <Row>
+                      <Col><NumField name="investments" /></Col>
+                    </Row>
+
+                    <h2>Net</h2>
+                    <Row>
+                      <Col><NumField name="buildings" /></Col>
+                      <Col><NumField name="leasehold_improvements" /></Col>
+                      <Col><NumField name="furniture_and_equipment" /></Col>
+                      <Col><NumField name="less_accumulated_depreciation" /></Col>
+                      <Col><NumField name="net_fixed_assets" /></Col>
+                    </Row>
+                    <h2>Capital Assets</h2>
+                    <Row>
+                      <Col><NumField name="landA" /></Col>
+                      <Col><NumField name="landB" /></Col>
+                      <Col><NumField name="construction_in_progress" /></Col>
+                      <Col><NumField name="subtotal_capital_assets" /></Col>
+                    </Row>
+                    <h2>Company B</h2>
+                    <Row>
+                      <Col><NumField name="companyB_buildings" /></Col>
+                      <Col><NumField name="companyB_leasehold_improvements" /></Col>
+                      <Col><NumField name="companyB_furniture_and_equipment" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="companyB_vehicles" /></Col>
+                      <Col><NumField name="companyB_less_accumulated_depreciation" /></Col>
+                      <Col><NumField name="companyB_net_fixed_assets" /></Col>
+                    </Row>
+                    <h2>liability for company B </h2>
+                    <Row>
+                      <Col><NumField name="land" /></Col>
+                      <Col><NumField name="subtotal_limited_liability_companyB_assets" /></Col>
+                      <Col><NumField name="capital_assets_net" /></Col>
+                    </Row>
+                    <h2>Restricted Cash and total other assets</h2>
+                    <Row>
+                      <Col><NumField name="restricted_cash" /></Col>
+                      <Col><NumField name="total_other_assets" /></Col>
+
+                    </Row>
+                    <h2>Total liabilities and deferred inflows of resources</h2>
+                    <Row>
+                      <Col><NumField name="deferred_outflows_of_resources_related_to_pension" /></Col>
+                      <Col><NumField name="deferred_outflows_of_resources_related_to_ompeb" /></Col>
+                      <Col><NumField name="total_assets_and_deferred_outflows_of_resources" /></Col>
+                    </Row>
+
+                    <h2>Other Assets old</h2>
+                    <Row>
                       <Col><NumField name="pledges_receivable" /></Col>
                       <Col><NumField name="grants_receivable" /></Col>
                     </Row>
