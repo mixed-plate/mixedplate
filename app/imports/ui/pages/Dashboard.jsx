@@ -89,7 +89,7 @@ const Dashboard = () => {
       ...(comparisonYearData ? [{
         label: `Audited Balance Sheet ${comparisonYear}`,
         data: [
-          comparisonYearData.auditedBalanceSheet.cash,
+          comparisonYearData.auditedBalanceSheet.cash_total,
           comparisonYearData.auditedBalanceSheet.investments_publicly_traded_securities,
           comparisonYearData.auditedBalanceSheet.accounts_payable_and_accrued_expenses,
           comparisonYearData.auditedBalanceSheet.total_net_assets_or_fund_balances,
