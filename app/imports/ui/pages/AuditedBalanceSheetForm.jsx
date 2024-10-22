@@ -153,12 +153,47 @@ const AuditedBalanceSheetPage = () => {
                       <Col><NumField name="total_other_assets" /></Col>
 
                     </Row>
-                    <h2>Total liabilities and deferred inflows of resources</h2>
+                    <h2>Total liabilities and deferred outflows of resources</h2>
                     <Row>
                       <Col><NumField name="deferred_outflows_of_resources_related_to_pension" /></Col>
                       <Col><NumField name="deferred_outflows_of_resources_related_to_ompeb" /></Col>
                       <Col><NumField name="total_assets_and_deferred_outflows_of_resources" /></Col>
                     </Row>
+                    <h2>Liabilities</h2>
+                   <Row><Col><NumField name="accounts_payable_and_accrued_expenses" /></Col>
+                      <Col><NumField name="due_to_funds" /></Col>
+                      <Col><NumField name="due_to_other_funds" /></Col>
+                   </Row>
+                     <h2>Long term liabilities - due within one year</h2>
+                    <Row>
+                      <Col><NumField name="accrued_vacation" /></Col>
+                      <Col><NumField name="workers_compensation" /></Col>
+                      <Col><NumField name="capital_lease_obligations" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="net_pension_liability" /></Col>
+                      <Col><NumField name="notes_payable_buildingA_acquisition" /></Col>
+                      <Col><NumField name="line_of_credit_buildingA" /></Col>
+
+                    </Row>
+                     <h2>Long term liabilities - due after one year</h2>
+                    <Row>
+                      <Col><NumField name="accrued_vacation_after_1_year" /></Col>
+                      <Col><NumField name="workers_compensation_after_1_year" /></Col>
+                      <Col><NumField name="capital_lease_obligations_after_1_year" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="notes_payable_buildingA_acquisition_after_1_year" /></Col>
+                      <Col><NumField name="line_of_credit_buildingA_after_1_year" /></Col>
+                      <Col><NumField name="total_net_assets_or_fund_balances" /></Col>
+                    </Row>
+                    <h2>Commitments and Contingencies Net Position</h2>
+                    <Row>
+                      <Col><NumField name="unrestricted" /></Col>
+                      <Col><NumField name="temporarily_restricted" /></Col>
+                      <Col><NumField name="permanently_restricted" /></Col>
+                    </Row>
+
                     <h2>Investments</h2>
                     <Row>
                       <Col><NumField name="land_buildings_and_equipment" /></Col>
@@ -169,35 +204,6 @@ const AuditedBalanceSheetPage = () => {
                       <Col><NumField name="investments_program_related" /></Col>
                       <Col><NumField name="intangible_assets" /></Col>
                       <Col><NumField name="other_assets" /></Col>
-                    </Row>
-                    <h2>Liabilities</h2>
-                   <Row>
-                      <Col><NumField name="due_to_funds" /></Col>
-                      <Col><NumField name="due_to_other_funds" /></Col>
-                      <Col><NumField name="accrued_vacation" /></Col>
-                   </Row>
-                    <Row>
-                      <Col><NumField name="workers_compensation" /></Col>
-                      <Col><NumField name="capital_lease_obligations" /></Col>
-                      <Col><NumField name="notes_payable_buildingA_acquisition" /></Col>
-                      <Col><NumField name="line_of_credit_buildingA" /></Col>
-                    </Row>
-
-                    <Row>
-                      <Col><NumField name="accounts_payable_and_accrued_expenses" /></Col>
-                      <Col><NumField name="grants_payable" /></Col>
-                      <Col><NumField name="deferred_revenue" /></Col>
-                    </Row>
-
-                    <Row>
-                      <Col><NumField name="total_net_assets_or_fund_balances" /></Col>
-                      <Col><NumField name="total_liabilities_and_net_assets_fund_balances" /></Col>
-                    </Row>
-                    <h2>Commitments and Contingencies Net Position</h2>
-                    <Row>
-                      <Col><NumField name="unrestricted" /></Col>
-                      <Col><NumField name="temporarily_restricted" /></Col>
-                      <Col><NumField name="permanently_restricted" /></Col>
                     </Row>
                     <SubmitField value="Submit" />
                     <ErrorsField />

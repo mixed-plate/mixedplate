@@ -185,15 +185,28 @@ class AuditedBalanceSheetCollection {
 
         }
       },
-
+      accrued_vacation_after_1_year: { type: Number, label: 'Accrued Vacation After 1 Year' },
+      workers_compensation_after_1_year: { type: Number, label: 'Workers Compensation After 1 Year' },
+      capital_lease_obligations_after_1_year: { type: Number, label: 'Capital Lease Obligations After 1 Year' },
+      notes_payable_buildingA_acquisition_after_1_year: { type: Number, label: 'Notes Payable Building A Acquisition After 1 Year' },
+      net_pension_liability: { type: Number, label: 'Net Pension Liability' },
+      line_of_credit_buildingA_after_1_year: { type: Number, label: 'Line Of Credit Building A After 1 Year' },
+      long_term_liabilities_due_after_1_year: { type: Number, label: 'Long Term Liabilities Due After 1 Year',
+        optional: true,
+        autoValue: function () {
+          if (this.field('accrued_vacation_after_1_year').isSet && this.field('workers_compensation_after_1_year').isSet && this.field('capital_lease_obligations_after_1_year').isSet &&
+              this.field('notes_payable_buildingA_acquisition_after_1_year').isSet && this.field('net_pension_liability').isSet && this.field('line_of_credit_buildingA_after_1_year').isSet) {
+            return this.field('accrued_vacation_after_1_year').value + this.field('workers_compensation_after_1_year').value + this.field('capital_lease_obligations_after_1_year').value +
+                this.field('notes_payable_buildingA_acquisition_after_1_year').value + this.field('net_pension_liability').value + this.field('line_of_credit_buildingA_after_1_year').value;
+          }
+        }
+      },
 
       accounts_payable_and_accrued_expenses: { type: Number, label: 'Accounts Payable And Accrued Expenses'},
 
-      grants_payable: { type: Number, label: 'Grants Payable'},
-      deferred_revenue: { type: Number, label: 'Deferred Revenue' },
 
       total_net_assets_or_fund_balances: { type: Number, label: 'Total Net Assets Or Fund Balances'},
-      total_liabilities_and_net_assets_fund_balances: { type: Number, label: 'Total Liabilities And Net Assets Fund Balances'},
+
       unrestricted: { type: Number, label: 'Unrestricted'},
       temporarily_restricted: { type: Number, label: 'Temporarily Restricted'},
       permanently_restricted: { type: Number, label: 'Permanently Restricted'},
