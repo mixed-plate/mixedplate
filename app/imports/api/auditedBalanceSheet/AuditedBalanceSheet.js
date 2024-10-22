@@ -20,7 +20,7 @@ class AuditedBalanceSheetCollection {
       },
       petty_cash: { type: Number, label: 'Petty Cash' },
       cash: { type: Number, label: 'Cash' },
-      cash_in_banks: { type: Number, label: 'Cash In Banks' },
+      cash_in_banks: { type: Number, label: 'Cash In Banks', optional: true },
       cash_total: {
         type: Number,
         optional: true,
