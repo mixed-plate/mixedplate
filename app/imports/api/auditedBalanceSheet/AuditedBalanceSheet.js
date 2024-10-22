@@ -259,37 +259,12 @@ class AuditedBalanceSheetCollection {
       temporarily_restricted: { type: Number, label: 'Temporarily Restricted'},
       permanently_restricted: { type: Number, label: 'Permanently Restricted'},
       createdAt: { type: Date, label: 'Created At', defaultValue: new Date() },
-    });
-
-    // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
       pledges_receivable: { type: Number, label: 'Pledges Receivable' },
       grants_receivable: { type: Number, label: 'Grants Receivable' },
       prepaid_expenses: { type: Number, label: 'Prepaid Expenses' },
       inventories_for_sale_or_use: {
         type: Number,
         label: 'Inventories For Sale Or Use',
-      },
-      land_buildings_and_equipment: {
-        type: Number,
-        label: 'Land Buildings And Equipment',
-      },
-      investments_publicly_traded_securities: {
-        type: Number,
-        label: 'Investments Publicly Traded Securities',
-      },
-      investments_other_securities: {
-        type: Number,
-        label: 'Investments Other Securities',
-      },
-      investments_program_related: {
-        type: Number,
-        label: 'Investments Program Related',
-      },
-      intangible_assets: { type: Number, label: 'Intangible Assets' },
-      other_assets: { type: Number, label: 'Other Assets' },
-      accounts_payable_and_accrued_expenses: {
-        type: Number,
-        label: 'Accounts Payable And Accrued Expenses',
       },
       grants_payable: { type: Number, label: 'Grants Payable' },
       deferred_revenue: { type: Number, label: 'Deferred Revenue' },
@@ -333,21 +308,9 @@ class AuditedBalanceSheetCollection {
         label: 'Paid In Or Capital Surplus',
       },
       retained_earnings: { type: Number, label: 'Retained Earnings' },
-      total_net_assets_or_fund_balances: {
-        type: Number,
-        label: 'Total Net Assets Or Fund Balances',
-      },
       total_liabilities_and_net_assets_fund_balances: {
         type: Number,
         label: 'Total Liabilities And Net Assets Fund Balances',
-      },
-      unrestricted: { type: Number, label: 'Unrestricted' },
-      temporarily_restricted: { type: Number, label: 'Temporarily Restricted' },
-      permanently_restricted: { type: Number, label: 'Permanently Restricted' },
-      createdAt: {
-        type: Date,
-        label: 'Created At',
-        defaultValue: new Date(),
       },
     });
     // Attach the schema to the collection.
