@@ -79,7 +79,7 @@ const Dashboard = () => {
       {
         label: `Audited Balance Sheet ${currentYear}`,
         data: [
-          currentAuditedBalanceSheet.cash,
+          currentAuditedBalanceSheet.cash_total,
           currentAuditedBalanceSheet.investments_publicly_traded_securities,
           currentAuditedBalanceSheet.accounts_payable_and_accrued_expenses,
           currentAuditedBalanceSheet.total_net_assets_or_fund_balances,
@@ -89,7 +89,7 @@ const Dashboard = () => {
       ...(comparisonYearData ? [{
         label: `Audited Balance Sheet ${comparisonYear}`,
         data: [
-          comparisonYearData.auditedBalanceSheet.cash,
+          comparisonYearData.auditedBalanceSheet.cash_total,
           comparisonYearData.auditedBalanceSheet.investments_publicly_traded_securities,
           comparisonYearData.auditedBalanceSheet.accounts_payable_and_accrued_expenses,
           comparisonYearData.auditedBalanceSheet.total_net_assets_or_fund_balances,

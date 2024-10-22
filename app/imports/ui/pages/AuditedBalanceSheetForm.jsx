@@ -70,17 +70,129 @@ const AuditedBalanceSheetPage = () => {
                       <Col><NumField name="cash_in_banks" /></Col>
                       <Col><NumField name="cash_total" /></Col>
                     </Row>
-                    <h2>Other Assets</h2>
+                    <h2> Other assets </h2>
                     <Row>
                       <Col><NumField name="accounts_receivable" /></Col>
-                      <Col><NumField name="pledges_receivable" /></Col>
-                      <Col><NumField name="grants_receivable" /></Col>
+                      <Col><NumField name="due_from_other_funds" /></Col>
+                      <Col><NumField name="interest_and_dividends_receivable" /></Col>
                     </Row>
                     <Row>
-                      <Col><NumField name="allowance_for_doubtful_accounts" /></Col>
-                      <Col><NumField name="prepaid_expenses" /></Col>
-                      <Col><NumField name="inventories_for_sale_or_use" /></Col>
+                      <Col><NumField name="inventory_prepaid_items_and_other_assets" /></Col>
+                      <Col><NumField name="notes_receivable_due_within_1_year" /></Col>
+                      <Col><NumField name="notes_receivable_due_after_1_year" /></Col>
                     </Row>
+                    <Row>
+                      <Col><NumField name="security_deposits" /></Col>
+                      <Col><NumField name="cash_held_by_investment_managers" /></Col>
+
+                    </Row>
+                    <h2>Investments</h2>
+                    <Row>
+                      <Col><NumField name="mutual_funds" /></Col>
+                      <Col><NumField name="commingled_funds" /></Col>
+                      <Col><NumField name="hedge_funds" /></Col>
+                      <Col><NumField name="private_equity" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="common_trust_funds" /></Col>
+                      <Col><NumField name="common_and_preferred_stocks" /></Col>
+                      <Col><NumField name="private_debt" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="others" /></Col>
+                      <Col><NumField name="subtotal_investment" /></Col>
+                    </Row>
+                    <h2>Loan Fund</h2>
+                    <Row>
+                      <Col><NumField name="us_treasuries" /></Col>
+                      <Col><NumField name="us_agencies" /></Col>
+                      <Col><NumField name="subtotal_loan_fund" /></Col>
+                    </Row>
+                    <h2>Investment totals</h2>
+                    <Row>
+                      <Col><NumField name="investments" /></Col>
+                    </Row>
+
+                    <h2>Capital Assets, Net</h2>
+                    <h3>Assets</h3>
+                    <Row>
+                      <Col><NumField name="buildings" /></Col>
+                      <Col><NumField name="leasehold_improvements" /></Col>
+                      <Col><NumField name="furniture_and_equipment" /></Col>
+                      <Col><NumField name="less_accumulated_depreciation" /></Col>
+                      <Col><NumField name="net_fixed_assets" /></Col>
+                    </Row>
+                    <h2>Capital Assets</h2>
+                    <Row>
+                      <Col><NumField name="landA" /></Col>
+                      <Col><NumField name="landB" /></Col>
+                      <Col><NumField name="construction_in_progress" /></Col>
+                      <Col><NumField name="subtotal_capital_assets" /></Col>
+                    </Row>
+                    <h2>Limited liability Company B's assets</h2>
+                    <Row>
+                      <Col><NumField name="companyB_buildings" /></Col>
+                      <Col><NumField name="companyB_leasehold_improvements" /></Col>
+                      <Col><NumField name="companyB_furniture_and_equipment" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="companyB_vehicles" /></Col>
+                      <Col><NumField name="companyB_less_accumulated_depreciation" /></Col>
+                      <Col><NumField name="companyB_net_fixed_assets" /></Col>
+                    </Row>
+                    <h2>liability for company B </h2>
+                    <Row>
+                      <Col><NumField name="land" /></Col>
+                      <Col><NumField name="subtotal_limited_liability_companyB_assets" /></Col>
+                      <Col><NumField name="capital_assets_net" /></Col>
+                    </Row>
+                    <h2>Restricted Cash and total other assets</h2>
+                    <Row>
+                      <Col><NumField name="restricted_cash" /></Col>
+                      <Col><NumField name="total_other_assets" /></Col>
+
+                    </Row>
+                    <h2>Total liabilities and deferred outflows of resources</h2>
+                    <Row>
+                      <Col><NumField name="deferred_outflows_of_resources_related_to_pension" /></Col>
+                      <Col><NumField name="deferred_outflows_of_resources_related_to_ompeb" /></Col>
+                      <Col><NumField name="total_assets_and_deferred_outflows_of_resources" /></Col>
+                    </Row>
+                    <h2>Liabilities</h2>
+                   <Row><Col><NumField name="accounts_payable_and_accrued_expenses" /></Col>
+                      <Col><NumField name="due_to_funds" /></Col>
+                      <Col><NumField name="due_to_other_funds" /></Col>
+                   </Row>
+                     <h2>Long term liabilities - due within one year</h2>
+                    <Row>
+                      <Col><NumField name="accrued_vacation" /></Col>
+                      <Col><NumField name="workers_compensation" /></Col>
+                      <Col><NumField name="capital_lease_obligations" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="net_pension_liability" /></Col>
+                      <Col><NumField name="notes_payable_buildingA_acquisition" /></Col>
+                      <Col><NumField name="line_of_credit_buildingA" /></Col>
+
+                    </Row>
+                     <h2>Long term liabilities - due after one year</h2>
+                    <Row>
+                      <Col><NumField name="accrued_vacation_after_1_year" /></Col>
+                      <Col><NumField name="workers_compensation_after_1_year" /></Col>
+                      <Col><NumField name="capital_lease_obligations_after_1_year" /></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="notes_payable_buildingA_acquisition_after_1_year" /></Col>
+                      <Col><NumField name="line_of_credit_buildingA_after_1_year" /></Col>
+                      <Col><NumField name="total_net_assets_or_fund_balances" /></Col>
+                    </Row>
+                    <h2>Commitments and Contingencies Net Position</h2>
+                    <Row>
+                      <Col><NumField name="unrestricted" /></Col>
+                      <Col><NumField name="temporarily_restricted" /></Col>
+                      <Col><NumField name="permanently_restricted" /></Col>
+                    </Row>
+
                     <h2>Investments</h2>
                     <Row>
                       <Col><NumField name="land_buildings_and_equipment" /></Col>
@@ -91,42 +203,6 @@ const AuditedBalanceSheetPage = () => {
                       <Col><NumField name="investments_program_related" /></Col>
                       <Col><NumField name="intangible_assets" /></Col>
                       <Col><NumField name="other_assets" /></Col>
-                    </Row>
-                    <h2>Liabilities</h2>
-                    <Row>
-                      <Col><NumField name="accounts_payable_and_accrued_expenses" /></Col>
-                      <Col><NumField name="grants_payable" /></Col>
-                      <Col><NumField name="deferred_revenue" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="tax_exempt_bond_liabilities" /></Col>
-                      <Col><NumField name="escrow_or_custodial_account_liability" /></Col>
-                      <Col><NumField name="loans_and_other_payables_to_current_and_former_officers" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="secured_mortgages_and_notes_payable_to_unrelated_third_parties" /></Col>
-                      <Col><NumField name="unsecured_notes_and_loans_payable_to_unrelated_third_parties" /></Col>
-                      <Col><NumField name="other_liabilities" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="unrestricted_net_assets" /></Col>
-                      <Col><NumField name="temporarily_restricted_net_assets" /></Col>
-                      <Col><NumField name="permanently_restricted_net_assets" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="capital_stock_or_trust_principal" /></Col>
-                      <Col><NumField name="paid_in_or_capital_surplus" /></Col>
-                      <Col><NumField name="retained_earnings" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="total_net_assets_or_fund_balances" /></Col>
-                      <Col><NumField name="total_liabilities_and_net_assets_fund_balances" /></Col>
-                    </Row>
-                    <h2>Commitments and Contingencies Net Position</h2>
-                    <Row>
-                      <Col><NumField name="unrestricted" /></Col>
-                      <Col><NumField name="temporarily_restricted" /></Col>
-                      <Col><NumField name="permanently_restricted" /></Col>
                     </Row>
                     <SubmitField value="Submit" />
                     <ErrorsField />
