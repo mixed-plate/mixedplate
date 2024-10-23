@@ -21,6 +21,7 @@ import AboutUs from '../pages/AboutUs';
 import AuditedBalanceSheetForm from '../pages/AuditedBalanceSheetForm';
 import BudgetPnL from '../pages/BudgetPnL';
 import Dashboard from '../pages/Dashboard';
+import RefinancingScenariosDropdown from '../pages/4001';
 
 const App = () => {
   const { ready } = useTracker(() => {
@@ -47,6 +48,7 @@ const App = () => {
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
+          <Route path="/4001" element={<RefinancingScenariosDropdown />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/dashboard" element={<DashboardProtectedRoute ready={ready}><Dashboard /></DashboardProtectedRoute>} />
         </Routes>

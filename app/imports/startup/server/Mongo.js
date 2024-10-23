@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { AuditedBalanceSheets } from '../../api/auditedBalanceSheet/AuditedBalanceSheet.js';
 import { BudgetPnLs } from '../../api/budgetPnL/BudgetPnL.js';
+import { RefinancingScenarios } from '../../api/workpaper/4001.js';
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
@@ -47,5 +48,21 @@ if (BudgetPnLs.collection.find().count() === 0) {
     Meteor.settings.defaultBudgetPnLs.forEach(data => addBudgetPnLData(data));
   } else {
     console.log('No default Budget P&Ls found. Please add some in your settings file.');
+  }
+}
+
+// Add data to RefinancingScenarios collection
+const addRefinancingScenarioData = (data) => {
+  console.log(`  Adding Refinancing Scenario for: ${data.Description}`);
+  RefinancingScenarios.collection.insert(data);
+};
+
+// Initialize the RefinancingScenarios collection if empty.
+if (RefinancingScenarios.collection.find().count() === 0) {
+  if (Meteor.settings.defaultRefinancingScenarios) {
+    console.log('Creating default Refinancing Scenarios.');
+    Meteor.settings.defaultRefinancingScenarios.forEach(data => addRefinancingScenarioData(data));
+  } else {
+    console.log('No default Refinancing Scenarios found. Please add some in your settings file.');
   }
 }
