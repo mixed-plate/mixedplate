@@ -40,10 +40,6 @@ class AuditedBalanceSheetCollection {
         },
       },
       accounts_receivable: { type: Number, label: 'Accounts Receivable' },
-      allowance_for_doubtful_accounts: {
-        type: Number,
-        label: 'Allowance For Doubtful Accounts',
-      },
       due_from_other_funds: { type: Number, label: 'Due From Other Funds' },
       interest_and_dividends_receivable: { type: Number, label: 'Interest And Dividends Receivable' },
       inventory_prepaid_items_and_other_assets: { type: Number, label: 'Inventory Prepaid Items And Other Assets' },
@@ -281,59 +277,6 @@ class AuditedBalanceSheetCollection {
       temporarily_restricted: { type: Number, label: 'Temporarily Restricted' },
       permanently_restricted: { type: Number, label: 'Permanently Restricted' },
       createdAt: { type: Date, label: 'Created At', defaultValue: new Date() },
-      pledges_receivable: { type: Number, label: 'Pledges Receivable' },
-      grants_receivable: { type: Number, label: 'Grants Receivable' },
-      prepaid_expenses: { type: Number, label: 'Prepaid Expenses' },
-      inventories_for_sale_or_use: {
-        type: Number,
-        label: 'Inventories For Sale Or Use',
-      },
-      grants_payable: { type: Number, label: 'Grants Payable' },
-      deferred_revenue: { type: Number, label: 'Deferred Revenue' },
-      tax_exempt_bond_liabilities: {
-        type: Number,
-        label: 'Tax Exempt Bond Liabilities',
-      },
-      escrow_or_custodial_account_liability: {
-        type: Number,
-        label: 'Escrow Or Custodial Account Liability',
-      },
-      loans_and_other_payables_to_current_and_former_officers: {
-        type: Number,
-        label: 'Loans And Other Payables To Current And Former Officers',
-      },
-      secured_mortgages_and_notes_payable_to_unrelated_third_parties: {
-        type: Number,
-        label:
-          'Secured Mortgages And Notes Payable To Unrelated Third Parties',
-      },
-      unsecured_notes_and_loans_payable_to_unrelated_third_parties: {
-        type: Number,
-        label: 'Unsecured Notes And Loans Payable To Unrelated Third Parties',
-      },
-      other_liabilities: { type: Number, label: 'Other Liabilities' },
-      unrestricted_net_assets: { type: Number, label: 'Unrestricted Net Assets' },
-      temporarily_restricted_net_assets: {
-        type: Number,
-        label: 'Temporarily Restricted Net Assets',
-      },
-      permanently_restricted_net_assets: {
-        type: Number,
-        label: 'Permanently Restricted Net Assets',
-      },
-      capital_stock_or_trust_principal: {
-        type: Number,
-        label: 'Capital Stock Or Trust Principal',
-      },
-      paid_in_or_capital_surplus: {
-        type: Number,
-        label: 'Paid In Or Capital Surplus',
-      },
-      retained_earnings: { type: Number, label: 'Retained Earnings' },
-      total_liabilities_and_net_assets_fund_balances: {
-        type: Number,
-        label: 'Total Liabilities And Net Assets Fund Balances',
-      },
     });
     // Attach the schema to the collection.
     this.collection.attachSchema(this.schema);
