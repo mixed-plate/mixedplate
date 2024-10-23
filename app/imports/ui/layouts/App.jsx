@@ -22,7 +22,6 @@ import AuditedBalanceSheetForm from '../pages/AuditedBalanceSheetForm';
 import BudgetPnL from '../pages/BudgetPnL';
 import Dashboard from '../pages/Dashboard';
 
-/** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
   const { ready } = useTracker(() => {
     const rdy = Roles.subscription.ready();
@@ -41,15 +40,15 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
-          <Route path="/Form" element={<ProtectedRoute><AuditedBalanceSheetForm /></ProtectedRoute>} />
-          <Route path="/Budget" element={<ProtectedRoute><BudgetPnL /></ProtectedRoute>} />
+          <Route path="/Form" element={<ManagerProtectedRoute ready={ready}><AuditedBalanceSheetForm /></ManagerProtectedRoute>} />
+          <Route path="/Budget" element={<ManagerProtectedRoute ready={ready}><BudgetPnL /></ManagerProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<DashboardProtectedRoute ready={ready}><Dashboard /></DashboardProtectedRoute>} />
         </Routes>
         <Footer />
       </div>
@@ -57,21 +56,11 @@ const App = () => {
   );
 };
 
-/*
- * ProtectedRoute (see React Router v6 sample)
- * Checks for Meteor login before routing to the requested page, otherwise goes to signin page.
- * @param {any} { component: Component, ...rest }
- */
 const ProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
   return isLogged ? children : <Navigate to="/signin" />;
 };
 
-/**
- * AdminProtectedRoute (see React Router v6 sample)
- * Checks for Meteor login and admin role before routing to the requested page, otherwise goes to signin page.
- * @param {any} { component: Component, ...rest }
- */
 const AdminProtectedRoute = ({ ready, children }) => {
   const isLogged = Meteor.userId() !== null;
   if (!isLogged) {
@@ -84,7 +73,31 @@ const AdminProtectedRoute = ({ ready, children }) => {
   return (isLogged && isAdmin) ? children : <Navigate to="/notauthorized" />;
 };
 
-// Require a component and location to be passed to each ProtectedRoute.
+const ManagerProtectedRoute = ({ ready, children }) => {
+  const isLogged = Meteor.userId() !== null;
+  if (!isLogged) {
+    return <Navigate to="/signin" />;
+  }
+  if (!ready) {
+    return <LoadingSpinner />;
+  }
+  const hasAccess = Roles.userIsInRole(Meteor.userId(), ['senior_manager', 'executive', 'cfo']);
+  return (isLogged && hasAccess) ? children : <Navigate to="/notauthorized" />;
+};
+
+const DashboardProtectedRoute = ({ ready, children }) => {
+  const isLogged = Meteor.userId() !== null;
+  if (!isLogged) {
+    return <Navigate to="/signin" />;
+  }
+  if (!ready) {
+    return <LoadingSpinner />;
+  }
+  const hasAccess = Roles.userIsInRole(Meteor.userId(), ['analyst', 'senior_manager', 'executive', 'cfo', 'admin']);
+  return (isLogged && hasAccess) ? children : <Navigate to="/notauthorized" />;
+};
+
+// Prop types for all route components
 ProtectedRoute.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
@@ -93,13 +106,32 @@ ProtectedRoute.defaultProps = {
   children: <Landing />,
 };
 
-// Require a component and location to be passed to each AdminProtectedRoute.
 AdminProtectedRoute.propTypes = {
   ready: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 AdminProtectedRoute.defaultProps = {
+  ready: false,
+  children: <Landing />,
+};
+
+ManagerProtectedRoute.propTypes = {
+  ready: PropTypes.bool,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
+
+ManagerProtectedRoute.defaultProps = {
+  ready: false,
+  children: <Landing />,
+};
+
+DashboardProtectedRoute.propTypes = {
+  ready: PropTypes.bool,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
+
+DashboardProtectedRoute.defaultProps = {
   ready: false,
   children: <Landing />,
 };

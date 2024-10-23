@@ -14,6 +14,18 @@ const createUser = (email, password, role) => {
   if (role === 'admin') {
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, 'admin');
+  } else if (role === 'senior_manager') {
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, 'senior_manager');
+  } else if (role === 'cfo') {
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, 'cfo');
+  } else if (role === 'analyst') {
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, 'analyst');
+  } else if (role === 'executive') {
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, 'executive');
   }
 };
 
