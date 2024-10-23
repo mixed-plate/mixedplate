@@ -70,7 +70,7 @@ const AuditedBalanceSheetPage = () => {
                       <Col><NumField name="cash_in_banks" /></Col>
                       <Col><NumField name="cash_total" /></Col>
                     </Row>
-                    	<h1> Other Assets </h1>
+                    <h1>Other Assets</h1>
                     <Row>
                       <Col><NumField name="accounts_receivable" /></Col>
                       <Col><NumField name="due_from_other_funds" /></Col>
@@ -84,7 +84,7 @@ const AuditedBalanceSheetPage = () => {
                     <Row>
                       <Col><NumField name="security_deposits" /></Col>
                       <Col><NumField name="cash_held_by_investment_managers" /></Col>
-											<Col></Col>
+                      <Col />
 
                     </Row>
                     <h2>Investments</h2>
@@ -98,27 +98,27 @@ const AuditedBalanceSheetPage = () => {
                       <Col><NumField name="common_trust_funds" /></Col>
                       <Col><NumField name="common_and_preferred_stocks" /></Col>
                       <Col><NumField name="private_debt" /></Col>
-											<Col><NumField name="subtotal_investment" /></Col>
+                      <Col><NumField name="subtotal_investment" /></Col>
                     </Row>
                     <Row>
                       <Col><NumField name="others" /></Col>
-											<Col></Col>
-											<Col></Col>
-											<Col></Col>
+                      <Col />
+                      <Col />
+                      <Col />
                     </Row>
                     <h3>Loan Funds</h3>
                     <Row>
                       <Col><NumField name="us_treasuries" /></Col>
                       <Col><NumField name="us_agencies" /></Col>
                       <Col><NumField name="subtotal_loan_fund" /></Col>
-											<Col></Col>
+                      <Col />
                     </Row>
                     <h2>Investment totals</h2>
                     <Row>
                       <Col><NumField name="investments" /></Col>
-											<Col></Col>
-											<Col></Col>
-											<Col></Col>
+                      <Col />
+                      <Col />
+                      <Col />
                     </Row>
                     <h2>Capital Assets, Net:</h2>
                     <h3>Assets</h3>
@@ -126,14 +126,14 @@ const AuditedBalanceSheetPage = () => {
                       <Col><NumField name="buildings" /></Col>
                       <Col><NumField name="leasehold_improvements" /></Col>
                       <Col><NumField name="furniture_and_equipment" /></Col>
-										</Row>
-										<Row>
-											<Col><NumField name="less_accumulated_depreciation" /></Col>
-											<Col><NumField name="net_fixed_assets" /></Col>
-											<Col></Col>
-										</Row>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="less_accumulated_depreciation" /></Col>
+                      <Col><NumField name="net_fixed_assets" /></Col>
+                      <Col />
+                    </Row>
 
-										<h3>Land:</h3>
+                    <h3>Land:</h3>
                     <Row>
                       <Col><NumField name="landA" /></Col>
                       <Col><NumField name="landB" /></Col>
@@ -161,18 +161,18 @@ const AuditedBalanceSheetPage = () => {
                     <Row>
                       <Col><NumField name="restricted_cash" /></Col>
                       <Col><NumField name="total_other_assets" /></Col>
-											<Col></Col>
-											<Col></Col>
+                      <Col />
+                      <Col />
                     </Row>
                     <h2>Total Liabilities and Deferred Outflows of Resources</h2>
                     <Row>
                       <Col><NumField name="deferred_outflows_of_resources_related_to_pension" /></Col>
                       <Col><NumField name="deferred_outflows_of_resources_related_to_ompeb" /></Col>
                     </Row>
-										<Row>
-											<Col><NumField name="total_assets_and_deferred_outflows_of_resources" /></Col>
-											<Col></Col>
-										</Row>
+                    <Row>
+                      <Col><NumField name="total_assets_and_deferred_outflows_of_resources" /></Col>
+                      <Col />
+                    </Row>
                     <h1>Liabilities</h1>
                     <Row><Col><NumField name="accounts_payable_and_accrued_expenses" /></Col>
                       <Col><NumField name="due_to_funds" /></Col>
@@ -206,7 +206,7 @@ const AuditedBalanceSheetPage = () => {
                       <Col><NumField name="unrestricted" /></Col>
                       <Col><NumField name="temporarily_restricted" /></Col>
                       <Col><NumField name="permanently_restricted" /></Col>
-											<Col></Col>
+                      <Col />
                     </Row>
 
                     <h2>Investments</h2>
