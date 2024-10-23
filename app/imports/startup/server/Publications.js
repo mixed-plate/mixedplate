@@ -34,16 +34,23 @@ Meteor.publish(null, function () {
 
 // Publish AuditedBalanceSheets collection to admin users
 Meteor.publish('AdminPublishAuditedBalanceSheets', function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return AuditedBalanceSheets.collection.find();
+  if (this.userId) {
+    const authorizedRoles = ['senior_manager', 'executive', 'cfo', 'admin', 'analyst'];
+    if (Roles.userIsInRole(this.userId, authorizedRoles)) {
+      return AuditedBalanceSheets.collection.find();
+    }
   }
   return this.ready();
 });
 
 // Publish BudgetPnLs collection to admin users
 Meteor.publish('AdminPublishBudgetPnLs', function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return BudgetPnLs.collection.find();
+  if (this.userId) {
+    // Check if user has appropriate role (senior_manager, executive, cfo, or admin)
+    const authorizedRoles = ['senior_manager', 'executive', 'cfo', 'admin', 'analyst'];
+    if (Roles.userIsInRole(this.userId, authorizedRoles)) {
+      return BudgetPnLs.collection.find();
+    }
   }
   return this.ready();
 });
