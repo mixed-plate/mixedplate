@@ -41,8 +41,8 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
-          <Route path="/Form" element={<ManagerProtectedRoute ready={ready}><AuditedBalanceSheetForm /></ManagerProtectedRoute>} />
-          <Route path="/Budget" element={<ManagerProtectedRoute ready={ready}><BudgetPnL /></ManagerProtectedRoute>} />
+          <Route path="/form" element={<ManagerProtectedRoute ready={ready}><AuditedBalanceSheetForm /></ManagerProtectedRoute>} />
+          <Route path="/budget" element={<ManagerProtectedRoute ready={ready}><BudgetPnL /></ManagerProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
