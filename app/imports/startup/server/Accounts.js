@@ -38,3 +38,33 @@ if (Meteor.users.find().count() === 0) {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
 }
+
+Meteor.publish('allUsers', function () {
+  if (!this.userId || !Roles.userIsInRole(this.userId, 'admin')) {
+    return this.ready();
+  }
+
+  return Meteor.users.find({}, {
+    fields: {
+      username: 1,
+      roles: 1,
+    },
+  });
+});
+
+// Publish all role assignments
+Meteor.publish('userRoles', function () {
+  if (!this.userId || !Roles.userIsInRole(this.userId, 'admin')) {
+    return this.ready();
+  }
+
+  return Meteor.roleAssignment.find({});
+});
+
+// Ensure roles for the current user are always published
+Meteor.publish(null, function () {
+  if (this.userId) {
+    return Meteor.roleAssignment.find({ 'user._id': this.userId });
+  }
+  return this.ready();
+});
