@@ -526,5 +526,178 @@
       "support_services": 60000,
       "beneficiary_advocacy": 50000
     }
+  ],
+
+  "defaultRefinancingScenarios": [
+    {
+      "Description": "5 Year",
+      "year6": {
+        "interest": 46926,
+        "principal": 0,
+        "coreOpBudgetProjected": 35344547,
+        "coreOpBudgetPercent": 0.13
+      },
+      "year7": {
+        "interest": 91114,
+        "principal": 308334,
+        "coreOpBudgetProjected": 35646697,
+        "coreOpBudgetPercent": 1.12
+      },
+      "year8": {
+        "interest": 96447,
+        "principal": 1233333,
+        "coreOpBudgetProjected": 35830678,
+        "coreOpBudgetPercent": 3.71
+      },
+      "year9": {
+        "interest": 51060,
+        "principal": 1233333,
+        "coreOpBudgetProjected": 36157686,
+        "coreOpBudgetPercent": 3.55
+      },
+      "year1": {
+        "interest": 8510,
+        "principal": 925000,
+        "coreOpBudgetProjected": 36512256,
+        "coreOpBudgetPercent": 2.56
+      },
+      "year2": {
+        "interest": 0,
+        "principal": 0,
+        "coreOpBudgetProjected": 36932921,
+        "coreOpBudgetPercent": 0
+      },
+      "year3": {
+        "interest": 0,
+        "principal": 0,
+        "coreOpBudgetProjected": 37378947,
+        "coreOpBudgetPercent": 0
+      },
+      "year4": {
+        "interest": 0,
+        "principal": 0,
+        "coreOpBudgetProjected": 37378947,
+        "coreOpBudgetPercent": 0
+      },
+      "year5": {
+        "interest": 0,
+        "principal": 0,
+        "coreOpBudgetProjected": 37752736,
+        "coreOpBudgetPercent": 0
+      }
+    },
+    {
+      "Description": "7 Year",
+      "year6": {
+        "interest": 46926,
+        "principal": 0,
+        "coreOpBudgetProjected": 35344547,
+        "coreOpBudgetPercent": 0.13
+      },
+      "year7": {
+        "interest": 99279,
+        "principal": 185000,
+        "coreOpBudgetProjected": 35646697,
+        "coreOpBudgetPercent": 0.80
+      },
+      "year8": {
+        "interest": 136753,
+        "principal": 740000,
+        "coreOpBudgetProjected": 35830678,
+        "coreOpBudgetPercent": 2.45
+      },
+      "year9": {
+        "interest": 103601,
+        "principal": 740000,
+        "coreOpBudgetProjected": 36157686,
+        "coreOpBudgetPercent": 2.33
+      },
+      "year1": {
+        "interest": 70449,
+        "principal": 740000,
+        "coreOpBudgetProjected": 36512256,
+        "coreOpBudgetPercent": 2.22
+      },
+      "year2": {
+        "interest": 37296,
+        "principal": 740000,
+        "coreOpBudgetProjected": 36932921,
+        "coreOpBudgetPercent": 2.10
+      },
+      "year3": {
+        "interest": 6216,
+        "principal": 555000,
+        "coreOpBudgetProjected": 37378947,
+        "coreOpBudgetPercent": 1.50
+      },
+      "year4": {
+        "interest": 0,
+        "principal": 0,
+        "coreOpBudgetProjected": 37378947,
+        "coreOpBudgetPercent": 0
+      },
+      "year5": {
+        "interest": 0,
+        "principal": 0,
+        "coreOpBudgetProjected": 37752736,
+        "coreOpBudgetPercent": 0
+      }
+    },{
+      "Description": "9 Year",
+      "year6": {
+        "interest": 15891,
+        "principal": 0,
+        "coreOpBudgetProjected": 35344547,
+        "coreOpBudgetPercent": 0.04
+      },
+      "year7": {
+        "interest": 37206,
+        "principal": 0,
+        "coreOpBudgetProjected": 35646697,
+        "coreOpBudgetPercent": 0.10
+      },
+      "year8": {
+        "interest": 45414,
+        "principal": 506857,
+        "coreOpBudgetProjected": 35830678,
+        "coreOpBudgetPercent": 1.54
+      },
+      "year9": {
+        "interest": 62103,
+        "principal": 506857,
+        "coreOpBudgetProjected": 36157686,
+        "coreOpBudgetPercent": 1.57
+      },
+      "year1": {
+        "interest": 63801,
+        "principal": 506857,
+        "coreOpBudgetProjected": 36512256,
+        "coreOpBudgetPercent": 1.56
+      },
+      "year2": {
+        "interest": 59416,
+        "principal": 506857,
+        "coreOpBudgetProjected": 36932921,
+        "coreOpBudgetPercent": 1.53
+      },
+      "year3": {
+        "interest": 48595,
+        "principal": 506857,
+        "coreOpBudgetProjected": 37378947,
+        "coreOpBudgetPercent": 1.49
+      },
+      "year4": {
+        "interest": 29619,
+        "principal": 506857,
+        "coreOpBudgetProjected": 37378947,
+        "coreOpBudgetPercent": 1.44
+      },
+      "year5": {
+        "interest": 8078,
+        "principal": 506857,
+        "coreOpBudgetProjected": 37752736,
+        "coreOpBudgetPercent": 1.36
+      }
+    }
   ]
 }

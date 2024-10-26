@@ -31,7 +31,7 @@ const NavBar = () => {
                   marginRight: '30px',
                   marginLeft: '-10px',
                   marginBottom: '10px',
-                  marginTop: '10px'
+                  marginTop: '10px',
                 }}
               />
             </div>
@@ -81,6 +81,9 @@ const NavBar = () => {
                     </Nav.Link>
                     <Nav.Link id="add-stuff-nav" as={NavLink} to="/add">
                       Add Stuff
+                    </Nav.Link>
+                    <Nav.Link id="4001-nav" as={NavLink} to="/4001">
+                      4001
                     </Nav.Link>
                   </>
                 )}

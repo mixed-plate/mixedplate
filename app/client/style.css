@@ -91,4 +91,24 @@ body {
   cursor: pointer;
 }
 
+.modern-select {
+  border-radius: 0.5rem;
+}
 
+.modern-card {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modern-input {
+  border-radius: 0.5rem;
+}
+
+.modern-button {
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.modern-button:hover {
+  background-color: #0056b3; /* Change to your desired hover color */
+}
