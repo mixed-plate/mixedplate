@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Card, Col, Container, Row } from 'react-bootstrap';
@@ -15,21 +15,38 @@ const years = Array.from({ length: 31 }, (_, i) => 2000 + i);
 const modifiedSchema = new SimpleSchema(AuditedBalanceSheets.schema);
 modifiedSchema.extend({
   year: {
-    type: SimpleSchema.Integer,
+    type: Number,
     allowedValues: years,
-    defaultValue: new Date().getFullYear(),
+    // defaultValue: new Date().getFullYear().toString(), // Default year as string
   },
 });
 
 const bridge = new SimpleSchema2Bridge(modifiedSchema);
 
 const AuditedBalanceSheetPage = () => {
-  const { ready } = useTracker(() => {
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [formData, setFormData] = useState(null); // This holds the form data
+  const [docId, setDocId] = useState(null);
+
+  // Fetch the data from the database based on the selected year
+  const { ready, balanceSheet } = useTracker(() => {
     const subscription = Meteor.subscribe('AdminPublishAuditedBalanceSheets');
+    const fetchedSheet = AuditedBalanceSheets.collection.findOne({ year: selectedYear });
     return {
       ready: subscription.ready(),
+      balanceSheet: fetchedSheet, // Renamed to 'balanceSheet' for clarity
     };
-  }, []);
+  }, [selectedYear]);
+
+  useEffect(() => {
+    if (balanceSheet) {
+      setFormData(balanceSheet);
+      setDocId(balanceSheet._id);
+    } else {
+      setFormData({ year: selectedYear });
+      setDocId(null);
+    }
+  }, [balanceSheet, selectedYear]);
 
   const submit = (data, formRef) => {
     // Add createdAt field to the data
@@ -38,39 +55,74 @@ const AuditedBalanceSheetPage = () => {
       createdAt: new Date(),
     };
 
-    AuditedBalanceSheets.collection.insert(completeData, (error) => {
-      if (error) {
-        swal('Error', error.reason, 'error');
-      } else {
-        swal('Success', 'Audited Balance Sheet added successfully', 'success');
-        console.log(completeData);
-        formRef.reset();
-      }
-    });
+    // If the document exists, update it
+    if (docId) {
+      AuditedBalanceSheets.collection.update(docId, { $set: completeData }, (error) => {
+        if (error) {
+          swal('Error', error.message, 'error');
+        } else {
+          swal('Success', 'Audited Balance Sheet updated successfully', 'success');
+        }
+      });
+    } else {
+      // Otherwise, insert a new document
+      AuditedBalanceSheets.collection.insert(completeData, (error) => {
+        if (error) {
+          swal('Error', error.message, 'error');
+        } else {
+          swal('Success', 'Audited Balance Sheet added successfully', 'success');
+          formRef.reset();
+        }
+      });
+    }
   };
 
   let fRef = null;
+
   return (
     <Container className="py-3">
       {ready ? (
         <Row className="justify-content-center">
           <Col xs={11}>
             <Col className="text-center"><h2>Audited Balance Sheet</h2></Col>
-            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+            <AutoForm
+              ref={ref => { fRef = ref; }}
+              schema={bridge}
+              model={formData} // Use formData here to pre-fill the form
+              onSubmit={data => submit(data, fRef)}
+            >
               <Card>
                 <Card.Body>
                   <Row>
                     <Row>
-                      <SelectField name="year" />
+                      {/* Year SelectField - When year changes, fetch data for that year */}
+                      <SelectField
+                        name="year"
+                        value={selectedYear.toString()}
+                        onChange={(value) => {
+                          setSelectedYear(value);
+                          const year = parseInt(value, 10);
+                          setSelectedYear(year);
+                        }}
+                      />
                     </Row>
                     <Row>
                       <h2>Cash and Cash Equivalents</h2>
                       <Col><NumField name="petty_cash" /></Col>
                       <Col><NumField name="cash" /></Col>
                       <Col><NumField name="cash_in_banks" /></Col>
-                      <Col><NumField name="cash_total" /></Col>
+                      <Col><NumField name="cash_total" disabled /></Col>
+                      {/* Display cash_total if balanceSheet exists */}
+                      <Col>
+                        <h4>Cash Total</h4>
+                        {balanceSheet ? (
+                          <p>{balanceSheet.cash_total || 'No Data'}</p>
+                        ) : (
+                          <p>No Data</p>
+                        )}
+                      </Col>
                     </Row>
-                    <h2> Other assets </h2>
+                    <h2>Other Assets</h2>
                     <Row>
                       <Col><NumField name="accounts_receivable" /></Col>
                       <Col><NumField name="due_from_other_funds" /></Col>
@@ -84,50 +136,6 @@ const AuditedBalanceSheetPage = () => {
                     <Row>
                       <Col><NumField name="security_deposits" /></Col>
                       <Col><NumField name="cash_held_by_investment_managers" /></Col>
-
-                    </Row>
-                    <h2>Investments</h2>
-                    <Row>
-                      <Col><NumField name="mutual_funds" /></Col>
-                      <Col><NumField name="commingled_funds" /></Col>
-                      <Col><NumField name="hedge_funds" /></Col>
-                      <Col><NumField name="private_equity" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="common_trust_funds" /></Col>
-                      <Col><NumField name="common_and_preferred_stocks" /></Col>
-                      <Col><NumField name="private_debt" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="others" /></Col>
-                      <Col><NumField name="subtotal_investment" /></Col>
-                    </Row>
-                    <h2>Loan Fund</h2>
-                    <Row>
-                      <Col><NumField name="us_treasuries" /></Col>
-                      <Col><NumField name="us_agencies" /></Col>
-                      <Col><NumField name="subtotal_loan_fund" /></Col>
-                    </Row>
-                    <h2>Investment totals</h2>
-                    <Row>
-                      <Col><NumField name="investments" /></Col>
-                    </Row>
-
-                    <h2>Capital Assets, Net</h2>
-                    <h3>Assets</h3>
-                    <Row>
-                      <Col><NumField name="buildings" /></Col>
-                      <Col><NumField name="leasehold_improvements" /></Col>
-                      <Col><NumField name="furniture_and_equipment" /></Col>
-                      <Col><NumField name="less_accumulated_depreciation" /></Col>
-                      <Col><NumField name="net_fixed_assets" /></Col>
-                    </Row>
-                    <h2>Capital Assets</h2>
-                    <Row>
-                      <Col><NumField name="landA" /></Col>
-                      <Col><NumField name="landB" /></Col>
-                      <Col><NumField name="construction_in_progress" /></Col>
-                      <Col><NumField name="subtotal_capital_assets" /></Col>
                     </Row>
                     <h2>Limited liability Company Bs assets</h2>
                     <Row>
@@ -204,7 +212,7 @@ const AuditedBalanceSheetPage = () => {
                       <Col><NumField name="intangible_assets" /></Col>
                       <Col><NumField name="other_assets" /></Col>
                     </Row>
-                    <SubmitField value="Submit" />
+                    <SubmitField value={docId ? 'Update' : 'Submit'} />
                     <ErrorsField />
                   </Row>
                 </Card.Body>
