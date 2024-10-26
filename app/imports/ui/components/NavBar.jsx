@@ -31,7 +31,7 @@ const NavBar = () => {
                   marginRight: '30px',
                   marginLeft: '-10px',
                   marginBottom: '10px',
-                  marginTop: '10px'
+                  marginTop: '10px',
                 }}
               />
             </div>

@@ -285,7 +285,6 @@ class AuditedBalanceSheetCollection {
     this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }
-
 /**
  * The singleton instance of the AuditedBalanceSheetCollection.
  * @type {AuditedBalanceSheetCollection}
