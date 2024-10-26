@@ -18,11 +18,9 @@ class AuditedBalanceSheetCollection {
         min: 2000,
         max: 2030,
       },
-
       petty_cash: { type: Number, label: 'Petty Cash', defaultValue: 0, optional: true },
       cash: { type: Number, label: 'Cash', defaultValue: 0, optional: true },
       cash_in_banks: { type: Number, label: 'Cash In Banks', defaultValue: 0, optional: true },
-
       cash_total: {
         type: Number,
         optional: true,
@@ -41,7 +39,6 @@ class AuditedBalanceSheetCollection {
           return this.value || undefined; // Ensure consistent return.
         },
       },
-
       accounts_receivable: { type: Number, label: 'Accounts Receivable', defaultValue: 0, optional: true },
       due_from_other_funds: { type: Number, label: 'Due From Other Funds', defaultValue: 0, optional: true },
       interest_and_dividends_receivable: { type: Number, label: 'Interest And Dividends Receivable', defaultValue: 0, optional: true },
@@ -58,7 +55,6 @@ class AuditedBalanceSheetCollection {
       common_and_preferred_stocks: { type: Number, label: 'Common And Preferred Stocks', defaultValue: 0, optional: true },
       private_debt: { type: Number, label: 'Private Debt', defaultValue: 0, optional: true },
       others: { type: Number, label: 'Others', defaultValue: 0, optional: true },
-
       // subtotal investment only take in account 8 values check spread sheet
       subtotal_investment: { type: Number, label: 'Subtotal Investment',
         optional: true,
@@ -98,12 +94,10 @@ class AuditedBalanceSheetCollection {
           return null;
         },
       },
-
       buildings: { type: Number, label: 'Buildings', defaultValue: 0, optional: true },
       leasehold_improvements: { type: Number, label: 'Leasehold Improvements', defaultValue: 0, optional: true },
       furniture_and_equipment: { type: Number, label: 'Furniture And Equipment', defaultValue: 0, optional: true },
       less_accumulated_depreciation: { type: Number, label: 'Less Accumulated Depreciation', defaultValue: 0, optional: true },
-
       // double check on this formula and make sure is doing the correct math operation.
       net_fixed_assets: {
         type: Number,
@@ -122,11 +116,9 @@ class AuditedBalanceSheetCollection {
           return null;
         },
       },
-
       landA: { type: Number, label: 'LandA', defaultValue: 0, optional: true },
       landB: { type: Number, label: 'LandB', defaultValue: 0, optional: true },
       construction_in_progress: { type: Number, label: 'Construction In Progress', defaultValue: 0, optional: true },
-
       subtotal_capital_assets: { type: Number, label: 'Subtotal Capital Assets',
         optional: true,
         autoValue: function () {
@@ -263,14 +255,12 @@ class AuditedBalanceSheetCollection {
           return null;
         },
       },
-
       accrued_vacation_after_1_year: { type: Number, label: 'Accrued Vacation After 1 Year', defaultValue: 0, optional: true },
       workers_compensation_after_1_year: { type: Number, label: 'Workers Compensation After 1 Year', defaultValue: 0, optional: true },
       capital_lease_obligations_after_1_year: { type: Number, label: 'Capital Lease Obligations After 1 Year', defaultValue: 0, optional: true },
       notes_payable_buildingA_acquisition_after_1_year: { type: Number, label: 'Notes Payable Building A Acquisition After 1 Year', defaultValue: 0, optional: true },
       net_pension_liability: { type: Number, label: 'Net Pension Liability', defaultValue: 0, optional: true },
       line_of_credit_buildingA_after_1_year: { type: Number, label: 'Line Of Credit Building A After 1 Year', defaultValue: 0, optional: true },
-
       long_term_liabilities_due_after_1_year: { type: Number, label: 'Long Term Liabilities Due After 1 Year',
         optional: true,
         autoValue: function () {
@@ -288,8 +278,6 @@ class AuditedBalanceSheetCollection {
           return null;
         },
       },
-
-
       accounts_payable_and_accrued_expenses: { type: Number, label: 'Accounts Payable And Accrued Expenses', defaultValue: 0, optional: true },
       total_net_assets_or_fund_balances: { type: Number, label: 'Total Net Assets Or Fund Balances', defaultValue: 0, optional: true },
       unrestricted: { type: Number, label: 'Unrestricted', defaultValue: 0, optional: true },
