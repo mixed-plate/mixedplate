@@ -3,6 +3,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { AuditedBalanceSheets } from '../../api/auditedBalanceSheet/AuditedBalanceSheet.js';
 import { BudgetPnLs } from '../../api/budgetPnL/BudgetPnL.js';
+import { RefinancingScenarios } from '../../api/workpaper/4001.js';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
@@ -50,6 +51,17 @@ Meteor.publish('AdminPublishBudgetPnLs', function () {
     const authorizedRoles = ['senior_manager', 'executive', 'cfo', 'admin', 'analyst'];
     if (Roles.userIsInRole(this.userId, authorizedRoles)) {
       return BudgetPnLs.collection.find();
+    }
+  }
+  return this.ready();
+});
+
+// Publish RefinancingScenarios collection to admin users
+Meteor.publish('AdminPublishRefinancingScenarios', function () {
+  if (this.userId) {
+    const authorizedRoles = ['senior_manager', 'executive', 'cfo', 'admin', 'analyst'];
+    if (Roles.userIsInRole(this.userId, authorizedRoles)) {
+      return RefinancingScenarios.collection.find();
     }
   }
   return this.ready();

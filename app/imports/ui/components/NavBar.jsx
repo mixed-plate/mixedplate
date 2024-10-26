@@ -82,6 +82,9 @@ const NavBar = () => {
                     <Nav.Link id="add-stuff-nav" as={NavLink} to="/add">
                       Add Stuff
                     </Nav.Link>
+                    <Nav.Link id="4001-nav" as={NavLink} to="/4001">
+                      4001
+                    </Nav.Link>
                   </>
                 )}
               </>

@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
-import ListStuffAdmin from '../pages/ListStuffAdmin';
+import AdminPanel from '../pages/AdminPanel';
 import AddStuff from '../pages/AddStuff';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
@@ -21,6 +21,7 @@ import AboutUs from '../pages/AboutUs';
 import AuditedBalanceSheetForm from '../pages/AuditedBalanceSheetForm';
 import BudgetPnL from '../pages/BudgetPnL';
 import Dashboard from '../pages/Dashboard';
+import RefinancingScenariosDropdown from '../pages/4001';
 
 const App = () => {
   const { ready } = useTracker(() => {
@@ -40,13 +41,14 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
-          <Route path="/Form" element={<ManagerProtectedRoute ready={ready}><AuditedBalanceSheetForm /></ManagerProtectedRoute>} />
-          <Route path="/Budget" element={<ManagerProtectedRoute ready={ready}><BudgetPnL /></ManagerProtectedRoute>} />
+          <Route path="/form" element={<ManagerProtectedRoute ready={ready}><AuditedBalanceSheetForm /></ManagerProtectedRoute>} />
+          <Route path="/budget" element={<ManagerProtectedRoute ready={ready}><BudgetPnL /></ManagerProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
-          <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
+          <Route path="/admin" element={<AdminProtectedRoute ready={ready}><AdminPanel /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
+          <Route path="/4001" element={<RefinancingScenariosDropdown />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/dashboard" element={<DashboardProtectedRoute ready={ready}><Dashboard /></DashboardProtectedRoute>} />
         </Routes>

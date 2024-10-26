@@ -41,7 +41,7 @@ const BudgetPnLPage = () => {
       if (error) {
         swal('Error', error.reason, 'error');
       } else {
-        swal('Success', 'Budget PnL added successfully', 'success');
+        swal('Success', 'Budget Panel added successfully', 'success');
         console.log(completeData);
         formRef.reset();
       }
