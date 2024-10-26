@@ -18,9 +18,11 @@ class AuditedBalanceSheetCollection {
         min: 2000,
         max: 2030,
       },
-      petty_cash: { type: Number, label: 'Petty Cash' },
-      cash: { type: Number, label: 'Cash' },
-      cash_in_banks: { type: Number, label: 'Cash in Banks', optional: true },
+
+      petty_cash: { type: Number, label: 'Petty Cash', defaultValue: 0, optional: true },
+      cash: { type: Number, label: 'Cash', defaultValue: 0, optional: true },
+      cash_in_banks: { type: Number, label: 'Cash In Banks', defaultValue: 0, optional: true },
+
       cash_total: {
         type: Number,
         optional: true,
@@ -39,22 +41,24 @@ class AuditedBalanceSheetCollection {
           return this.value || undefined; // Ensure consistent return.
         },
       },
-      accounts_receivable: { type: Number, label: 'Accounts Receivable' },
-      due_from_other_funds: { type: Number, label: 'Dues from Other Funds' },
-      interest_and_dividends_receivable: { type: Number, label: 'Interest and Dividends Receivable' },
-      inventory_prepaid_items_and_other_assets: { type: Number, label: 'Inventory Prepaid Items and Other Assets' },
-      notes_receivable_due_within_1_year: { type: Number, label: 'Notes Receivable Due Within 1 Year' },
-      notes_receivable_due_after_1_year: { type: Number, label: 'Notes Receivable Due After 1 Year' },
-      security_deposits: { type: Number, label: 'Security Deposits' },
-      cash_held_by_investment_managers: { type: Number, label: 'Cash Held by Investment Managers' },
-      mutual_funds: { type: Number, label: 'Mutual Funds' },
-      commingled_funds: { type: Number, label: 'Commingled Funds' },
-      hedge_funds: { type: Number, label: 'Hedge Funds' },
-      private_equity: { type: Number, label: 'Private Equity' },
-      common_trust_funds: { type: Number, label: 'Common Trust Funds' },
-      common_and_preferred_stocks: { type: Number, label: 'Common and Preferred Stocks' },
-      private_debt: { type: Number, label: 'Private Debt' },
-      others: { type: Number, label: 'Others' },
+
+      accounts_receivable: { type: Number, label: 'Accounts Receivable', defaultValue: 0, optional: true },
+      due_from_other_funds: { type: Number, label: 'Due From Other Funds', defaultValue: 0, optional: true },
+      interest_and_dividends_receivable: { type: Number, label: 'Interest And Dividends Receivable', defaultValue: 0, optional: true },
+      inventory_prepaid_items_and_other_assets: { type: Number, label: 'Inventory Prepaid Items And Other Assets', defaultValue: 0, optional: true },
+      notes_receivable_due_within_1_year: { type: Number, label: 'Notes Receivable Due Within 1 Year', defaultValue: 0, optional: true },
+      notes_receivable_due_after_1_year: { type: Number, label: 'Notes Receivable Due After 1 Year', defaultValue: 0, optional: true },
+      security_deposits: { type: Number, label: 'Security Deposits', defaultValue: 0, optional: true },
+      cash_held_by_investment_managers: { type: Number, label: 'Cash Held By Investment Managers', defaultValue: 0, optional: true },
+      mutual_funds: { type: Number, label: 'Mutual Funds', defaultValue: 0, optional: true },
+      commingled_funds: { type: Number, label: 'Commingled Funds', defaultValue: 0, optional: true },
+      hedge_funds: { type: Number, label: 'Hedge Funds', defaultValue: 0, optional: true },
+      private_equity: { type: Number, label: 'Private Equity', defaultValue: 0, optional: true },
+      common_trust_funds: { type: Number, label: 'Common Trust Funds', defaultValue: 0, optional: true },
+      common_and_preferred_stocks: { type: Number, label: 'Common And Preferred Stocks', defaultValue: 0, optional: true },
+      private_debt: { type: Number, label: 'Private Debt', defaultValue: 0, optional: true },
+      others: { type: Number, label: 'Others', defaultValue: 0, optional: true },
+
       // subtotal investment only take in account 8 values check spread sheet
       subtotal_investment: { type: Number, label: 'Subtotal Investment',
         optional: true,
@@ -67,8 +71,10 @@ class AuditedBalanceSheetCollection {
           return null;
         },
       },
-      us_treasuries: { type: Number, label: 'U.S. Treasuries' },
-      us_agencies: { type: Number, label: 'U.S. Agencies' },
+
+      us_treasuries: { type: Number, label: 'US Treasuries', defaultValue: 0, optional: true },
+      us_agencies: { type: Number, label: 'US Agencies', defaultValue: 0, optional: true },
+
       subtotal_loan_fund: { type: Number, label: 'Subtotal Loan Fund',
         optional: true,
         autoValue: function () {
@@ -92,10 +98,12 @@ class AuditedBalanceSheetCollection {
           return null;
         },
       },
-      buildings: { type: Number, label: 'Buildings' },
-      leasehold_improvements: { type: Number, label: 'Leasehold Improvements' },
-      furniture_and_equipment: { type: Number, label: 'Furniture and Equipment' },
-      less_accumulated_depreciation: { type: Number, label: 'Less Accumulated Depreciation' },
+
+      buildings: { type: Number, label: 'Buildings', defaultValue: 0, optional: true },
+      leasehold_improvements: { type: Number, label: 'Leasehold Improvements', defaultValue: 0, optional: true },
+      furniture_and_equipment: { type: Number, label: 'Furniture And Equipment', defaultValue: 0, optional: true },
+      less_accumulated_depreciation: { type: Number, label: 'Less Accumulated Depreciation', defaultValue: 0, optional: true },
+
       // double check on this formula and make sure is doing the correct math operation.
       net_fixed_assets: {
         type: Number,
@@ -114,9 +122,11 @@ class AuditedBalanceSheetCollection {
           return null;
         },
       },
-      landA: { type: Number, label: 'Land A' },
-      landB: { type: Number, label: 'Land B' },
-      construction_in_progress: { type: Number, label: 'Construction in Progress' },
+
+      landA: { type: Number, label: 'LandA', defaultValue: 0, optional: true },
+      landB: { type: Number, label: 'LandB', defaultValue: 0, optional: true },
+      construction_in_progress: { type: Number, label: 'Construction In Progress', defaultValue: 0, optional: true },
+
       subtotal_capital_assets: { type: Number, label: 'Subtotal Capital Assets',
         optional: true,
         autoValue: function () {
@@ -130,11 +140,13 @@ class AuditedBalanceSheetCollection {
           return null;
         },
       },
-      companyB_buildings: { type: Number, label: 'Company B Buildings' },
-      companyB_leasehold_improvements: { type: Number, label: 'Company B Leasehold Improvements' },
-      companyB_furniture_and_equipment: { type: Number, label: 'Company B Furniture and Equipment' },
-      companyB_vehicles: { type: Number, label: 'Company B Vehicles' },
-      companyB_less_accumulated_depreciation: { type: Number, label: 'Company B Less Accumulated Depreciation' },
+
+      companyB_buildings: { type: Number, label: 'Company B Buildings', defaultValue: 0, optional: true },
+      companyB_leasehold_improvements: { type: Number, label: 'Company B Leasehold Improvements', defaultValue: 0, optional: true },
+      companyB_furniture_and_equipment: { type: Number, label: 'Company B Furniture And Equipment', defaultValue: 0, optional: true },
+      companyB_vehicles: { type: Number, label: 'Company B Vehicles', defaultValue: 0, optional: true },
+      companyB_less_accumulated_depreciation: { type: Number, label: 'Company B Less Accumulated Depreciation', defaultValue: 0, optional: true },
+
       companyB_net_fixed_assets: { type: Number, label: 'Company B Net Fixed Assets',
         optional: true,
         autoValue: function () {
@@ -150,7 +162,7 @@ class AuditedBalanceSheetCollection {
           return null;
         },
       },
-      land: { type: Number, label: 'Land', optional: true },
+      land: { type: Number, label: 'Land', defaultValue: 0, optional: true },
       subtotal_limited_liability_companyB_assets: { type: Number, label: 'Subtotal Limited Liability Company B Assets',
         optional: true,
         autoValue: function () {
@@ -169,7 +181,7 @@ class AuditedBalanceSheetCollection {
           return null;
         },
       },
-      restricted_cash: { type: Number, label: 'Restricted Cash' },
+      restricted_cash: { type: Number, label: 'Restricted Cash', defaultValue: 0, optional: true },
       total_other_assets: { type: Number, label: 'Total Other Assets',
         optional: true,
         autoValue: function () {
@@ -199,9 +211,11 @@ class AuditedBalanceSheetCollection {
           return null;
         },
       },
-      deferred_outflows_of_resources_related_to_pension: { type: Number, label: 'Deferred Outflows of Resources Related to Pensions' },
-      deferred_outflows_of_resources_related_to_ompeb: { type: Number, label: 'Deferred Outflows of Resources Related to OPEB' },
-      total_assets_and_deferred_outflows_of_resources: { type: Number, label: 'Total Assets and Deferred Outflows Of Resources',
+
+      deferred_outflows_of_resources_related_to_pension: { type: Number, label: 'Deferred Outflows Of Resources related to pensions', defaultValue: 0, optional: true },
+      deferred_outflows_of_resources_related_to_ompeb: { type: Number, label: 'Deferred Outflows Of Resources related to ompeb', defaultValue: 0, optional: true },
+      total_assets_and_deferred_outflows_of_resources: { type: Number, label: 'Total Assets And Deferred Outflows Of Resources',
+
         optional: true,
         autoValue: function () {
           if (this.field('total_other_assets').isSet &&
@@ -216,20 +230,22 @@ class AuditedBalanceSheetCollection {
           return null;
         },
       },
-      land_buildings_and_equipment: { type: Number, label: 'Land Buildings and Equipment' },
-      investments_publicly_traded_securities: { type: Number, label: 'Investments Publicly Traded Securities' },
-      investments_other_securities: { type: Number, label: 'Investments Other Securities' },
-      investments_program_related: { type: Number, label: 'Investments Program Related' },
-      intangible_assets: { type: Number, label: 'Intangible Assets' },
-      other_assets: { type: Number, label: 'Other Assets' },
 
-      due_to_funds: { type: Number, label: 'Due to Funds' },
-      due_to_other_funds: { type: Number, label: 'Due to Other Funds' },
-      accrued_vacation: { type: Number, label: 'Accrued Vacation' },
-      workers_compensation: { type: Number, label: 'Workers Compensation' },
-      capital_lease_obligations: { type: Number, label: 'Capital Lease Obligations' },
-      notes_payable_buildingA_acquisition: { type: Number, label: 'Notes Payable Building A Acquisition' },
-      line_of_credit_buildingA: { type: Number, label: 'Line of Credit Building A' },
+      land_buildings_and_equipment: { type: Number, label: 'Land Buildings And Equipment', defaultValue: 0, optional: true },
+      investments_publicly_traded_securities: { type: Number, label: 'Investments Publicly Traded Securities', defaultValue: 0, optional: true },
+      investments_other_securities: { type: Number, label: 'Investments Other Securities', defaultValue: 0, optional: true },
+      investments_program_related: { type: Number, label: 'Investments Program Related', defaultValue: 0, optional: true },
+      intangible_assets: { type: Number, label: 'Intangible Assets', defaultValue: 0, optional: true },
+      other_assets: { type: Number, label: 'Other Assets', defaultValue: 0, optional: true },
+
+      due_to_funds: { type: Number, label: 'Due To Funds', defaultValue: 0, optional: true },
+      due_to_other_funds: { type: Number, label: 'Due To Other Funds', defaultValue: 0, optional: true },
+      accrued_vacation: { type: Number, label: 'Accrued Vacation', defaultValue: 0, optional: true },
+      workers_compensation: { type: Number, label: 'Workers Compensation', defaultValue: 0, optional: true },
+      capital_lease_obligations: { type: Number, label: 'Capital Lease Obligations', defaultValue: 0, optional: true },
+      notes_payable_buildingA_acquisition: { type: Number, label: 'Notes Payable Building A Acquisition', defaultValue: 0, optional: true },
+      line_of_credit_buildingA: { type: Number, label: 'Line Of Credit Building A', defaultValue: 0, optional: true },
+
       long_term_liabilities_due_within_1_year: { type: Number, label: 'Long Term Liabilities Due Within 1 Year',
         optional: true,
         autoValue: function () {
@@ -247,12 +263,14 @@ class AuditedBalanceSheetCollection {
           return null;
         },
       },
-      accrued_vacation_after_1_year: { type: Number, label: 'Accrued Vacation After 1 Year' },
-      workers_compensation_after_1_year: { type: Number, label: 'Workers Compensation After 1 Year' },
-      capital_lease_obligations_after_1_year: { type: Number, label: 'Capital Lease Obligations After 1 Year' },
-      notes_payable_buildingA_acquisition_after_1_year: { type: Number, label: 'Notes Payable Building A Acquisition After 1 Year' },
-      net_pension_liability: { type: Number, label: 'Net Pension Liability' },
-      line_of_credit_buildingA_after_1_year: { type: Number, label: 'Line of Credit Building A After 1 Year' },
+
+      accrued_vacation_after_1_year: { type: Number, label: 'Accrued Vacation After 1 Year', defaultValue: 0, optional: true },
+      workers_compensation_after_1_year: { type: Number, label: 'Workers Compensation After 1 Year', defaultValue: 0, optional: true },
+      capital_lease_obligations_after_1_year: { type: Number, label: 'Capital Lease Obligations After 1 Year', defaultValue: 0, optional: true },
+      notes_payable_buildingA_acquisition_after_1_year: { type: Number, label: 'Notes Payable Building A Acquisition After 1 Year', defaultValue: 0, optional: true },
+      net_pension_liability: { type: Number, label: 'Net Pension Liability', defaultValue: 0, optional: true },
+      line_of_credit_buildingA_after_1_year: { type: Number, label: 'Line Of Credit Building A After 1 Year', defaultValue: 0, optional: true },
+
       long_term_liabilities_due_after_1_year: { type: Number, label: 'Long Term Liabilities Due After 1 Year',
         optional: true,
         autoValue: function () {
@@ -271,11 +289,13 @@ class AuditedBalanceSheetCollection {
         },
       },
 
-      accounts_payable_and_accrued_expenses: { type: Number, label: 'Accounts Payable and Accrued Expenses' },
-      total_net_assets_or_fund_balances: { type: Number, label: 'Total Net Assets or Fund Balances' },
-      unrestricted: { type: Number, label: 'Unrestricted' },
-      temporarily_restricted: { type: Number, label: 'Temporarily Restricted' },
-      permanently_restricted: { type: Number, label: 'Permanently Restricted' },
+
+      accounts_payable_and_accrued_expenses: { type: Number, label: 'Accounts Payable And Accrued Expenses', defaultValue: 0, optional: true },
+      total_net_assets_or_fund_balances: { type: Number, label: 'Total Net Assets Or Fund Balances', defaultValue: 0, optional: true },
+      unrestricted: { type: Number, label: 'Unrestricted', defaultValue: 0, optional: true },
+      temporarily_restricted: { type: Number, label: 'Temporarily Restricted', defaultValue: 0, optional: true },
+      permanently_restricted: { type: Number, label: 'Permanently Restricted', defaultValue: 0, optional: true },
+
       createdAt: { type: Date, label: 'Created At', defaultValue: new Date() },
     });
     // Attach the schema to the collection.
