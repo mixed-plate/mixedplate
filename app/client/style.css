@@ -1,11 +1,16 @@
+/* Import font URLs */
 /* Use Open Sans as the default sans serif font. */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
 
 /* Define custom variables and styles */
 :root {
   --matr-navbar-bg: #ECECEC;
   --matr-navbar-bg-rgb: 236, 236, 236;
 }
+
 
 body {
   --bs-light-rgb: var(--matr-navbar-bg-rgb);
@@ -33,10 +38,12 @@ body {
   background-color: white;
 }
 
-.footer {
-  background-color: lightslategray;
+.footer, .footer a, .footer li {
+  color: white;
+  font-family: Roboto;
+  text-decoration-line: none;
+  list-style: none;
 }
-
 
 .fixed-bg {
   background-image: url('./images/background.png');
