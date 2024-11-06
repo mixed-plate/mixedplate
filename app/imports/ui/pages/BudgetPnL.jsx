@@ -59,21 +59,21 @@ const BudgetPnLPage = () => {
               <Card>
                 <Card.Body>
                   <Row>
-										<Row>
-											<SelectField name="year" />
-										</Row>
+                    <Row>
+                      <SelectField name="year" />
+                    </Row>
                     <h1>Revenue</h1>
                     <Row>
                       <Col><NumField name="five_percent_investment_portfolio" /></Col>
                       <Col><NumField name="revenues" /></Col>
                       <Col><NumField name="general_fund" /></Col>
-										</Row>
-										<Row>
-											<Col><NumField name="core_operating_budget_not_authorized" /></Col>
-											<Col></Col>
-											<Col></Col>
+                    </Row>
+                    <Row>
+                      <Col><NumField name="core_operating_budget_not_authorized" /></Col>
+                      <Col />
+                      <Col />
 
-										</Row>
+                    </Row>
 
                     <h1>Expenses</h1>
                     <Row>
