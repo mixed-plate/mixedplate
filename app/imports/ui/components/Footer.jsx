@@ -48,6 +48,41 @@ const Footer = () => (
             <li>
               <a href="https://www.spirehawaii.com/business-services/legal-support">Legal Support</a>
             </li>
+            <li>
+              <a href="https://www.spirehawaii.com/business-services/accounting-services">Accounting</a>
+            </li>
+            <li>
+              <a href="https://www.spirehawaii.com/business-services/change-management">Change Management</a>
+            </li>
+            <li>
+              <a href="https://www.spirehawaii.com/business-services/consulting">Consulting</a>
+            </li>
+            <li>
+              <a href="https://www.spirehawaii.com/business-services/it-consulting">IT Consulting</a>
+            </li>
+          </Col>
+          <Col>
+            <CardTitle href="https://www.spirehawaii.com/contact">CONTACT US</CardTitle>
+            <li>
+              <a href="https://www.google.com/maps/place/Spire+Hawaii+LLP/@21.3075007,-157.8657031,17z/data=!3m1!4b1!4m5!3m4!1s0x7c006e7452ec94e5:0xc63392723c5bb7c0!8m2!3d21.3074957!4d-157.8635144">700 Bishop Street,
+                Suite 2001
+                Honolulu,
+                Hawaii
+                96813
+              </a>
+            </li>
+            <li>
+              <a href="tel:+8085360066">(808) 536-0066</a>
+            </li>
+            <li>
+              <a href="contactus@spirehi.com">contactus@spirehi.com</a>
+            </li>
+          </Col>
+          <Col>
+            <CardTitle href="">FOLLOW ALONG</CardTitle>
+            <li>
+              <img src="https://cdn.prod.website-files.com/5fdaca5a4d51110c2f760a05/60b6d1f0e665aaba3dbd8bed_linkedin-logo.png" />
+            </li>
           </Col>
         </Row>
       </Container>
