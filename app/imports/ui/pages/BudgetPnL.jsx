@@ -54,20 +54,28 @@ const BudgetPnLPage = () => {
       {ready ? (
         <Row className="justify-content-center">
           <Col xs={12}>
-            <Col className="text-center"><h2>Budget PnL</h2></Col>
+            <Col className="text-center"><h2>Budget Panel</h2></Col>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
               <Card>
                 <Card.Body>
                   <Row>
-                    <SelectField name="year" />
-                    <h2>Revenue</h2>
+                    <Row>
+                      <SelectField name="year" />
+                    </Row>
+                    <h1>Revenue</h1>
                     <Row>
                       <Col><NumField name="five_percent_investment_portfolio" /></Col>
                       <Col><NumField name="revenues" /></Col>
                       <Col><NumField name="general_fund" /></Col>
-                      <Col><NumField name="core_operating_budget_not_authorized" /></Col>
                     </Row>
-                    <h2>Expenses</h2>
+                    <Row>
+                      <Col><NumField name="core_operating_budget_not_authorized" /></Col>
+                      <Col />
+                      <Col />
+
+                    </Row>
+
+                    <h1>Expenses</h1>
                     <Row>
                       <Col><NumField name="personnel" /></Col>
                       <Col><NumField name="salary" /></Col>
@@ -86,7 +94,7 @@ const BudgetPnLPage = () => {
                       <Col />
                       <Col />
                     </Row>
-                    <h2>Surplus (Deficit)</h2>
+                    <h1>Surplus (Deficit)</h1>
                     <Row>
                       <Col><NumField name="management" /></Col>
                       <Col><NumField name="support_services" /></Col>
