@@ -24,7 +24,7 @@ modifiedSchema.extend({
 const bridge = new SimpleSchema2Bridge(modifiedSchema);
 
 const BudgetPnLPage = () => {
-  const { ready, budgetPnLs } = useTracker(() => {
+  const { ready, budgetPnL } = useTracker(() => {
     const subscription = Meteor.subscribe('AdminPublishBudgetPnLs');
     return {
       ready: subscription.ready(),
@@ -53,216 +53,216 @@ const BudgetPnLPage = () => {
   return (
     <Container className="py-3">
       {ready ? (
-				<Row className="justify-content-center mb-4">
-					<h2 className="text-center">Budget Panel</h2>
-					<Col>
-						<AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-							<Card>
-								<Card.Body>
-									<Col>
-										<Row className="mb-3">
-											<SelectField name="year"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Revenue</h4>
-											<NumField name="five_percent_investment_portfolio"/>
-											<NumField name="revenues"/>
-											<NumField name="general_fund"/>
-											<NumField name="core_operating_budget_not_authorized"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Expenses</h4>
-											<NumField name="personnel"/>
-											<NumField name="salary"/>
-											<NumField name="program"/>
-											<NumField name="contract"/>
-											<NumField name="grants"/>
-											<NumField name="travel"/>
-											<NumField name="equipment"/>
-											<NumField name="overhead"/>
-											<NumField name="debt_service"/>
-											<NumField name="other"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Surplus (Deficit)</h4>
-											<NumField name="management"/>
-											<NumField name="support_services"/>
-											<NumField name="beneficiary_advocacy"/>
-										</Row>
-										<SubmitField value="Submit"/>
-										<ErrorsField/>
-									</Col>
-								</Card.Body>
-							</Card>
-						</AutoForm>
-					</Col>
-					<Col>
-						<AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-							<Card>
-								<Card.Body>
-									<Col>
-										<Row className="mb-3">
-											<SelectField name="year"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Revenue</h4>
-											<NumField name="five_percent_investment_portfolio"/>
-											<NumField name="revenues"/>
-											<NumField name="general_fund"/>
-											<NumField name="core_operating_budget_not_authorized"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Expenses</h4>
-											<NumField name="personnel"/>
-											<NumField name="salary"/>
-											<NumField name="program"/>
-											<NumField name="contract"/>
-											<NumField name="grants"/>
-											<NumField name="travel"/>
-											<NumField name="equipment"/>
-											<NumField name="overhead"/>
-											<NumField name="debt_service"/>
-											<NumField name="other"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Surplus (Deficit)</h4>
-											<NumField name="management"/>
-											<NumField name="support_services"/>
-											<NumField name="beneficiary_advocacy"/>
-										</Row>
-										<SubmitField value="Submit"/>
-										<ErrorsField/>
-									</Col>
-								</Card.Body>
-							</Card>
-						</AutoForm>
-					</Col>
-					<Col>
-						<AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-							<Card>
-								<Card.Body>
-									<Col>
-										<Row className="mb-3">
-											<SelectField name="year"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Revenue</h4>
-											<NumField name="five_percent_investment_portfolio"/>
-											<NumField name="revenues"/>
-											<NumField name="general_fund"/>
-											<NumField name="core_operating_budget_not_authorized"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Expenses</h4>
-											<NumField name="personnel"/>
-											<NumField name="salary"/>
-											<NumField name="program"/>
-											<NumField name="contract"/>
-											<NumField name="grants"/>
-											<NumField name="travel"/>
-											<NumField name="equipment"/>
-											<NumField name="overhead"/>
-											<NumField name="debt_service"/>
-											<NumField name="other"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Surplus (Deficit)</h4>
-											<NumField name="management"/>
-											<NumField name="support_services"/>
-											<NumField name="beneficiary_advocacy"/>
-										</Row>
-										<SubmitField value="Submit"/>
-										<ErrorsField/>
-									</Col>
-								</Card.Body>
-							</Card>
-						</AutoForm>
-					</Col>
-					<Col>
-						<AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-							<Card>
-								<Card.Body>
-									<Col>
-										<Row className="mb-3">
-											<SelectField name="year"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Revenue</h4>
-											<NumField name="five_percent_investment_portfolio"/>
-											<NumField name="revenues"/>
-											<NumField name="general_fund"/>
-											<NumField name="core_operating_budget_not_authorized"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Expenses</h4>
-											<NumField name="personnel"/>
-											<NumField name="salary"/>
-											<NumField name="program"/>
-											<NumField name="contract"/>
-											<NumField name="grants"/>
-											<NumField name="travel"/>
-											<NumField name="equipment"/>
-											<NumField name="overhead"/>
-											<NumField name="debt_service"/>
-											<NumField name="other"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Surplus (Deficit)</h4>
-											<NumField name="management"/>
-											<NumField name="support_services"/>
-											<NumField name="beneficiary_advocacy"/>
-										</Row>
-										<SubmitField value="Submit"/>
-										<ErrorsField/>
-									</Col>
-								</Card.Body>
-							</Card>
-						</AutoForm>
-					</Col>
-					<Col>
-						<AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-							<Card>
-								<Card.Body>
-									<Col>
-										<Row className="mb-3">
-											<SelectField name="year"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Revenue</h4>
-											<NumField name="five_percent_investment_portfolio"/>
-											<NumField name="revenues"/>
-											<NumField name="general_fund"/>
-											<NumField name="core_operating_budget_not_authorized"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Expenses</h4>
-											<NumField name="personnel"/>
-											<NumField name="salary"/>
-											<NumField name="program"/>
-											<NumField name="contract"/>
-											<NumField name="grants"/>
-											<NumField name="travel"/>
-											<NumField name="equipment"/>
-											<NumField name="overhead"/>
-											<NumField name="debt_service"/>
-											<NumField name="other"/>
-										</Row>
-										<Row className="mb-3">
-											<h4>Surplus (Deficit)</h4>
-											<NumField name="management"/>
-											<NumField name="support_services"/>
-											<NumField name="beneficiary_advocacy"/>
-										</Row>
-										<SubmitField value="Submit"/>
-										<ErrorsField/>
-									</Col>
-								</Card.Body>
-							</Card>
-						</AutoForm>
-					</Col>
-				</Row>
-			) : (
-				<Row className="justify-content-center">
+        <Row className="justify-content-center mb-4">
+          <h2 className="text-center">Budget Panel</h2>
+          <Col>
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+              <Card>
+                <Card.Body>
+                  <Col>
+                    <Row className="mb-3">
+                      <SelectField name="year" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Revenue</h4>
+                      <NumField name="five_percent_investment_portfolio" />
+                      <NumField name="revenues" />
+                      <NumField name="general_fund" />
+                      <NumField name="core_operating_budget_not_authorized" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Expenses</h4>
+                      <NumField name="personnel" />
+                      <NumField name="salary" />
+                      <NumField name="program" />
+                      <NumField name="contract" />
+                      <NumField name="grants" />
+                      <NumField name="travel" />
+                      <NumField name="equipment" />
+                      <NumField name="overhead" />
+                      <NumField name="debt_service" />
+                      <NumField name="other" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Surplus (Deficit)</h4>
+                      <NumField name="management" />
+                      <NumField name="support_services" />
+                      <NumField name="beneficiary_advocacy" />
+                    </Row>
+                    <SubmitField value="Submit" />
+                    <ErrorsField />
+                  </Col>
+                </Card.Body>
+              </Card>
+            </AutoForm>
+          </Col>
+          <Col>
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+              <Card>
+                <Card.Body>
+                  <Col>
+                    <Row className="mb-3">
+                      <SelectField name="year" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Revenue</h4>
+                      <NumField name="five_percent_investment_portfolio" />
+                      <NumField name="revenues" />
+                      <NumField name="general_fund" />
+                      <NumField name="core_operating_budget_not_authorized" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Expenses</h4>
+                      <NumField name="personnel" />
+                      <NumField name="salary" />
+                      <NumField name="program" />
+                      <NumField name="contract" />
+                      <NumField name="grants" />
+                      <NumField name="travel" />
+                      <NumField name="equipment" />
+                      <NumField name="overhead" />
+                      <NumField name="debt_service" />
+                      <NumField name="other" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Surplus (Deficit)</h4>
+                      <NumField name="management" />
+                      <NumField name="support_services" />
+                      <NumField name="beneficiary_advocacy" />
+                    </Row>
+                    <SubmitField value="Submit" />
+                    <ErrorsField />
+                  </Col>
+                </Card.Body>
+              </Card>
+            </AutoForm>
+          </Col>
+          <Col>
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+              <Card>
+                <Card.Body>
+                  <Col>
+                    <Row className="mb-3">
+                      <SelectField name="year" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Revenue</h4>
+                      <NumField name="five_percent_investment_portfolio" />
+                      <NumField name="revenues" />
+                      <NumField name="general_fund" />
+                      <NumField name="core_operating_budget_not_authorized" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Expenses</h4>
+                      <NumField name="personnel" />
+                      <NumField name="salary" />
+                      <NumField name="program" />
+                      <NumField name="contract" />
+                      <NumField name="grants" />
+                      <NumField name="travel" />
+                      <NumField name="equipment" />
+                      <NumField name="overhead" />
+                      <NumField name="debt_service" />
+                      <NumField name="other" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Surplus (Deficit)</h4>
+                      <NumField name="management" />
+                      <NumField name="support_services" />
+                      <NumField name="beneficiary_advocacy" />
+                    </Row>
+                    <SubmitField value="Submit" />
+                    <ErrorsField />
+                  </Col>
+                </Card.Body>
+              </Card>
+            </AutoForm>
+          </Col>
+          <Col>
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+              <Card>
+                <Card.Body>
+                  <Col>
+                    <Row className="mb-3">
+                      <SelectField name="year" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Revenue</h4>
+                      <NumField name="five_percent_investment_portfolio" />
+                      <NumField name="revenues" />
+                      <NumField name="general_fund" />
+                      <NumField name="core_operating_budget_not_authorized" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Expenses</h4>
+                      <NumField name="personnel" />
+                      <NumField name="salary" />
+                      <NumField name="program" />
+                      <NumField name="contract" />
+                      <NumField name="grants" />
+                      <NumField name="travel" />
+                      <NumField name="equipment" />
+                      <NumField name="overhead" />
+                      <NumField name="debt_service" />
+                      <NumField name="other" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Surplus (Deficit)</h4>
+                      <NumField name="management" />
+                      <NumField name="support_services" />
+                      <NumField name="beneficiary_advocacy" />
+                    </Row>
+                    <SubmitField value="Submit" />
+                    <ErrorsField />
+                  </Col>
+                </Card.Body>
+              </Card>
+            </AutoForm>
+          </Col>
+          <Col>
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+              <Card>
+                <Card.Body>
+                  <Col>
+                    <Row className="mb-3">
+                      <SelectField name="year" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Revenue</h4>
+                      <NumField name="five_percent_investment_portfolio" />
+                      <NumField name="revenues" />
+                      <NumField name="general_fund" />
+                      <NumField name="core_operating_budget_not_authorized" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Expenses</h4>
+                      <NumField name="personnel" />
+                      <NumField name="salary" />
+                      <NumField name="program" />
+                      <NumField name="contract" />
+                      <NumField name="grants" />
+                      <NumField name="travel" />
+                      <NumField name="equipment" />
+                      <NumField name="overhead" />
+                      <NumField name="debt_service" />
+                      <NumField name="other" />
+                    </Row>
+                    <Row className="mb-3">
+                      <h4>Surplus (Deficit)</h4>
+                      <NumField name="management" />
+                      <NumField name="support_services" />
+                      <NumField name="beneficiary_advocacy" />
+                    </Row>
+                    <SubmitField value="Submit" />
+                    <ErrorsField />
+                  </Col>
+                </Card.Body>
+              </Card>
+            </AutoForm>
+          </Col>
+        </Row>
+      ) : (
+        <Row className="justify-content-center">
           <Col xs={8} className="text-center">
             <p>Loading...</p>
           </Col>
