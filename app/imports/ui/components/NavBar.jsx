@@ -66,17 +66,9 @@ const NavBar = () => {
                   </Nav.Link>
                 )}
                 {isCFO && (
-                  <>
-                    <Nav.Link id="list-stuff-nav" as={NavLink} to="/list">
-                      List Stuff
-                    </Nav.Link>
-                    <Nav.Link id="add-stuff-nav" as={NavLink} to="/add">
-                      Add Stuff
-                    </Nav.Link>
-                    <Nav.Link id="4001-nav" as={NavLink} to="/4001">
+                  <Nav.Link id="4001-nav" as={NavLink} to="/4001">
                       4001
-                    </Nav.Link>
-                  </>
+                  </Nav.Link>
                 )}
                 {/* Updated Upload CSV Link */}
                 <Nav.Link id="upload-csv-nav" as={NavLink} to="/upload">
