@@ -83,190 +83,734 @@ const AuditedBalanceSheetPage = () => {
     <Container className="py-3">
       {ready ? (
         <Row className="justify-content-center">
-          <Col xs={11}>
-            <Col className="text-center"><h2>Audited Balance Sheet</h2></Col>
-            <AutoForm
-              ref={ref => { fRef = ref; }}
-              schema={bridge}
-              model={formData} // Use formData here to pre-fill the form
-              onSubmit={data => submit(data, fRef)}
-            >
-              <Card>
-                <Card.Body>
-                  <Row>
-                    <Row>
-                      {/* Year SelectField - When year changes, fetch data for that year */}
-                      <SelectField
-                        name="year"
-                        value={selectedYear.toString()}
-                        onChange={(value) => {
-                          setSelectedYear(value);
-                          const year = parseInt(value, 10);
-                          setSelectedYear(year);
-                        }}
-                      />
-                    </Row>
-                    <Row>
+          <h2 className="text-center">Audited Balance Sheet</h2>
+          <Row>
+            <Col>
+              <AutoForm
+                ref={ref => { fRef = ref; }}
+                schema={bridge}
+                model={formData} // Use formData here to pre-fill the form
+                onSubmit={data => submit(data, fRef)}
+              >
+                <Card>
+                  <Card.Body>
+                    <Col>
+                      <Row>
+                        {/* Year SelectField - When year changes, fetch data for that year */}
+                        <SelectField
+                          name="year"
+                          value={selectedYear.toString()}
+                          onChange={(value) => {
+                            setSelectedYear(value);
+                            const year = parseInt(value, 10);
+                            setSelectedYear(year);
+                          }}
+                        />
+                      </Row>
                       <h1>Cash and Cash Equivalents</h1>
-                      <Col><NumField name="petty_cash" /></Col>
-                      <Col><NumField name="cash" /></Col>
-                      <Col><NumField name="cash_in_banks" /></Col>
-                      <Col><NumField name="cash_total" disabled /></Col>
-                    </Row>
+                      <NumField name="petty_cash" />
+                      <NumField name="cash" />
+                      <NumField name="cash_in_banks" />
+                      <NumField name="cash_total" disabled />
 
-                    <h2>Other Assets</h2>
+                      <h2>Other Assets</h2>
 
-                    <Row>
-                      <Col><NumField name="accounts_receivable" /></Col>
-                      <Col><NumField name="due_from_other_funds" /></Col>
-                      <Col><NumField name="interest_and_dividends_receivable" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="inventory_prepaid_items_and_other_assets" /></Col>
-                      <Col><NumField name="notes_receivable_due_within_1_year" /></Col>
-                      <Col><NumField name="notes_receivable_due_after_1_year" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="security_deposits" /></Col>
-                      <Col><NumField name="cash_held_by_investment_managers" /></Col>
-                      <Col />
+                      <NumField name="accounts_receivable" />
+                      <NumField name="due_from_other_funds" />
+                      <NumField name="interest_and_dividends_receivable" />
 
-                    </Row>
-                    <h2>Investments</h2>
-                    <Row>
-                      <Col><NumField name="mutual_funds" /></Col>
-                      <Col><NumField name="commingled_funds" /></Col>
-                      <Col><NumField name="hedge_funds" /></Col>
-                      <Col><NumField name="private_equity" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="common_trust_funds" /></Col>
-                      <Col><NumField name="common_and_preferred_stocks" /></Col>
-                      <Col><NumField name="private_debt" /></Col>
-                      <Col><NumField name="subtotal_investment" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="others" /></Col>
-                      <Col />
-                      <Col />
-                      <Col />
-                    </Row>
-                    <h3>Loan Funds</h3>
-                    <Row>
-                      <Col><NumField name="us_treasuries" /></Col>
-                      <Col><NumField name="us_agencies" /></Col>
-                      <Col><NumField name="subtotal_loan_fund" /></Col>
-                      <Col />
-                    </Row>
-                    <h2>Investment totals</h2>
-                    <Row>
+                      <NumField name="inventory_prepaid_items_and_other_assets" />
+                      <NumField name="notes_receivable_due_within_1_year" />
+                      <NumField name="notes_receivable_due_after_1_year" />
+
+                      <NumField name="security_deposits" />
+                      <NumField name="cash_held_by_investment_managers" />
+
+                      <h2>Investments</h2>
+                      <NumField name="mutual_funds" />
+                      <NumField name="commingled_funds" />
+                      <NumField name="hedge_funds" />
+                      <NumField name="private_equity" />
+
+                      <NumField name="common_trust_funds" />
+                      <NumField name="common_and_preferred_stocks" />
+                      <NumField name="private_debt" />
+                      <NumField name="subtotal_investment" />
+                      <NumField name="others" />
+
+                      <h3>Loan Funds</h3>
+
+                      <NumField name="us_treasuries" />
+                      <NumField name="us_agencies" />
+                      <NumField name="subtotal_loan_fund" />
+
+                      <h2>Investment totals</h2>
+                      <NumField name="investments" />
+                      <h2>Capital Assets, Net:</h2>
+                      <h3>Assets</h3>
+                      <NumField name="buildings" />
+                      <NumField name="leasehold_improvements" />
+                      <NumField name="furniture_and_equipment" />
+
+                      <NumField name="less_accumulated_depreciation" />
+                      <NumField name="net_fixed_assets" />
+
+                      <h3>Land:</h3>
+
+                      <NumField name="landA" />
+                      <NumField name="landB" />
+                      <NumField name="construction_in_progress" />
+                      <NumField name="subtotal_capital_assets" />
+
+                      <h3>Limited liability Company B&apos;s assets</h3>
+                      <NumField name="companyB_buildings" />
+                      <NumField name="companyB_leasehold_improvements" />
+                      <NumField name="companyB_furniture_and_equipment" />
+
+                      <NumField name="companyB_vehicles" />
+                      <NumField name="companyB_less_accumulated_depreciation" />
+                      <NumField name="companyB_net_fixed_assets" />
+
+                      <h3>Liability for Company B </h3>
+                      <NumField name="land" />
+                      <NumField name="subtotal_limited_liability_companyB_assets" disabled />
+                      <NumField name="capital_assets_net" />
+
+                      <h2>Restricted Cash and Total Other Assets</h2>
+
+                      <NumField name="restricted_cash" />
+                      <NumField name="total_other_assets" disabled />
+
+                      <h2>Total Liabilities and Deferred Outflows of Resources</h2>
+                      <NumField name="deferred_outflows_of_resources_related_to_pension" />
+                      <NumField name="deferred_outflows_of_resources_related_to_ompeb" />
+                      <NumField name="total_assets_and_deferred_outflows_of_resources" disabled />
+
+                      <h1>Liabilities</h1>
+                      <NumField name="accounts_payable_and_accrued_expenses" />
+                      <NumField name="due_to_funds" />
+                      <NumField name="due_to_other_funds" />
+
+                      <h2>Long Term Liabilities - Due Within 1 Year </h2>
+                      <NumField name="accrued_vacation" />
+                      <NumField name="workers_compensation" />
+                      <NumField name="capital_lease_obligations" />
+                      <NumField name="net_pension_liability" />
+                      <NumField name="notes_payable_buildingA_acquisition" />
+                      <NumField name="line_of_credit_buildingA" />
+
+                      <h2>Long Term Liabilities - Due After 1 Year </h2>
+                      <NumField name="accrued_vacation_after_1_year" />
+                      <NumField name="workers_compensation_after_1_year" />
+                      <NumField name="capital_lease_obligations_after_1_year" />
+                      <NumField name="notes_payable_buildingA_acquisition_after_1_year" />
+                      <NumField name="line_of_credit_buildingA_after_1_year" />
+                      <NumField name="total_net_assets_or_fund_balances" disabled />
+
+                      <h2>Commitments and Contingencies Net Position</h2>
+
+                      <NumField name="unrestricted" />
+                      <NumField name="temporarily_restricted" />
+                      <NumField name="permanently_restricted" />
+
+                      <h2>Investments</h2>
+
+                      <NumField name="land_buildings_and_equipment" />
+                      <NumField name="investments_publicly_traded_securities" />
+                      <NumField name="investments_other_securities" />
+
+                      <NumField name="investments_program_related" />
+                      <NumField name="intangible_assets" />
+                      <NumField name="other_assets" />
+
+                      <SubmitField value={docId ? 'Update' : 'Submit'} />
+                      <ErrorsField />
+                    </Col>
+                  </Card.Body>
+                </Card>
+              </AutoForm>
+            </Col>
+            <Col>
+              <AutoForm
+                ref={ref => { fRef = ref; }}
+                schema={bridge}
+                model={formData} // Use formData here to pre-fill the form
+                onSubmit={data => submit(data, fRef)}
+              >
+                <Card>
+                  <Card.Body>
+                    <Col>
+                      <Row>
+                        {/* Year SelectField - When year changes, fetch data for that year */}
+                        <SelectField
+                          name="year"
+                          value={selectedYear.toString()}
+                          onChange={(value) => {
+                            setSelectedYear(value);
+                            const year = parseInt(value, 10);
+                            setSelectedYear(year);
+                          }}
+                        />
+                      </Row>
+                      <h1>Cash and Cash Equivalents</h1>
+                      <NumField name="petty_cash" />
+                      <NumField name="cash" />
+                      <NumField name="cash_in_banks" />
+                      <NumField name="cash_total" disabled />
+
+                      <h2>Other Assets</h2>
+
+                      <NumField name="accounts_receivable" />
+                      <NumField name="due_from_other_funds" />
+                      <NumField name="interest_and_dividends_receivable" />
+
+                      <NumField name="inventory_prepaid_items_and_other_assets" />
+                      <NumField name="notes_receivable_due_within_1_year" />
+                      <NumField name="notes_receivable_due_after_1_year" />
+
+                      <NumField name="security_deposits" />
+                      <NumField name="cash_held_by_investment_managers" />
+
+                      <h2>Investments</h2>
+                      <NumField name="mutual_funds" />
+                      <NumField name="commingled_funds" />
+                      <NumField name="hedge_funds" />
+                      <NumField name="private_equity" />
+
+                      <NumField name="common_trust_funds" />
+                      <NumField name="common_and_preferred_stocks" />
+                      <NumField name="private_debt" />
+                      <NumField name="subtotal_investment" />
+                      <NumField name="others" />
+
+                      <h3>Loan Funds</h3>
+
+                      <NumField name="us_treasuries" />
+                      <NumField name="us_agencies" />
+                      <NumField name="subtotal_loan_fund" />
+
+                      <h2>Investment totals</h2>
+                      <NumField name="investments" />
+                      <h2>Capital Assets, Net:</h2>
+                      <h3>Assets</h3>
+                      <NumField name="buildings" />
+                      <NumField name="leasehold_improvements" />
+                      <NumField name="furniture_and_equipment" />
+
+                      <NumField name="less_accumulated_depreciation" />
+                      <NumField name="net_fixed_assets" />
+
+                      <h3>Land:</h3>
+
+                      <NumField name="landA" />
+                      <NumField name="landB" />
+                      <NumField name="construction_in_progress" />
+                      <NumField name="subtotal_capital_assets" />
+
+                      <h3>Limited liability Company B&apos;s assets</h3>
+                      <NumField name="companyB_buildings" />
+                      <NumField name="companyB_leasehold_improvements" />
+                      <NumField name="companyB_furniture_and_equipment" />
+
+                      <NumField name="companyB_vehicles" />
+                      <NumField name="companyB_less_accumulated_depreciation" />
+                      <NumField name="companyB_net_fixed_assets" />
+
+                      <h3>Liability for Company B </h3>
+                      <NumField name="land" />
+                      <NumField name="subtotal_limited_liability_companyB_assets" disabled />
+                      <NumField name="capital_assets_net" />
+
+                      <h2>Restricted Cash and Total Other Assets</h2>
+
+                      <NumField name="restricted_cash" />
+                      <NumField name="total_other_assets" disabled />
+
+                      <h2>Total Liabilities and Deferred Outflows of Resources</h2>
+                      <NumField name="deferred_outflows_of_resources_related_to_pension" />
+                      <NumField name="deferred_outflows_of_resources_related_to_ompeb" />
+                      <NumField name="total_assets_and_deferred_outflows_of_resources" disabled />
+
+                      <h1>Liabilities</h1>
+                      <NumField name="accounts_payable_and_accrued_expenses" />
+                      <NumField name="due_to_funds" />
+                      <NumField name="due_to_other_funds" />
+
+                      <h2>Long Term Liabilities - Due Within 1 Year </h2>
+                      <NumField name="accrued_vacation" />
+                      <NumField name="workers_compensation" />
+                      <NumField name="capital_lease_obligations" />
+                      <NumField name="net_pension_liability" />
+                      <NumField name="notes_payable_buildingA_acquisition" />
+                      <NumField name="line_of_credit_buildingA" />
+
+                      <h2>Long Term Liabilities - Due After 1 Year </h2>
+                      <NumField name="accrued_vacation_after_1_year" />
+                      <NumField name="workers_compensation_after_1_year" />
+                      <NumField name="capital_lease_obligations_after_1_year" />
+                      <NumField name="notes_payable_buildingA_acquisition_after_1_year" />
+                      <NumField name="line_of_credit_buildingA_after_1_year" />
+                      <NumField name="total_net_assets_or_fund_balances" disabled />
+
+                      <h2>Commitments and Contingencies Net Position</h2>
+
+                      <NumField name="unrestricted" />
+                      <NumField name="temporarily_restricted" />
+                      <NumField name="permanently_restricted" />
+
+                      <h2>Investments</h2>
+
+                      <NumField name="land_buildings_and_equipment" />
+                      <NumField name="investments_publicly_traded_securities" />
+                      <NumField name="investments_other_securities" />
+
+                      <NumField name="investments_program_related" />
+                      <NumField name="intangible_assets" />
+                      <NumField name="other_assets" />
+
+                      <SubmitField value={docId ? 'Update' : 'Submit'} />
+                      <ErrorsField />
+                    </Col>
+                  </Card.Body>
+                </Card>
+              </AutoForm>
+            </Col>
+            <Col>
+              <AutoForm
+                ref={ref => { fRef = ref; }}
+                schema={bridge}
+                model={formData} // Use formData here to pre-fill the form
+                onSubmit={data => submit(data, fRef)}
+              >
+                <Card>
+                  <Card.Body>
+                    <Col>
+                      <Row>
+                        {/* Year SelectField - When year changes, fetch data for that year */}
+                        <SelectField
+                          name="year"
+                          value={selectedYear.toString()}
+                          onChange={(value) => {
+                            setSelectedYear(value);
+                            const year = parseInt(value, 10);
+                            setSelectedYear(year);
+                          }}
+                        />
+                      </Row>
+                      <h1>Cash and Cash Equivalents</h1>
+                      <NumField name="petty_cash" />
+                      <NumField name="cash" />
+                      <NumField name="cash_in_banks" />
+                      <NumField name="cash_total" disabled />
+
+                      <h2>Other Assets</h2>
+
+                      <NumField name="accounts_receivable" />
+                      <NumField name="due_from_other_funds" />
+                      <NumField name="interest_and_dividends_receivable" />
+
+                      <NumField name="inventory_prepaid_items_and_other_assets" />
+                      <NumField name="notes_receivable_due_within_1_year" />
+                      <NumField name="notes_receivable_due_after_1_year" />
+
+                      <NumField name="security_deposits" />
+                      <NumField name="cash_held_by_investment_managers" />
+
+                      <h2>Investments</h2>
+                      <NumField name="mutual_funds" />
+                      <NumField name="commingled_funds" />
+                      <NumField name="hedge_funds" />
+                      <NumField name="private_equity" />
+
+                      <NumField name="common_trust_funds" />
+                      <NumField name="common_and_preferred_stocks" />
+                      <NumField name="private_debt" />
+                      <NumField name="subtotal_investment" />
+                      <NumField name="others" />
+
+                      <h3>Loan Funds</h3>
+
+                      <NumField name="us_treasuries" />
+                      <NumField name="us_agencies" />
+                      <NumField name="subtotal_loan_fund" />
+
+                      <h2>Investment totals</h2>
+                      <NumField name="investments" />
+                      <h2>Capital Assets, Net:</h2>
+                      <h3>Assets</h3>
+                      <NumField name="buildings" />
+                      <NumField name="leasehold_improvements" />
+                      <NumField name="furniture_and_equipment" />
+
+                      <NumField name="less_accumulated_depreciation" />
+                      <NumField name="net_fixed_assets" />
+
+                      <h3>Land:</h3>
+
+                      <NumField name="landA" />
+                      <NumField name="landB" />
+                      <NumField name="construction_in_progress" />
+                      <NumField name="subtotal_capital_assets" />
+
+                      <h3>Limited liability Company B&apos;s assets</h3>
+                      <NumField name="companyB_buildings" />
+                      <NumField name="companyB_leasehold_improvements" />
+                      <NumField name="companyB_furniture_and_equipment" />
+
+                      <NumField name="companyB_vehicles" />
+                      <NumField name="companyB_less_accumulated_depreciation" />
+                      <NumField name="companyB_net_fixed_assets" />
+
+                      <h3>Liability for Company B </h3>
+                      <NumField name="land" />
+                      <NumField name="subtotal_limited_liability_companyB_assets" disabled />
+                      <NumField name="capital_assets_net" />
+
+                      <h2>Restricted Cash and Total Other Assets</h2>
+
+                      <NumField name="restricted_cash" />
+                      <NumField name="total_other_assets" disabled />
+
+                      <h2>Total Liabilities and Deferred Outflows of Resources</h2>
+                      <NumField name="deferred_outflows_of_resources_related_to_pension" />
+                      <NumField name="deferred_outflows_of_resources_related_to_ompeb" />
+                      <NumField name="total_assets_and_deferred_outflows_of_resources" disabled />
+
+                      <h1>Liabilities</h1>
+                      <NumField name="accounts_payable_and_accrued_expenses" />
+                      <NumField name="due_to_funds" />
+                      <NumField name="due_to_other_funds" />
+
+                      <h2>Long Term Liabilities - Due Within 1 Year </h2>
+                      <NumField name="accrued_vacation" />
+                      <NumField name="workers_compensation" />
+                      <NumField name="capital_lease_obligations" />
+                      <NumField name="net_pension_liability" />
+                      <NumField name="notes_payable_buildingA_acquisition" />
+                      <NumField name="line_of_credit_buildingA" />
+
+                      <h2>Long Term Liabilities - Due After 1 Year </h2>
+                      <NumField name="accrued_vacation_after_1_year" />
+                      <NumField name="workers_compensation_after_1_year" />
+                      <NumField name="capital_lease_obligations_after_1_year" />
+                      <NumField name="notes_payable_buildingA_acquisition_after_1_year" />
+                      <NumField name="line_of_credit_buildingA_after_1_year" />
+                      <NumField name="total_net_assets_or_fund_balances" disabled />
+
+                      <h2>Commitments and Contingencies Net Position</h2>
+
+                      <NumField name="unrestricted" />
+                      <NumField name="temporarily_restricted" />
+                      <NumField name="permanently_restricted" />
+
+                      <h2>Investments</h2>
+
+                      <NumField name="land_buildings_and_equipment" />
+                      <NumField name="investments_publicly_traded_securities" />
+                      <NumField name="investments_other_securities" />
+
+                      <NumField name="investments_program_related" />
+                      <NumField name="intangible_assets" />
+                      <NumField name="other_assets" />
+
+                      <SubmitField value={docId ? 'Update' : 'Submit'} />
+                      <ErrorsField />
+                    </Col>
+                  </Card.Body>
+                </Card>
+              </AutoForm>
+            </Col>
+            <Col>
+              <AutoForm
+                ref={ref => { fRef = ref; }}
+                schema={bridge}
+                model={formData} // Use formData here to pre-fill the form
+                onSubmit={data => submit(data, fRef)}
+              >
+                <Card>
+                  <Card.Body>
+                    <Col>
+                      <Row>
+                        {/* Year SelectField - When year changes, fetch data for that year */}
+                        <SelectField
+                          name="year"
+                          value={selectedYear.toString()}
+                          onChange={(value) => {
+                            setSelectedYear(value);
+                            const year = parseInt(value, 10);
+                            setSelectedYear(year);
+                          }}
+                        />
+                      </Row>
+                      <h1>Cash and Cash Equivalents</h1>
+                      <NumField name="petty_cash" />
+                      <NumField name="cash" />
+                      <NumField name="cash_in_banks" />
+                      <NumField name="cash_total" disabled />
+
+                      <h2>Other Assets</h2>
+
+                      <NumField name="accounts_receivable" />
+                      <NumField name="due_from_other_funds" />
+                      <NumField name="interest_and_dividends_receivable" />
+
+                      <NumField name="inventory_prepaid_items_and_other_assets" />
+                      <NumField name="notes_receivable_due_within_1_year" />
+                      <NumField name="notes_receivable_due_after_1_year" />
+
+                      <NumField name="security_deposits" />
+                      <NumField name="cash_held_by_investment_managers" />
+
+                      <h2>Investments</h2>
+                      <NumField name="mutual_funds" />
+                      <NumField name="commingled_funds" />
+                      <NumField name="hedge_funds" />
+                      <NumField name="private_equity" />
+
+                      <NumField name="common_trust_funds" />
+                      <NumField name="common_and_preferred_stocks" />
+                      <NumField name="private_debt" />
+                      <NumField name="subtotal_investment" />
+                      <NumField name="others" />
+
+                      <h3>Loan Funds</h3>
+
+                      <NumField name="us_treasuries" />
+                      <NumField name="us_agencies" />
+                      <NumField name="subtotal_loan_fund" />
+
+                      <h2>Investment totals</h2>
+                      <NumField name="investments" />
+                      <h2>Capital Assets, Net:</h2>
+                      <h3>Assets</h3>
+                      <NumField name="buildings" />
+                      <NumField name="leasehold_improvements" />
+                      <NumField name="furniture_and_equipment" />
+
+                      <NumField name="less_accumulated_depreciation" />
+                      <NumField name="net_fixed_assets" />
+
+                      <h3>Land:</h3>
+
+                      <NumField name="landA" />
+                      <NumField name="landB" />
+                      <NumField name="construction_in_progress" />
+                      <NumField name="subtotal_capital_assets" />
+
+                      <h3>Limited liability Company B&apos;s assets</h3>
+                      <NumField name="companyB_buildings" />
+                      <NumField name="companyB_leasehold_improvements" />
+                      <NumField name="companyB_furniture_and_equipment" />
+
+                      <NumField name="companyB_vehicles" />
+                      <NumField name="companyB_less_accumulated_depreciation" />
+                      <NumField name="companyB_net_fixed_assets" />
+
+                      <h3>Liability for Company B </h3>
+                      <NumField name="land" />
+                      <NumField name="subtotal_limited_liability_companyB_assets" disabled />
+                      <NumField name="capital_assets_net" />
+
+                      <h2>Restricted Cash and Total Other Assets</h2>
+
+                      <NumField name="restricted_cash" />
+                      <NumField name="total_other_assets" disabled />
+
+                      <h2>Total Liabilities and Deferred Outflows of Resources</h2>
+                      <NumField name="deferred_outflows_of_resources_related_to_pension" />
+                      <NumField name="deferred_outflows_of_resources_related_to_ompeb" />
+                      <NumField name="total_assets_and_deferred_outflows_of_resources" disabled />
+
+                      <h1>Liabilities</h1>
+                      <NumField name="accounts_payable_and_accrued_expenses" />
+                      <NumField name="due_to_funds" />
+                      <NumField name="due_to_other_funds" />
+
+                      <h2>Long Term Liabilities - Due Within 1 Year </h2>
+                      <NumField name="accrued_vacation" />
+                      <NumField name="workers_compensation" />
+                      <NumField name="capital_lease_obligations" />
+                      <NumField name="net_pension_liability" />
+                      <NumField name="notes_payable_buildingA_acquisition" />
+                      <NumField name="line_of_credit_buildingA" />
+
+                      <h2>Long Term Liabilities - Due After 1 Year </h2>
+                      <NumField name="accrued_vacation_after_1_year" />
+                      <NumField name="workers_compensation_after_1_year" />
+                      <NumField name="capital_lease_obligations_after_1_year" />
+                      <NumField name="notes_payable_buildingA_acquisition_after_1_year" />
+                      <NumField name="line_of_credit_buildingA_after_1_year" />
+                      <NumField name="total_net_assets_or_fund_balances" disabled />
+
+                      <h2>Commitments and Contingencies Net Position</h2>
+
+                      <NumField name="unrestricted" />
+                      <NumField name="temporarily_restricted" />
+                      <NumField name="permanently_restricted" />
+
+                      <h2>Investments</h2>
+
+                      <NumField name="land_buildings_and_equipment" />
+                      <NumField name="investments_publicly_traded_securities" />
+                      <NumField name="investments_other_securities" />
+
+                      <NumField name="investments_program_related" />
+                      <NumField name="intangible_assets" />
+                      <NumField name="other_assets" />
+
+                      <SubmitField value={docId ? 'Update' : 'Submit'} />
+                      <ErrorsField />
+                    </Col>
+                  </Card.Body>
+                </Card>
+              </AutoForm>
+            </Col>
+            <Col>
+              <AutoForm
+                ref={ref => { fRef = ref; }}
+                schema={bridge}
+                model={formData} // Use formData here to pre-fill the form
+                onSubmit={data => submit(data, fRef)}
+              >
+                <Card>
+                  <Card.Body>
+                    <Col>
+                      <Row>
+                        {/* Year SelectField - When year changes, fetch data for that year */}
+                        <SelectField
+                          name="year"
+                          value={selectedYear.toString()}
+                          onChange={(value) => {
+                            setSelectedYear(value);
+                            const year = parseInt(value, 10);
+                            setSelectedYear(year);
+                          }}
+                        />
+                      </Row>
+                      <h1>Cash and Cash Equivalents</h1>
+                      <NumField name="petty_cash" />
+                      <NumField name="cash" />
+                      <NumField name="cash_in_banks" />
+                      <NumField name="cash_total" disabled />
+
+                      <h2>Other Assets</h2>
+
+                      <NumField name="accounts_receivable" />
+                      <NumField name="due_from_other_funds" />
+                      <NumField name="interest_and_dividends_receivable" />
+
+                      <NumField name="inventory_prepaid_items_and_other_assets" />
+                      <NumField name="notes_receivable_due_within_1_year" />
+                      <NumField name="notes_receivable_due_after_1_year" />
+
+                      <NumField name="security_deposits" />
+                      <NumField name="cash_held_by_investment_managers" />
+
+                      <h2>Investments</h2>
+                      <NumField name="mutual_funds" />
+                      <NumField name="commingled_funds" />
+                      <NumField name="hedge_funds" />
+                      <NumField name="private_equity" />
+
+                      <NumField name="common_trust_funds" />
+                      <NumField name="common_and_preferred_stocks" />
+                      <NumField name="private_debt" />
+                      <NumField name="subtotal_investment" />
+                      <NumField name="others" />
+
+                      <h3>Loan Funds</h3>
+
+                      <NumField name="us_treasuries" />
+                      <NumField name="us_agencies" />
+                      <NumField name="subtotal_loan_fund" />
+
+                      <h2>Investment totals</h2>
                       <Col><NumField name="investments" /></Col>
-                      <Col />
-                      <Col />
-                      <Col />
-                    </Row>
-                    <h2>Capital Assets, Net:</h2>
-                    <h3>Assets</h3>
-                    <Row>
-                      <Col><NumField name="buildings" /></Col>
-                      <Col><NumField name="leasehold_improvements" /></Col>
-                      <Col><NumField name="furniture_and_equipment" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="less_accumulated_depreciation" /></Col>
-                      <Col><NumField name="net_fixed_assets" /></Col>
-                      <Col />
-                    </Row>
+                      <h2>Capital Assets, Net:</h2>
+                      <h3>Assets</h3>
+                      <NumField name="buildings" />
+                      <NumField name="leasehold_improvements" />
+                      <NumField name="furniture_and_equipment" />
 
-                    <h3>Land:</h3>
-                    <Row>
-                      <Col><NumField name="landA" /></Col>
-                      <Col><NumField name="landB" /></Col>
-                      <Col><NumField name="construction_in_progress" /></Col>
-                      <Col><NumField name="subtotal_capital_assets" /></Col>
-                    </Row>
-                    <h3>Limited liability Company B&apos;s assets</h3>
-                    <Row>
-                      <Col><NumField name="companyB_buildings" /></Col>
-                      <Col><NumField name="companyB_leasehold_improvements" /></Col>
-                      <Col><NumField name="companyB_furniture_and_equipment" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="companyB_vehicles" /></Col>
-                      <Col><NumField name="companyB_less_accumulated_depreciation" /></Col>
-                      <Col><NumField name="companyB_net_fixed_assets" /></Col>
-                    </Row>
-                    <h3>Liability for Company B </h3>
-                    <Row>
-                      <Col><NumField name="land" /></Col>
-                      <Col><NumField name="subtotal_limited_liability_companyB_assets" disabled /></Col>
-                      <Col><NumField name="capital_assets_net" /></Col>
-                    </Row>
-                    <h2>Restricted Cash and Total Other Assets</h2>
-                    <Row>
-                      <Col><NumField name="restricted_cash" /></Col>
-                      <Col><NumField name="total_other_assets" disabled /></Col>
-                    </Row>
-                    <h2>Total Liabilities and Deferred Outflows of Resources</h2>
-                    <Row>
-                      <Col><NumField name="deferred_outflows_of_resources_related_to_pension" /></Col>
-                      <Col><NumField name="deferred_outflows_of_resources_related_to_ompeb" /></Col>
-                      <Col><NumField name="total_assets_and_deferred_outflows_of_resources" disabled /></Col>
-                    </Row>
-                    <h1>Liabilities</h1>
-                    <Row><Col><NumField name="accounts_payable_and_accrued_expenses" /></Col>
-                      <Col><NumField name="due_to_funds" /></Col>
-                      <Col><NumField name="due_to_other_funds" /></Col>
-                    </Row>
-                    <h2>Long Term Liabilities - Due Within 1 Year </h2>
-                    <Row>
-                      <Col><NumField name="accrued_vacation" /></Col>
-                      <Col><NumField name="workers_compensation" /></Col>
-                      <Col><NumField name="capital_lease_obligations" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="net_pension_liability" /></Col>
-                      <Col><NumField name="notes_payable_buildingA_acquisition" /></Col>
-                      <Col><NumField name="line_of_credit_buildingA" /></Col>
+                      <NumField name="less_accumulated_depreciation" />
+                      <NumField name="net_fixed_assets" />
 
-                    </Row>
-                    <h2>Long Term Liabilities - Due After 1 Year </h2>
-                    <Row>
-                      <Col><NumField name="accrued_vacation_after_1_year" /></Col>
-                      <Col><NumField name="workers_compensation_after_1_year" /></Col>
-                      <Col><NumField name="capital_lease_obligations_after_1_year" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="notes_payable_buildingA_acquisition_after_1_year" /></Col>
-                      <Col><NumField name="line_of_credit_buildingA_after_1_year" /></Col>
-                      <Col><NumField name="total_net_assets_or_fund_balances" disabled /></Col>
-                    </Row>
-                    <h2>Commitments and Contingencies Net Position</h2>
-                    <Row>
-                      <Col><NumField name="unrestricted" /></Col>
-                      <Col><NumField name="temporarily_restricted" /></Col>
-                      <Col><NumField name="permanently_restricted" /></Col>
-                      <Col />
-                    </Row>
+                      <h3>Land:</h3>
 
-                    <h2>Investments</h2>
-                    <Row>
-                      <Col><NumField name="land_buildings_and_equipment" /></Col>
-                      <Col><NumField name="investments_publicly_traded_securities" /></Col>
-                      <Col><NumField name="investments_other_securities" /></Col>
-                    </Row>
-                    <Row>
-                      <Col><NumField name="investments_program_related" /></Col>
-                      <Col><NumField name="intangible_assets" /></Col>
-                      <Col><NumField name="other_assets" /></Col>
-                    </Row>
-                    <SubmitField value={docId ? 'Update' : 'Submit'} />
-                    <ErrorsField />
-                  </Row>
-                </Card.Body>
-              </Card>
-            </AutoForm>
-          </Col>
+                      <NumField name="landA" />
+                      <NumField name="landB" />
+                      <NumField name="construction_in_progress" />
+                      <NumField name="subtotal_capital_assets" />
+
+                      <h3>Limited liability Company B&apos;s assets</h3>
+                      <NumField name="companyB_buildings" />
+                      <NumField name="companyB_leasehold_improvements" />
+                      <NumField name="companyB_furniture_and_equipment" />
+
+                      <NumField name="companyB_vehicles" />
+                      <NumField name="companyB_less_accumulated_depreciation" />
+                      <NumField name="companyB_net_fixed_assets" />
+
+                      <h3>Liability for Company B </h3>
+                      <NumField name="land" />
+                      <NumField name="subtotal_limited_liability_companyB_assets" disabled />
+                      <NumField name="capital_assets_net" />
+
+                      <h2>Restricted Cash and Total Other Assets</h2>
+
+                      <NumField name="restricted_cash" />
+                      <NumField name="total_other_assets" disabled />
+
+                      <h2>Total Liabilities and Deferred Outflows of Resources</h2>
+                      <NumField name="deferred_outflows_of_resources_related_to_pension" />
+                      <NumField name="deferred_outflows_of_resources_related_to_ompeb" />
+                      <NumField name="total_assets_and_deferred_outflows_of_resources" disabled />
+
+                      <h1>Liabilities</h1>
+                      <NumField name="accounts_payable_and_accrued_expenses" />
+                      <NumField name="due_to_funds" />
+                      <NumField name="due_to_other_funds" />
+
+                      <h2>Long Term Liabilities - Due Within 1 Year </h2>
+                      <NumField name="accrued_vacation" />
+                      <NumField name="workers_compensation" />
+                      <NumField name="capital_lease_obligations" />
+                      <NumField name="net_pension_liability" />
+                      <NumField name="notes_payable_buildingA_acquisition" />
+                      <NumField name="line_of_credit_buildingA" />
+
+                      <h2>Long Term Liabilities - Due After 1 Year </h2>
+                      <NumField name="accrued_vacation_after_1_year" />
+                      <NumField name="workers_compensation_after_1_year" />
+                      <NumField name="capital_lease_obligations_after_1_year" />
+                      <NumField name="notes_payable_buildingA_acquisition_after_1_year" />
+                      <NumField name="line_of_credit_buildingA_after_1_year" />
+                      <NumField name="total_net_assets_or_fund_balances" disabled />
+
+                      <h2>Commitments and Contingencies Net Position</h2>
+
+                      <NumField name="unrestricted" />
+                      <NumField name="temporarily_restricted" />
+                      <NumField name="permanently_restricted" />
+
+                      <h2>Investments</h2>
+
+                      <NumField name="land_buildings_and_equipment" />
+                      <NumField name="investments_publicly_traded_securities" />
+                      <NumField name="investments_other_securities" />
+
+                      <NumField name="investments_program_related" />
+                      <NumField name="intangible_assets" />
+                      <NumField name="other_assets" />
+
+                      <SubmitField value={docId ? 'Update' : 'Submit'} />
+                      <ErrorsField />
+                    </Col>
+                  </Card.Body>
+                </Card>
+              </AutoForm>
+            </Col>
+          </Row>
         </Row>
       ) : (
         <Row className="justify-content-center">
