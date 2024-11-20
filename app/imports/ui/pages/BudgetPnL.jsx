@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Card, Col, Container, Row, Table } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import { AutoForm, ErrorsField, NumField, SelectField, SubmitField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -24,7 +24,7 @@ modifiedSchema.extend({
 const bridge = new SimpleSchema2Bridge(modifiedSchema);
 
 const BudgetPnLPage = () => {
-  const { ready, budgetPnL } = useTracker(() => {
+  const { ready } = useTracker(() => {
     const subscription = Meteor.subscribe('AdminPublishBudgetPnLs');
     return {
       ready: subscription.ready(),
