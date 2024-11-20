@@ -67,7 +67,7 @@ const NavBar = () => {
                 )}
                 {isCFO && (
                   <Nav.Link id="4001-nav" as={NavLink} to="/4001">
-                      4001
+                    4001
                   </Nav.Link>
                 )}
                 {/* Updated Upload CSV Link */}
