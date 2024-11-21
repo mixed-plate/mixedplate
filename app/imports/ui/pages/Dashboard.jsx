@@ -20,7 +20,7 @@ const Dashboard = () => {
       auditedBalanceSheetData: AuditedBalanceSheets.collection.find({}, { sort: { year: -1 } }).fetch(),
       availableYears: [...new Set([
         ...BudgetPnLs.collection.find().fetch().map(b => b.year),
-        ...AuditedBalanceSheets.collection.find().fetch().map(a => a.year)
+        ...AuditedBalanceSheets.collection.find().fetch().map(a => a.year),
       ])].sort((a, b) => b - a),
     };
   }, []);
