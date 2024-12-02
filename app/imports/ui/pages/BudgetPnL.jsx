@@ -79,11 +79,9 @@ const BudgetPnLPage = () => {
   return (
     <Container className="py-3">
       {ready ? (
-        <Row className="justify-content-center">
-          <Col xs={12}>
-            <Col className="text-center">
-              <h2>Budget PnL</h2>
-            </Col>
+        <Row className="justify-content-center mb-4">
+          <h2 className="text-center">Budget Panel</h2>
+          <Col>
             <AutoForm
               ref={(ref) => {
                 fRef = ref;
@@ -94,8 +92,8 @@ const BudgetPnLPage = () => {
             >
               <Card>
                 <Card.Body>
-                  <Row>
-                    <Row>
+                  <Col>
+                    <Row className="mb-3">
                       {/* Year SelectField - When year changes, fetch data for that year */}
                       <SelectField
                         name="year"
@@ -108,39 +106,292 @@ const BudgetPnLPage = () => {
                     </Row>
                     <h2>Revenue</h2>
                     <Row>
-                      <Col><NumField name="five_percent_investment_portfolio" /></Col>
-                      <Col><NumField name="revenues" /></Col>
-                      <Col><NumField name="general_fund" /></Col>
-                      <Col><NumField name="core_operating_budget_not_authorized" /></Col>
-                      <Col><NumField name="TotalRevenue" disabled /></Col>
+                      <Row className="mb-3">
+                        <h4>Revenue</h4>
+                        <NumField name="five_percent_investment_portfolio" />
+                        <NumField name="revenues" />
+                        <NumField name="general_fund" />
+                        <NumField name="core_operating_budget_not_authorized" />
+                        <NumField name="TotalRevenue" disabled />
+                      </Row>
+                      <h2>Expenses</h2>
+                      <Row className="mb-3">
+                        <h4>Expenses</h4>
+                        <NumField name="personnel" />
+                        <NumField name="salary" />
+                        <NumField name="program" />
+                        <NumField name="contract" />
+                        <NumField name="grants" />
+                        <NumField name="travel" />
+                        <NumField name="equipment" />
+                        <NumField name="overhead" />
+                        <NumField name="debt_service" />
+                        <NumField name="other" />
+                        <NumField name="totalExpenses" disabled />
+                      </Row>
+                      <h2>Surplus (Deficit)</h2>
+                      <Row className="mb-3">
+                        <h4>Surplus (Deficit)</h4>
+                        <NumField name="management" />
+                        <NumField name="support_services" />
+                        <NumField name="beneficiary_advocacy" />
+                      </Row>
+                      <SubmitField value="Submit" />
+                      <ErrorsField />
                     </Row>
-                    <h2>Expenses</h2>
+                  </Col>
+                </Card.Body>
+              </Card>
+            </AutoForm>
+          </Col>
+          <Col>
+            <AutoForm
+              ref={(ref) => {
+                fRef = ref;
+              }}
+              schema={bridge}
+              model={formData}
+              onSubmit={(submittedData) => submit(submittedData, fRef)}
+            >
+              <Card>
+                <Card.Body>
+                  <Col>
+                    <Row className="mb-3">
+                      {/* Year SelectField - When year changes, fetch data for that year */}
+                      <SelectField
+                        name="year"
+                        value={selectedYear.toString()}
+                        onChange={(value) => {
+                          const year = parseInt(value, 10);
+                          setSelectedYear(year);
+                        }}
+                      />
+                    </Row>
+                    <h2>Revenue</h2>
                     <Row>
-                      <Col><NumField name="personnel" /></Col>
-                      <Col><NumField name="salary" /></Col>
-                      <Col><NumField name="program" /></Col>
-                      <Col><NumField name="contract" /></Col>
+                      <Row className="mb-3">
+                        <h4>Revenue</h4>
+                        <NumField name="five_percent_investment_portfolio" />
+                        <NumField name="revenues" />
+                        <NumField name="general_fund" />
+                        <NumField name="core_operating_budget_not_authorized" />
+                        <NumField name="TotalRevenue" disabled />
+                      </Row>
+                      <h2>Expenses</h2>
+                      <Row className="mb-3">
+                        <h4>Expenses</h4>
+                        <NumField name="personnel" />
+                        <NumField name="salary" />
+                        <NumField name="program" />
+                        <NumField name="contract" />
+                        <NumField name="grants" />
+                        <NumField name="travel" />
+                        <NumField name="equipment" />
+                        <NumField name="overhead" />
+                        <NumField name="debt_service" />
+                        <NumField name="other" />
+                        <NumField name="totalExpenses" disabled />
+                      </Row>
+                      <h2>Surplus (Deficit)</h2>
+                      <Row className="mb-3">
+                        <h4>Surplus (Deficit)</h4>
+                        <NumField name="management" />
+                        <NumField name="support_services" />
+                        <NumField name="beneficiary_advocacy" />
+                      </Row>
+                      <SubmitField value="Submit" />
+                      <ErrorsField />
                     </Row>
+                  </Col>
+                </Card.Body>
+              </Card>
+            </AutoForm>
+          </Col>
+          <Col>
+            <AutoForm
+              ref={(ref) => {
+                fRef = ref;
+              }}
+              schema={bridge}
+              model={formData}
+              onSubmit={(submittedData) => submit(submittedData, fRef)}
+            >
+              <Card>
+                <Card.Body>
+                  <Col>
+                    <Row className="mb-3">
+                      {/* Year SelectField - When year changes, fetch data for that year */}
+                      <SelectField
+                        name="year"
+                        value={selectedYear.toString()}
+                        onChange={(value) => {
+                          const year = parseInt(value, 10);
+                          setSelectedYear(year);
+                        }}
+                      />
+                    </Row>
+                    <h2>Revenue</h2>
                     <Row>
-                      <Col><NumField name="grants" /></Col>
-                      <Col><NumField name="travel" /></Col>
-                      <Col><NumField name="equipment" /></Col>
-                      <Col><NumField name="overhead" /></Col>
+                      <Row className="mb-3">
+                        <h4>Revenue</h4>
+                        <NumField name="five_percent_investment_portfolio" />
+                        <NumField name="revenues" />
+                        <NumField name="general_fund" />
+                        <NumField name="core_operating_budget_not_authorized" />
+                        <NumField name="TotalRevenue" disabled />
+                      </Row>
+                      <h2>Expenses</h2>
+                      <Row className="mb-3">
+                        <h4>Expenses</h4>
+                        <NumField name="personnel" />
+                        <NumField name="salary" />
+                        <NumField name="program" />
+                        <NumField name="contract" />
+                        <NumField name="grants" />
+                        <NumField name="travel" />
+                        <NumField name="equipment" />
+                        <NumField name="overhead" />
+                        <NumField name="debt_service" />
+                        <NumField name="other" />
+                        <NumField name="totalExpenses" disabled />
+                      </Row>
+                      <h2>Surplus (Deficit)</h2>
+                      <Row className="mb-3">
+                        <h4>Surplus (Deficit)</h4>
+                        <NumField name="management" />
+                        <NumField name="support_services" />
+                        <NumField name="beneficiary_advocacy" />
+                      </Row>
+                      <SubmitField value="Submit" />
+                      <ErrorsField />
                     </Row>
+                  </Col>
+                </Card.Body>
+              </Card>
+            </AutoForm>
+          </Col>
+          <Col>
+            <AutoForm
+              ref={(ref) => {
+                fRef = ref;
+              }}
+              schema={bridge}
+              model={formData}
+              onSubmit={(submittedData) => submit(submittedData, fRef)}
+            >
+              <Card>
+                <Card.Body>
+                  <Col>
+                    <Row className="mb-3">
+                      {/* Year SelectField - When year changes, fetch data for that year */}
+                      <SelectField
+                        name="year"
+                        value={selectedYear.toString()}
+                        onChange={(value) => {
+                          const year = parseInt(value, 10);
+                          setSelectedYear(year);
+                        }}
+                      />
+                    </Row>
+                    <h2>Revenue</h2>
                     <Row>
-                      <Col><NumField name="debt_service" /></Col>
-                      <Col><NumField name="other" /></Col>
-                      <Col><NumField name="totalExpenses" disabled /></Col>
+                      <Row className="mb-3">
+                        <h4>Revenue</h4>
+                        <NumField name="five_percent_investment_portfolio" />
+                        <NumField name="revenues" />
+                        <NumField name="general_fund" />
+                        <NumField name="core_operating_budget_not_authorized" />
+                        <NumField name="TotalRevenue" disabled />
+                      </Row>
+                      <h2>Expenses</h2>
+                      <Row className="mb-3">
+                        <h4>Expenses</h4>
+                        <NumField name="personnel" />
+                        <NumField name="salary" />
+                        <NumField name="program" />
+                        <NumField name="contract" />
+                        <NumField name="grants" />
+                        <NumField name="travel" />
+                        <NumField name="equipment" />
+                        <NumField name="overhead" />
+                        <NumField name="debt_service" />
+                        <NumField name="other" />
+                        <NumField name="totalExpenses" disabled />
+                      </Row>
+                      <h2>Surplus (Deficit)</h2>
+                      <Row className="mb-3">
+                        <h4>Surplus (Deficit)</h4>
+                        <NumField name="management" />
+                        <NumField name="support_services" />
+                        <NumField name="beneficiary_advocacy" />
+                      </Row>
+                      <SubmitField value="Submit" />
+                      <ErrorsField />
                     </Row>
-                    <h2>Surplus (Deficit)</h2>
+                  </Col>
+                </Card.Body>
+              </Card>
+            </AutoForm>
+          </Col>
+          <Col>
+            <AutoForm
+              ref={(ref) => {
+                fRef = ref;
+              }}
+              schema={bridge}
+              model={formData}
+              onSubmit={(submittedData) => submit(submittedData, fRef)}
+            >
+              <Card>
+                <Card.Body>
+                  <Col>
+                    <Row className="mb-3">
+                      {/* Year SelectField - When year changes, fetch data for that year */}
+                      <SelectField
+                        name="year"
+                        value={selectedYear.toString()}
+                        onChange={(value) => {
+                          const year = parseInt(value, 10);
+                          setSelectedYear(year);
+                        }}
+                      />
+                    </Row>
+                    <h2>Revenue</h2>
                     <Row>
-                      <Col><NumField name="management" /></Col>
-                      <Col><NumField name="support_services" /></Col>
-                      <Col><NumField name="beneficiary_advocacy" /></Col>
+                      <Row className="mb-3">
+                        <h4>Revenue</h4>
+                        <NumField name="five_percent_investment_portfolio" />
+                        <NumField name="revenues" />
+                        <NumField name="general_fund" />
+                        <NumField name="core_operating_budget_not_authorized" />
+                        <NumField name="TotalRevenue" disabled />
+                      </Row>
+                      <h2>Expenses</h2>
+                      <Row className="mb-3">
+                        <h4>Expenses</h4>
+                        <NumField name="personnel" />
+                        <NumField name="salary" />
+                        <NumField name="program" />
+                        <NumField name="contract" />
+                        <NumField name="grants" />
+                        <NumField name="travel" />
+                        <NumField name="equipment" />
+                        <NumField name="overhead" />
+                        <NumField name="debt_service" />
+                        <NumField name="other" />
+                        <NumField name="totalExpenses" disabled />
+                      </Row>
+                      <h2>Surplus (Deficit)</h2>
+                      <Row className="mb-3">
+                        <h4>Surplus (Deficit)</h4>
+                        <NumField name="management" />
+                        <NumField name="support_services" />
+                        <NumField name="beneficiary_advocacy" />
+                      </Row>
+                      <SubmitField value="Submit" />
+                      <ErrorsField />
                     </Row>
-                    <SubmitField value="Submit" />
-                    <ErrorsField />
-                  </Row>
+                  </Col>
                 </Card.Body>
               </Card>
             </AutoForm>
