@@ -34,7 +34,9 @@ const BudgetPnLPage = () => {
     const fetchedSheet = BudgetPnLs.collection.findOne({ year: selectedYear });
     return {
       ready: subscription.ready(),
+
       budgetSheet: fetchedSheet,
+
     };
   }, [selectedYear]);
 
@@ -90,6 +92,7 @@ const BudgetPnLPage = () => {
               model={formData}
               onSubmit={(submittedData) => submit(submittedData, fRef)}
             >
+
               <Card>
                 <Card.Body>
                   <Col>
