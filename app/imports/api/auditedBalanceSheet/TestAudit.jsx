@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { AuditedBalanceSheet } from './api/AuditBalanceSheet';
 
 const CreateAuditPage = () => {
   const [year, setYear] = useState('');
@@ -7,7 +6,11 @@ const CreateAuditPage = () => {
   // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Year submitted: ${year}`); // Avoid using console.log in production
+    if (!year) {
+      alert('Please enter a valid year.');
+      return;
+    }
+    console.debug(`Year submitted: ${year}`); // Use console.debug for debugging
     // Handle submission logic here
   };
 
@@ -16,6 +19,7 @@ const CreateAuditPage = () => {
       <h1>Create Audit</h1>
       <form onSubmit={handleSubmit}>
         <div>
+          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label htmlFor="year">Year</label>
           <input
             id="year"
