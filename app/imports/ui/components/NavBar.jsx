@@ -42,19 +42,14 @@ const NavBar = () => {
           <Nav className="me-auto justify-content-start">
             {currentUser && (
               <>
-                {/* About Us is available to all logged-in users */}
                 <Nav.Link id="about-us-nav" as={NavLink} to="/aboutus">
                   About Us
                 </Nav.Link>
-
-                {/* Dashboard access for authorized roles */}
                 {canViewDashboard && (
                   <Nav.Link id="dashboard-nav" as={NavLink} to="/dashboard">
                     Dashboard
                   </Nav.Link>
                 )}
-
-                {/* Forms access for manager roles and above */}
                 {isManagerOrAbove && (
                   <>
                     <Nav.Link id="audited-nav" as={NavLink} to="/Form">
@@ -65,28 +60,20 @@ const NavBar = () => {
                     </Nav.Link>
                   </>
                 )}
-
-                {/* Admin-only section */}
                 {isAdmin && (
                   <Nav.Link id="admin-nav" as={NavLink} to="/admin">
                     Admin
                   </Nav.Link>
                 )}
-
-                {/* Regular stuff links for CFO and other authorized roles */}
                 {isCFO && (
-                  <>
-                    <Nav.Link id="list-stuff-nav" as={NavLink} to="/list">
-                      List Stuff
-                    </Nav.Link>
-                    <Nav.Link id="add-stuff-nav" as={NavLink} to="/add">
-                      Add Stuff
-                    </Nav.Link>
-                    <Nav.Link id="4001-nav" as={NavLink} to="/4001">
-                      4001
-                    </Nav.Link>
-                  </>
+                  <Nav.Link id="4001-nav" as={NavLink} to="/4001">
+                    4001
+                  </Nav.Link>
                 )}
+                {/* Updated Upload CSV Link */}
+                <Nav.Link id="upload-csv-nav" as={NavLink} to="/upload">
+                  Upload CSV
+                </Nav.Link>
               </>
             )}
           </Nav>
