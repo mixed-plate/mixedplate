@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardTitle, Col, Container, Row } from 'react-bootstrap';
-import { Linkedin } from 'react-bootstrap-icons';
+import { Linkedin, Instagram, Twitter } from 'react-bootstrap-icons';
 
 const Footer = () => (
   <footer
@@ -81,9 +81,21 @@ const Footer = () => (
           </Col>
           <Col>
             <CardTitle>FOLLOW ALONG</CardTitle>
-            <a href="https://www.linkedin.com/company/spire-hawaii-llp/" style={{ color: '#fff' }}>
-              <Linkedin />
-            </a>
+            <li>
+              <a href="www.linkedin.com/company/spire-hawaii-llp/" style={{ color: '#fff' }}>
+                <Linkedin size="25" style={{ padding: '2' }} />
+              </a>
+            </li>
+            <li>
+              <a href="http://instagram.com/spirehawaii" style={{ color: '#fff' }}>
+                <Instagram size="25" style={{ padding: '2' }} />
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/spirehawaii" style={{ color: '#fff' }}>
+                <Twitter size="25" style={{ padding: '2' }} />
+              </a>
+            </li>
           </Col>
         </Row>
       </Container>
