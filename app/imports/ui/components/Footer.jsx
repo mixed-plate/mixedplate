@@ -81,9 +81,9 @@ const Footer = () => (
           </Col>
           <Col>
             <CardTitle>FOLLOW ALONG</CardTitle>
-            <div>
-              <Linkedin className="" />
-            </div>
+            <a href="https://www.linkedin.com/company/spire-hawaii-llp/" style={{ color: '#fff' }}>
+              <Linkedin />
+            </a>
           </Col>
         </Row>
       </Container>
