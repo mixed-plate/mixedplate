@@ -1,163 +1,110 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Bar } from 'react-chartjs-2';
-import { Form, Card, Row, Col } from 'react-bootstrap';
+import { Line } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import { Form, Card } from 'react-bootstrap';
 
-const FinancialDashboard = ({
-  budgetPnLData,
-  auditedBalanceSheetData,
-  availableYears,
-  currentYear,
-}) => {
-  const [comparisonYear, setComparisonYear] = React.useState(null);
-  const [displayType, setDisplayType] = React.useState('budgetPnL');
+// register required Chart.js components
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-  const comparisonYearData = comparisonYear ? {
-    budgetPnL: budgetPnLData.find(b => b.year === comparisonYear) || {},
-    auditedBalanceSheet: auditedBalanceSheetData.find(a => a.year === comparisonYear) || {},
-  } : null;
+const FinancialDashboard = ({ budgetPnLData, auditedBalanceSheetData }) => {
+  const [displayType, setDisplayType] = React.useState('auditedBalanceSheet');
 
-  const currentBudgetPnL = budgetPnLData[0] || {};
-  const currentAuditedBalanceSheet = auditedBalanceSheetData[0] || {};
+  // prepare data for charts
+  const years = auditedBalanceSheetData.map(data => data.year);
+
+  const auditedBalanceSheetChartData = {
+    labels: years,
+    datasets: [
+      {
+        label: 'Cash Total',
+        data: auditedBalanceSheetData.map(data => data.cash_total),
+        borderColor: 'rgba(255,99,132,1)',
+        backgroundColor: 'rgba(255,99,132,0.2)',
+        fill: false,
+      },
+      {
+        label: 'Investments',
+        data: auditedBalanceSheetData.map(data => data.investments),
+        borderColor: 'rgba(54,162,235,1)',
+        backgroundColor: 'rgba(54,162,235,0.2)',
+        fill: false,
+      },
+      {
+        label: 'Net Fixed Assets',
+        data: auditedBalanceSheetData.map(data => data.net_fixed_assets),
+        borderColor: 'rgba(75,192,192,1)',
+        backgroundColor: 'rgba(75,192,192,0.2)',
+        fill: false,
+      },
+      {
+        label: 'Total Assets',
+        data: auditedBalanceSheetData.map(data => data.total_assets_and_deferred_outflows_of_resources),
+        borderColor: 'rgba(153,102,255,1)',
+        backgroundColor: 'rgba(153,102,255,0.2)',
+        fill: false,
+      },
+    ],
+  };
 
   const budgetPnLChartData = {
-    labels: ['Revenues', 'Personnel', 'Program', 'Overhead', 'Net Income'],
+    labels: years,
     datasets: [
       {
-        label: `Budget PnL ${currentYear}`,
-        data: [
-          currentBudgetPnL.revenues,
-          currentBudgetPnL.personnel,
-          currentBudgetPnL.program,
-          currentBudgetPnL.overhead,
-          currentBudgetPnL.revenues - (currentBudgetPnL.personnel + currentBudgetPnL.program + currentBudgetPnL.overhead),
-        ],
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        label: 'Revenues',
+        data: budgetPnLData.map(data => data.revenues),
+        borderColor: 'rgba(255,206,86,1)',
+        backgroundColor: 'rgba(255,206,86,0.2)',
+        fill: false,
       },
-      ...(comparisonYearData ? [{
-        label: `Budget PnL ${comparisonYear}`,
-        data: [
-          comparisonYearData.budgetPnL.revenues,
-          comparisonYearData.budgetPnL.personnel,
-          comparisonYearData.budgetPnL.program,
-          comparisonYearData.budgetPnL.overhead,
-          comparisonYearData.budgetPnL.revenues - (comparisonYearData.budgetPnL.personnel + comparisonYearData.budgetPnL.program + comparisonYearData.budgetPnL.overhead),
-        ],
-        backgroundColor: 'rgba(255, 99, 132, 0.6)',
-      }] : []),
-    ],
-  };
-
-  const balanceSheetChartData = {
-    labels: ['Cash', 'Investments', 'Liabilities', 'Net Assets'],
-    datasets: [
       {
-        label: `Audited Balance Sheet ${currentYear}`,
-        data: [
-          currentAuditedBalanceSheet.cash_total,
-          currentAuditedBalanceSheet.investments_publicly_traded_securities,
-          currentAuditedBalanceSheet.accounts_payable_and_accrued_expenses,
-          currentAuditedBalanceSheet.total_net_assets_or_fund_balances,
-        ],
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        label: 'Personnel',
+        data: budgetPnLData.map(data => data.personnel),
+        borderColor: 'rgba(75,192,192,1)',
+        backgroundColor: 'rgba(75,192,192,0.2)',
+        fill: false,
       },
-      ...(comparisonYearData ? [{
-        label: `Audited Balance Sheet ${comparisonYear}`,
-        data: [
-          comparisonYearData.auditedBalanceSheet.cash_total,
-          comparisonYearData.auditedBalanceSheet.investments_publicly_traded_securities,
-          comparisonYearData.auditedBalanceSheet.accounts_payable_and_accrued_expenses,
-          comparisonYearData.auditedBalanceSheet.total_net_assets_or_fund_balances,
-        ],
-        backgroundColor: 'rgba(255, 99, 132, 0.6)',
-      }] : []),
+      {
+        label: 'Program',
+        data: budgetPnLData.map(data => data.program),
+        borderColor: 'rgba(153,102,255,1)',
+        backgroundColor: 'rgba(153,102,255,0.2)',
+        fill: false,
+      },
+      {
+        label: 'Overhead',
+        data: budgetPnLData.map(data => data.overhead),
+        borderColor: 'rgba(255,159,64,1)',
+        backgroundColor: 'rgba(255,159,64,0.2)',
+        fill: false,
+      },
     ],
-  };
-
-  const chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: {
-          callback: (value) => `$${value.toLocaleString()}`,
-        },
-      },
-    },
-    plugins: {
-      tooltip: {
-        callbacks: {
-          label: (context) => `${context.dataset.label}: $${context.parsed.y.toLocaleString()}`,
-        },
-      },
-    },
   };
 
   return (
-    <div>
-      <Row className="mb-3">
-        <Col md={6}>
-          <Form.Group>
-            <Form.Label>Display:</Form.Label>
-            <Form.Select
-              value={displayType}
-              onChange={(e) => setDisplayType(e.target.value)}
-            >
-              <option value="budgetPnL">Budget PnL</option>
-              <option value="auditedBalanceSheet">Audited Balance Sheet</option>
-            </Form.Select>
-          </Form.Group>
-        </Col>
-        <Col md={6}>
-          <Form.Group>
-            <Form.Label>Compare with year:</Form.Label>
-            <Form.Select
-              value={comparisonYear || ''}
-              onChange={(e) => setComparisonYear(e.target.value ? parseInt(e.target.value, 10) : null)}
-            >
-              <option value="">Select a year</option>
-              {availableYears.slice(1).map((year) => (
-                <option key={year} value={year}>{year}</option>
-              ))}
-            </Form.Select>
-          </Form.Group>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Card className="mb-4">
-            <Card.Header>{displayType === 'budgetPnL' ? 'Budget PnL Summary' : 'Audited Balance Sheet Summary'}</Card.Header>
-            <Card.Body style={{ height: '400px' }}>
-              <Bar
-                data={displayType === 'budgetPnL' ? budgetPnLChartData : balanceSheetChartData}
-                options={chartOptions}
-              />
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </div>
+    <Card>
+      <Card.Header>
+        <Form.Select value={displayType} onChange={(e) => setDisplayType(e.target.value)}>
+          <option value="auditedBalanceSheet">Audited Balance Sheet</option>
+          <option value="budgetPnL">Budget PnL</option>
+        </Form.Select>
+      </Card.Header>
+      <Card.Body>
+        {displayType === 'auditedBalanceSheet' ? (
+          <Line data={auditedBalanceSheetChartData} />
+        ) : (
+          <Line data={budgetPnLChartData} />
+        )}
+      </Card.Body>
+    </Card>
   );
 };
 
 FinancialDashboard.propTypes = {
-  budgetPnLData: PropTypes.arrayOf(PropTypes.shape({
-    year: PropTypes.number,
-    revenues: PropTypes.number,
-    personnel: PropTypes.number,
-    program: PropTypes.number,
-    overhead: PropTypes.number,
-  })).isRequired,
-  auditedBalanceSheetData: PropTypes.arrayOf(PropTypes.shape({
-    year: PropTypes.number,
-    cash_total: PropTypes.number,
-    investments_publicly_traded_securities: PropTypes.number,
-    accounts_payable_and_accrued_expenses: PropTypes.number,
-    total_net_assets_or_fund_balances: PropTypes.number,
-  })).isRequired,
-  availableYears: PropTypes.arrayOf(PropTypes.number).isRequired,
-  currentYear: PropTypes.number.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  budgetPnLData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  auditedBalanceSheetData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default FinancialDashboard;
