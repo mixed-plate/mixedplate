@@ -1,5 +1,6 @@
 import React from 'react';
 import { CardTitle, Col, Container, Row } from 'react-bootstrap';
+import { Linkedin } from 'react-bootstrap-icons';
 
 const Footer = () => (
   <footer
@@ -79,10 +80,10 @@ const Footer = () => (
             </li>
           </Col>
           <Col>
-            <CardTitle href="">FOLLOW ALONG</CardTitle>
-            <li>
-              <img src="https://cdn.prod.website-files.com/5fdaca5a4d51110c2f760a05/60b6d1f0e665aaba3dbd8bed_linkedin-logo.png" />
-            </li>
+            <CardTitle>FOLLOW ALONG</CardTitle>
+            <div>
+              <Linkedin className="" />
+            </div>
           </Col>
         </Row>
       </Container>
