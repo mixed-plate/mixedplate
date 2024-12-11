@@ -6,16 +6,16 @@ import { AutoForm, ErrorsField, NumField, SubmitField } from 'uniforms-bootstrap
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Bar } from 'react-chartjs-2'; // Import Bar chart component
-import { RefinancingScenarios } from '../../api/workpaper/4001';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faCalendarAlt, 
-  faPercent, 
-  faMoneyBillWave, 
+import {
+  faCalendarAlt,
+  faPercent,
+  faMoneyBillWave,
   faChartLine,
-  faBuilding
+  faBuilding,
 } from '@fortawesome/free-solid-svg-icons';
+import { RefinancingScenarios } from '../../api/workpaper/4001';
 
 // Add custom styles
 const styles = {
@@ -157,14 +157,14 @@ const RefinancingInputSheet = () => {
         <Row className="justify-content-center">
           <Col xs={12}>
             <h2 style={styles.pageTitle} className="text-center">Refinancing Scenarios</h2>
-            
+
             <Form className="mb-4">
               <Form.Group controlId="formBasicSelect">
                 <Form.Label className="h5 mb-3">Select Refinancing Duration</Form.Label>
-                <Form.Control 
-                  as="select" 
+                <Form.Control
+                  as="select"
                   style={styles.modernSelect}
-                  onChange={handleScenarioChange} 
+                  onChange={handleScenarioChange}
                   value={selectedScenario ? selectedScenario.Description : ''}
                 >
                   {scenarios.map(scenario => (
@@ -180,15 +180,15 @@ const RefinancingInputSheet = () => {
                   <Card style={styles.modernCard}>
                     <Card.Body>
                       <h4 className="mb-4" style={styles.cardTitle}>
-                        <FontAwesomeIcon 
-                          icon={[faMoneyBillWave, faChartLine, faPercent][index]} 
+                        <FontAwesomeIcon
+                          icon={[faMoneyBillWave, faChartLine, faPercent][index]}
                           style={styles.icon}
                         />
                         {title}
                       </h4>
-                      <Bar 
-                        data={[interestData, principalData, coreOpBudgetData][index]} 
-                        options={{ 
+                      <Bar
+                        data={[interestData, principalData, coreOpBudgetData][index]}
+                        options={{
                           responsive: true,
                           plugins: {
                             legend: {
@@ -200,7 +200,7 @@ const RefinancingInputSheet = () => {
                               beginAtZero: true,
                             },
                           },
-                        }} 
+                        }}
                       />
                     </Card.Body>
                   </Card>
@@ -265,8 +265,8 @@ const RefinancingInputSheet = () => {
                   </Col>
                 ))}
                 <Col xs={12} className="text-center mt-4">
-                  <Button 
-                    onClick={() => setIsEditing(true)} 
+                  <Button
+                    onClick={() => setIsEditing(true)}
                     style={styles.modernButton}
                   >
                     Edit Scenarios

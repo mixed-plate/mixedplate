@@ -86,16 +86,19 @@ const Footer = () => (
           <Col>
             <CardTitle style={{ padding: '0 0 20px 0' }}>FOLLOW ALONG</CardTitle>
             <li>
+              {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
               <a href="www.linkedin.com/company/spire-hawaii-llp/" style={{ color: '#fff' }}>
                 <Linkedin size="25" style={{ margin: '10px' }} />
               </a>
             </li>
             <li>
+              {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
               <a href="http://instagram.com/spirehawaii" style={{ color: '#fff' }}>
                 <Instagram size="25" style={{ margin: '10px' }} />
               </a>
             </li>
             <li>
+              {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
               <a href="https://twitter.com/spirehawaii" style={{ color: '#fff' }}>
                 <Twitter size="25" style={{ margin: '10px' }} />
               </a>
