@@ -42,9 +42,6 @@ const NavBar = () => {
           <Nav className="me-auto justify-content-start">
             {currentUser && (
               <>
-                <Nav.Link id="about-us-nav" as={NavLink} to="/aboutus">
-                  About Us
-                </Nav.Link>
                 {canViewDashboard && (
                   <Nav.Link id="dashboard-nav" as={NavLink} to="/dashboard">
                     Dashboard
@@ -72,7 +69,7 @@ const NavBar = () => {
                 )}
                 {/* Updated Upload CSV Link */}
                 <Nav.Link id="upload-csv-nav" as={NavLink} to="/upload">
-                  Upload CSV
+                  Upload XLSM
                 </Nav.Link>
               </>
             )}
