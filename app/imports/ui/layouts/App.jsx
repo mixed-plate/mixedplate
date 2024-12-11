@@ -22,6 +22,7 @@ import AuditedBalanceSheetForm from '../pages/AuditedBalanceSheetForm';
 import BudgetPnL from '../pages/BudgetPnL';
 import Dashboard from '../pages/Dashboard';
 import RefinancingScenariosDropdown from '../pages/4001';
+import UploadCSV from '../pages/UploadCSV';
 
 const App = () => {
   const { ready } = useTracker(() => {
@@ -45,9 +46,11 @@ const App = () => {
           <Route path="/budget" element={<ManagerProtectedRoute ready={ready}><BudgetPnL /></ManagerProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
+          <Route path="/upload" element={<ProtectedRoute><UploadCSV /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><AdminPanel /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
+          <Route path="/4001" element={<RefinancingScenariosDropdown />} />
           <Route path="/4001" element={<RefinancingScenariosDropdown />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/dashboard" element={<DashboardProtectedRoute ready={ready}><Dashboard /></DashboardProtectedRoute>} />

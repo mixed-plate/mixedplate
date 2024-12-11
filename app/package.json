@@ -3,6 +3,9 @@
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.24.0",
+    "@fortawesome/fontawesome-svg-core": "^6.7.1",
+    "@fortawesome/free-solid-svg-icons": "^6.7.1",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@silevis/reactgrid": "^4.1.10",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
@@ -26,7 +29,8 @@
     "sweetalert": "^2.1.2",
     "uniforms": "^3.10.2",
     "uniforms-bootstrap5": "^3.10.2",
-    "uniforms-bridge-simple-schema-2": "^3.10.2"
+    "uniforms-bridge-simple-schema-2": "^3.10.2",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.10",
