@@ -8,6 +8,72 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Bar } from 'react-chartjs-2'; // Import Bar chart component
 import { RefinancingScenarios } from '../../api/workpaper/4001';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faCalendarAlt, 
+  faPercent, 
+  faMoneyBillWave, 
+  faChartLine,
+  faBuilding
+} from '@fortawesome/free-solid-svg-icons';
+
+// Add custom styles
+const styles = {
+  container: {
+    padding: '2rem',
+    backgroundColor: '#f8f9fa',
+    minHeight: '100vh',
+  },
+  pageTitle: {
+    color: '#2c3e50',
+    fontWeight: '600',
+    marginBottom: '2rem',
+    fontSize: '2.5rem',
+  },
+  modernCard: {
+    borderRadius: '15px',
+    border: 'none',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    transition: 'transform 0.2s ease-in-out',
+    '&:hover': {
+      transform: 'translateY(-5px)',
+    },
+  },
+  modernButton: {
+    backgroundColor: '#4834d4',
+    border: 'none',
+    borderRadius: '8px',
+    padding: '0.8rem 2rem',
+    fontWeight: '500',
+    transition: 'all 0.2s ease-in-out',
+    '&:hover': {
+      backgroundColor: '#686de0',
+      transform: 'translateY(-2px)',
+    },
+  },
+  modernSelect: {
+    borderRadius: '8px',
+    border: '2px solid #e0e0e0',
+    padding: '0.8rem',
+    marginBottom: '2rem',
+    transition: 'border-color 0.2s ease-in-out',
+    '&:focus': {
+      borderColor: '#4834d4',
+      boxShadow: 'none',
+    },
+  },
+  cardTitle: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    color: '#2c3e50',
+    fontSize: '1.25rem',
+    fontWeight: '600',
+  },
+  icon: {
+    color: '#4834d4',
+  },
+};
 
 const RefinancingInputSheet = () => {
   // eslint-disable-next-line no-unused-vars
@@ -86,48 +152,62 @@ const RefinancingInputSheet = () => {
   }, [scenarios]);
 
   return (
-    <Container className="py-3">
+    <Container fluid style={styles.container}>
       {ready ? (
         <Row className="justify-content-center">
           <Col xs={12}>
-            <Col className="text-center mb-4"><h2>4001</h2></Col>
-            <Form>
+            <h2 style={styles.pageTitle} className="text-center">Refinancing Scenarios</h2>
+            
+            <Form className="mb-4">
               <Form.Group controlId="formBasicSelect">
-                <Form.Label>Select Refinancing Duration</Form.Label>
-                <Form.Control as="select" className="modern-select" onChange={handleScenarioChange} value={selectedScenario ? selectedScenario.Description : ''}>
+                <Form.Label className="h5 mb-3">Select Refinancing Duration</Form.Label>
+                <Form.Control 
+                  as="select" 
+                  style={styles.modernSelect}
+                  onChange={handleScenarioChange} 
+                  value={selectedScenario ? selectedScenario.Description : ''}
+                >
                   {scenarios.map(scenario => (
                     <option key={scenario.Description} value={scenario.Description}>{scenario.Description}</option>
                   ))}
                 </Form.Control>
               </Form.Group>
             </Form>
-            {/* Bar graphs moved to the top */}
-            <Row className="mt-4">
-              <Col xs={12} md={4} className="mb-4">
-                <Card className="modern-card">
-                  <Card.Body>
-                    <h4>Interest</h4>
-                    <Bar data={interestData} options={{ responsive: true }} />
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col xs={12} md={4} className="mb-4">
-                <Card className="modern-card">
-                  <Card.Body>
-                    <h4>Principal</h4>
-                    <Bar data={principalData} options={{ responsive: true }} />
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col xs={12} md={4} className="mb-4">
-                <Card className="modern-card">
-                  <Card.Body>
-                    <h4>Core Operating Budget Percentage</h4>
-                    <Bar data={coreOpBudgetData} options={{ responsive: true }} />
-                  </Card.Body>
-                </Card>
-              </Col>
+
+            <Row className="mt-5">
+              {['Interest', 'Principal', 'Core Operating Budget Percentage'].map((title, index) => (
+                <Col xs={12} md={4} className="mb-4" key={index}>
+                  <Card style={styles.modernCard}>
+                    <Card.Body>
+                      <h4 className="mb-4" style={styles.cardTitle}>
+                        <FontAwesomeIcon 
+                          icon={[faMoneyBillWave, faChartLine, faPercent][index]} 
+                          style={styles.icon}
+                        />
+                        {title}
+                      </h4>
+                      <Bar 
+                        data={[interestData, principalData, coreOpBudgetData][index]} 
+                        options={{ 
+                          responsive: true,
+                          plugins: {
+                            legend: {
+                              position: 'bottom',
+                            },
+                          },
+                          scales: {
+                            y: {
+                              beginAtZero: true,
+                            },
+                          },
+                        }} 
+                      />
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
             </Row>
+
             {isEditing ? (
               <AutoForm
                 ref={ref => { fRef = ref; }}
@@ -135,7 +215,7 @@ const RefinancingInputSheet = () => {
                 onSubmit={data => submit(data, fRef)}
                 model={selectedScenario}
               >
-                <Card className="mb-4 modern-card">
+                <Card style={styles.modernCard} className="mb-4">
                   <Card.Body>
                     <Row>
                       {yearOrder.map((year) => (
@@ -160,29 +240,48 @@ const RefinancingInputSheet = () => {
               <Row className="mb-4">
                 {yearOrder.map((year) => (
                   <Col key={year} xs={12} md={4} className="mb-3">
-                    <Card className="modern-card">
-                      <Card.Body>
-                        <h3>{`Year ${year.slice(-1)}`}</h3>
-                        <p>Interest: {selectedScenario ? selectedScenario[year]?.interest || 'N/A' : 'N/A'}</p>
-                        <p>Principal: {selectedScenario ? selectedScenario[year]?.principal || 'N/A' : 'N/A'}</p>
-                        <p>% of Core Op Budget: {selectedScenario ? selectedScenario[year]?.coreOpBudgetPercent || 'N/A' : 'N/A'}</p>
+                    <Card style={styles.modernCard}>
+                      <Card.Body className="p-4">
+                        <h3 className="mb-4" style={styles.cardTitle}>
+                          <FontAwesomeIcon icon={faCalendarAlt} style={styles.icon} />
+                          {`Year ${year.slice(-1)}`}
+                        </h3>
+                        <div className="d-flex flex-column gap-3">
+                          <p className="mb-2">
+                            <FontAwesomeIcon icon={faMoneyBillWave} style={styles.icon} className="me-2" />
+                            <strong>Interest:</strong> {selectedScenario ? selectedScenario[year]?.interest || 'N/A' : 'N/A'}
+                          </p>
+                          <p className="mb-2">
+                            <FontAwesomeIcon icon={faChartLine} style={styles.icon} className="me-2" />
+                            <strong>Principal:</strong> {selectedScenario ? selectedScenario[year]?.principal || 'N/A' : 'N/A'}
+                          </p>
+                          <p className="mb-2">
+                            <FontAwesomeIcon icon={faBuilding} style={styles.icon} className="me-2" />
+                            <strong>% of Core Op Budget:</strong> {selectedScenario ? selectedScenario[year]?.coreOpBudgetPercent || 'N/A' : 'N/A'}
+                          </p>
+                        </div>
                       </Card.Body>
                     </Card>
                   </Col>
                 ))}
-                <Col xs={12} className="text-center">
-                  <Button onClick={() => setIsEditing(true)} className="modern-button">Edit</Button>
+                <Col xs={12} className="text-center mt-4">
+                  <Button 
+                    onClick={() => setIsEditing(true)} 
+                    style={styles.modernButton}
+                  >
+                    Edit Scenarios
+                  </Button>
                 </Col>
               </Row>
             )}
           </Col>
         </Row>
       ) : (
-        <Row className="justify-content-center">
-          <Col xs={8} className="text-center">
-            <p>Loading...</p>
-          </Col>
-        </Row>
+        <div className="d-flex justify-content-center align-items-center" style={{ height: '60vh' }}>
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
       )}
     </Container>
   );
