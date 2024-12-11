@@ -110,7 +110,6 @@ const BudgetPnLPage = () => {
                     <h2>Revenue</h2>
                     <Row>
                       <Row className="mb-3">
-                        <h4>Revenue</h4>
                         <NumField name="five_percent_investment_portfolio" />
                         <NumField name="revenues" />
                         <NumField name="general_fund" />
@@ -119,7 +118,6 @@ const BudgetPnLPage = () => {
                       </Row>
                       <h2>Expenses</h2>
                       <Row className="mb-3">
-                        <h4>Expenses</h4>
                         <NumField name="personnel" />
                         <NumField name="salary" />
                         <NumField name="program" />
@@ -134,7 +132,6 @@ const BudgetPnLPage = () => {
                       </Row>
                       <h2>Surplus (Deficit)</h2>
                       <Row className="mb-3">
-                        <h4>Surplus (Deficit)</h4>
                         <NumField name="management" />
                         <NumField name="support_services" />
                         <NumField name="beneficiary_advocacy" />
@@ -173,7 +170,6 @@ const BudgetPnLPage = () => {
                     <h2>Revenue</h2>
                     <Row>
                       <Row className="mb-3">
-                        <h4>Revenue</h4>
                         <NumField name="five_percent_investment_portfolio" />
                         <NumField name="revenues" />
                         <NumField name="general_fund" />
@@ -182,7 +178,6 @@ const BudgetPnLPage = () => {
                       </Row>
                       <h2>Expenses</h2>
                       <Row className="mb-3">
-                        <h4>Expenses</h4>
                         <NumField name="personnel" />
                         <NumField name="salary" />
                         <NumField name="program" />
@@ -197,7 +192,6 @@ const BudgetPnLPage = () => {
                       </Row>
                       <h2>Surplus (Deficit)</h2>
                       <Row className="mb-3">
-                        <h4>Surplus (Deficit)</h4>
                         <NumField name="management" />
                         <NumField name="support_services" />
                         <NumField name="beneficiary_advocacy" />
@@ -236,7 +230,6 @@ const BudgetPnLPage = () => {
                     <h2>Revenue</h2>
                     <Row>
                       <Row className="mb-3">
-                        <h4>Revenue</h4>
                         <NumField name="five_percent_investment_portfolio" />
                         <NumField name="revenues" />
                         <NumField name="general_fund" />
@@ -245,7 +238,6 @@ const BudgetPnLPage = () => {
                       </Row>
                       <h2>Expenses</h2>
                       <Row className="mb-3">
-                        <h4>Expenses</h4>
                         <NumField name="personnel" />
                         <NumField name="salary" />
                         <NumField name="program" />
@@ -260,7 +252,6 @@ const BudgetPnLPage = () => {
                       </Row>
                       <h2>Surplus (Deficit)</h2>
                       <Row className="mb-3">
-                        <h4>Surplus (Deficit)</h4>
                         <NumField name="management" />
                         <NumField name="support_services" />
                         <NumField name="beneficiary_advocacy" />
@@ -299,7 +290,6 @@ const BudgetPnLPage = () => {
                     <h2>Revenue</h2>
                     <Row>
                       <Row className="mb-3">
-                        <h4>Revenue</h4>
                         <NumField name="five_percent_investment_portfolio" />
                         <NumField name="revenues" />
                         <NumField name="general_fund" />
@@ -308,7 +298,6 @@ const BudgetPnLPage = () => {
                       </Row>
                       <h2>Expenses</h2>
                       <Row className="mb-3">
-                        <h4>Expenses</h4>
                         <NumField name="personnel" />
                         <NumField name="salary" />
                         <NumField name="program" />
@@ -323,7 +312,6 @@ const BudgetPnLPage = () => {
                       </Row>
                       <h2>Surplus (Deficit)</h2>
                       <Row className="mb-3">
-                        <h4>Surplus (Deficit)</h4>
                         <NumField name="management" />
                         <NumField name="support_services" />
                         <NumField name="beneficiary_advocacy" />
@@ -362,7 +350,6 @@ const BudgetPnLPage = () => {
                     <h2>Revenue</h2>
                     <Row>
                       <Row className="mb-3">
-                        <h4>Revenue</h4>
                         <NumField name="five_percent_investment_portfolio" />
                         <NumField name="revenues" />
                         <NumField name="general_fund" />
@@ -371,7 +358,6 @@ const BudgetPnLPage = () => {
                       </Row>
                       <h2>Expenses</h2>
                       <Row className="mb-3">
-                        <h4>Expenses</h4>
                         <NumField name="personnel" />
                         <NumField name="salary" />
                         <NumField name="program" />
@@ -386,7 +372,6 @@ const BudgetPnLPage = () => {
                       </Row>
                       <h2>Surplus (Deficit)</h2>
                       <Row className="mb-3">
-                        <h4>Surplus (Deficit)</h4>
                         <NumField name="management" />
                         <NumField name="support_services" />
                         <NumField name="beneficiary_advocacy" />
