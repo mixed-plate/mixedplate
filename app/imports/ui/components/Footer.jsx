@@ -127,9 +127,9 @@ const Footer = () => (
       <Row>
         <Col className="text-center">
           <h5 style={{ padding: '0 0 10px' }}>Mixed Plate Team Members</h5>
-					Zeb, Darrius, Xiaokang, Jaira,
-					<br />
-					Carolina, Kaylee, Natalie
+          Zeb, Darrius, Xiaokang, Jaira,
+          <br />
+          Carolina, Kaylee, Natalie
           <br />
           <a href="https://mixed-plate.github.io/" style={{ color: '#fff', textDecorationLine: 'underline' }}>
             Team Page
